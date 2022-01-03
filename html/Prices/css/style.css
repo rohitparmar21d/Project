@@ -107,4 +107,43 @@ body {
 .card{
   width: 520px;
 }
+ /*.section-2 .row .r1{
+   
+ }
+ .section-2 .row .r1 .colum-1{
+   
+   padding-left: 20px;
+   align-items: center;
+   margin-left: 50px;
+   
+   
+ }*/
 
+ .what-include-content-1
+ {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 75px;
+  width: 360px;
+ }
+ .what-include-content-2
+ {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: -30px;
+  width: 360px;
+ }
+ .what-include-content-3
+ {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: -30px;
+  width: 360px;
+  margin-right: -15px;
+}
+ .what-include-image
+ {
+   height: 210px;
+   width: 360px;
+   margin-bottom: 0;
+ }
