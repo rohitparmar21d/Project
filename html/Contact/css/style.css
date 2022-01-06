@@ -1,6 +1,6 @@
 *{
     margin: 0 ;
-    font-family: Roboto;
+    font-family: 'roboto' sans-serif;
   }
   body {
     overflow-x: hidden;
@@ -334,6 +334,7 @@ color: gray;
 }
 
 @media (min-width:768px ) and (max-width:992px){
+  
 
   .navbar-nav{
     align-items: center;
