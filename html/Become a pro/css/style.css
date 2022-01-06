@@ -1,9 +1,226 @@
 *{
-    margin: 0 ;
-    font-family: 'roboto' sans-serif;
+  margin: 0 ;
+  font-family: 'roboto' sans-serif;
+}
+body {
+  overflow-x: hidden;
+}
+.main{
+  width: 1560px;
+  height: 2852px;
+}
+  a {
+    color: #ffffff;
+    text-decoration: none;
   }
-  body {
-    overflow-x: hidden;
+
+  /*Nav Section*/
+  .nav_section {
+    
+    width: 100%;
+    height: 930px;
+   background-image: url("../Assets/become-a-pro-banner.png");
+    position: relative;
+    opacity: 1;
+  
+  }
+  .navbar-brand img{
+    height: 120px;
+    width: 156px;
+  }
+  
+  /* Navbar */
+  .navbar {
+    padding: 10px 0px !important;
+  }
+
+  .nav_section .nav-link {
+    color: white;
+    font-size: 17px;
+    letter-spacing: 0px;
+  }
+  #navbarSupportedContent {
+    margin-top: -81.5px !important;
+  }
+  .navbar-nav{
+    margin-top: 35px;
+  }
+  .nav_section .btn {
+    border-radius: 20px;
+    height: 40px;
+    /* width: 161px; */
+  }
+  .hamburger {
+    height: 100px;
+    width: 100px;
+  }
+  .nav_section .btn-primary {
+    border: 1px solid #ffffff80;
+    background-color: transparent !important;
+  }
+  .nav_section .btn a {
+    line-height: 161px;
+    margin: auto;
+  }
+  .nav_section #nav-item:hover{
+    border: 1px solid #ffffff80;
+    border-radius: 20px;
+    height: 40px;
+    
+  }
+  .nav_section .nav-item a {
+    margin-left: 15px;
+  }
+  .v1{
+    width:12px;
+    height:7px;
+    margin-left: 7px;
+   }
+  
+  .dropdown-menu{
+   background:transparent;
+  }
+  
+  .dropdown-item {
+      color: white;
+  }
+
+    /*registration*/
+    .registerNow {
+      padding-bottom: 44px;
+      
+  }
+  
+  .nav_section form {
+    max-width: 430px;
+    background-color: white;
+    padding: 18px 36px;
+    text-align: -webkit-center;
+    border-radius: 5px;
+    height: 610px;
+  }
+  
+  .nav_section form h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4f4f4f;
+    margin: 5px 0px 25px 0px;
+  }
+  
+  .nav_section form .form-control {
+    margin-bottom: 15px;
+    border: 1px solid #C8C8C8;
+    color: #A0A0A0;
+    font-size: 16px;
+  }
+  .form-check{
+    text-align: left;
+  }
+  .form-check-label {
+    font-size: 16px;
+    margin-bottom: 0;
+    color: #4f4f4f;
+    
+  }
+  
+  label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-check-label a {
+    color: #1fb6ff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  
+  #robot-captcha {
+    text-align: start;
+    margin: 16px 0px 20px 0px;
+  }
+  
+  #robot-captcha img {
+    width: 80%;
+  }
+  
+  .started {
+    background-color: #1d7a8c;
+    color: white;
+    border-radius: 46px;
+    border: none;
+    padding: 12px 19px 12px 26px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .started:hover {
+    background:white;
+    color: #1d7a8c;
+    border: 1px solid #1d7a8c;
+  }
+  
+  .down-arrow a {
+    cursor: pointer;
+  }
+  
+ 
+
+
+  /*section-2*/
+  #blog-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  #blog-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+  
+  #registration-work
+  {
+    position: relative;
+  }
+  
+  .registration-work h2{
+    font-size: 40px;
+    color:#4F4F4F;
+    font-weight: bold;
+    margin-top: 68px;
+    margin-bottom: 73px;
+  }
+  .r-term{
+    margin-bottom: 10px;
+  }
+  
+  .term-heading {
+    font-size: 30px;
+    color: #4f4f4f;
+    font-weight: bold;
+  }
+  .term-text {
+    font-size: 18px;
+    color: #4f4f4f;
+  }
+  .registration-work a {
+    color: #4f4f4f;
+    margin-top: 40px;
+    font-style: 18px;
+  }
+  .registration-work .term-image{
+    width: 260px;
+    height: 260px;
+  }
+  
+  .readmore:hover{
+    color:blue;
+  }
+  .registration-work .term-image:hover{
+    transform: scale(0.9);
   }
 
 /*get newsletter*/
@@ -110,4 +327,325 @@
     width: 100%;
     height: 1.2px;
     background-color: #424242;
+  }
+
+  @media (min-width:992px ) and (max-width:1344px){
+
+    .nav_section .nav-link {
+      color: white;
+      font-size: 15px;
+      letter-spacing: 0px;
+    }
+   
+    .navbar-nav{
+      margin-top: 30px;
+      
+    }
+    .nav_section .btn {
+      border-radius: 20px;
+      height: 40px;
+    
+    }
+    #navbarSupportedContent {
+      margin-top: -50px !important;
+    }
+    .nav_section .nav-item {
+      margin-top: 10px;
+      padding: 0;
+      text-align: center;
+    }
+    .nav_section .nav-item  a{
+     margin: 3px;
+     }
+    .section-5 {
+      height: 100px;
+      margin-top:25px;
+      margin-bottom: 10px;
+      top: 10%;
+    }
+    .msg-box {
+     position: relative;
+      left: 35%;
+      height: 100px;
+    }
+    .footer-img {
+      margin-right: 40px;
+      height: 100px;
+    }
+    .footer1-logo {
+       margin-left: -30px;
+    }
+    .social {
+      float: right;
+      margin-left: 70px;
+    }
+  }
+  @media (min-width:768px ) and (max-width:992px){
+    #navbarSupportedContent {
+      margin-top: -8px !important;
+      height: 330px;
+    }
+    .navbar-nav{
+     align-items: center;
+     justify-content: center;
+     margin-top: 5px;
+    }
+    .nav_section {
+    width: 100%;
+      height: 1070px;
+    }
+    .nav_section .nav-item{
+      padding: 0;
+      }
+      .nav_section form{
+        height: 500px;
+      }
+      .nav_section form h2 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #4f4f4f;
+        margin: -10px 0px 5px 0px;
+      }
+      .nav_section form .form-control {
+        margin-bottom:7px;
+        border: 1px solid #C8C8C8;
+        color: #A0A0A0;
+        font-size: 12px;
+      }
+     .form-check-label {
+        font-size: 11px;
+        margin-top:-60px;
+        color: #4f4f4f;
+     }
+     .started {
+      background-color: #1d7a8c;
+      color: white;
+      border-radius: 46px;
+      border: none;
+      padding: 10px 15px 10px 20px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      left: -30px;
+      
+    }
+      
+     .section-5 {
+      height: 100px;
+      margin-top:-5px;
+      margin-bottom: 10px;
+      top: 5%;
+    }
+    .msg-box {
+     position: relative;
+      left: 27%;
+      height: 100px;
+    }
+    .footer-nav a {
+      text-decoration: none;
+      font-size: 14px;
+      margin-right: 7px;
+      overflow: hidden;
+      color: #f1f1f1;
+      letter-spacing: 0.7px;
+    }
+    .footer-img {
+      margin-right: 15px;
+      height: 100px;
+    }
+    .footer1-logo {
+       margin-left: -50px;
+    }
+    .social {
+      float: right;
+      margin-left: 15px;
+      margin-right: -100px;
+    }
+    
+  }
+  @media (min-width:400px ) and (max-width:768px){
+
+    #navbarSupportedContent {
+      margin-top: -8px !important;
+      height: 330px;
+    }
+    .navbar-nav{
+     align-items: center;
+     justify-content: center;
+     margin-top: 5px;
+    }
+    .nav_section .nav-item{
+      padding: 0;
+      margin-bottom: 5px;
+      }
+      .nav_section .nav-link{
+        font-size: 13px;
+      }
+      .nav_section form{
+        height: 480px;
+      }
+      .nav_section form h2 {
+        font-size: 17px;
+        font-weight: bold;
+        color: #4f4f4f;
+        margin: -10px 0px 5px 0px;
+      }
+      .nav_section form .form-control {
+        margin-bottom:6px;
+        border: 1px solid #C8C8C8;
+        color: #A0A0A0;
+        font-size: 11px;
+      }
+      .form-check-label {
+        font-size: 10px;
+        margin-top:-60px;
+        color: #4f4f4f;
+     }
+     .nav_section {
+      width: 100%;
+        height: 1070px;
+      }
+      #blog-left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 80px;
+      }
+      
+      #blog-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        width: 80px;
+      }
+      .registration-work h2{
+        font-size: 35px;
+        color:#4F4F4F;
+        font-weight: bold;
+        margin-top: 40px;
+        margin-bottom:45px;
+      }
+      .r-term{
+        margin-bottom:25px;
+      }
+      
+      .term-heading {
+        font-size: 25px;
+        color: #4f4f4f;
+        font-weight: bold;
+      }
+      .term-text {
+        font-size: 17px;
+        color: #4f4f4f;
+        text-align: center;
+      }
+      .registration-work a {
+        color: #4f4f4f;
+        margin-top: 15px;
+        font-style: 18px;
+      }
+      .term-detail{
+        margin-bottom:10px;
+        margin-top: 10px;
+      }
+      .registration-work .term-image{
+        width: 260px;
+        height: 260px;
+       text-align: center;
+      }
+      .registration-work .term-image img{
+        text-align: center;
+        margin-right: 50px;
+        margin-left: 50px;
+      }
+
+    .section-5 {
+      height: 100px;
+      margin-top:25px;
+      margin-bottom: 10px;
+      top: 1%;
+    }
+    .msg-box {
+     position: relative;
+      left:17%;
+      height: 100px;
+    }
+    .GET-OUR-NEWSLETTER {
+      font-size: 16px;
+      font-weight: 500;
+      color: #353548;
+      padding-left: 63px;
+    }
+    .msg-foam {
+      margin-top: 9px;
+    }
+    .Rounded-Rectangle-649 {
+      width: 200px;
+      height: 40px;
+      padding: 13px 12px 15px 21px;
+      border-radius:20px;
+    }
+    .Rounded-Rectangle-649-copy {
+      width: 88px;
+      height: 40px;
+      border-radius: 20px;
+    }
+    .section-4 {
+      height: 280px;
+      background-color: black;
+      width: 100%;
+    }
+    .footer1 {
+     justify-content: center;
+      align-items: center;
+      height: 150px;
+      display: flex;
+      left: 50%;
+      flex-direction: row;
+      
+    }
+    .footer-img {
+      margin: 0 auto;
+      margin-left:50%;
+      flex-direction: column;
+    }
+    .footer-nav {
+    
+      
+    margin-left: 95px;
+    margin-right: 0;
+      text-align: center;
+    }
+    .footer-nav a {
+      font-size: 12px;
+      padding: 5px;
+      margin: 1px;
+      text-align: center;
+    }
+    
+    .social {
+       width: 100%;
+       margin-left: 50%;
+      margin-top: 5px;
+    }
+    .social img {
+    left: 10px;
+    }
+    .footer2 {
+      height: 60px;
+      font-size: 17px;
+      text-align: center;
+      
+    }
+    
+    .Rectangle-12-copy-2 {
+      margin-top: 40px;
+      width: 100%;
+      height: 1.2px;
+background-color: #424242;
+
+    }
+    
   }
