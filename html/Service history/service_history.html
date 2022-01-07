@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service history</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+  <!--header-->
+    <section class="section-1">
+     <nav class="navbar navbar-expand-lg navbar-light">
+       <div class="container-fluid">
+
+         <a href="#" class="navbar-brand">
+           <img src="Assets/logo-small.png" height="28" alt="CoolBrand">
+         </a>
+
+        
+         <a href="#" class="nav-item nav-link"><img class="notification-bell-m" src="Assets/icon-notification.png" alt="notification">
+           <span class="notification-no-m">2</span></a>
+         
+          <button class="navbar-toggler ddmenu" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+           </button>
+         <div class="collapse navbar-collapse justify-content-right" id="navbarCollapse">
+           <div class="navbar-nav text-white"> 
+            <a href="#" class="nav-item nav-link menu coloured text-white">Book now</a>  
+             <a href="#" class="nav-item nav-link menu">Prices &amp; services</a>
+             <a href="#" class="nav-item nav-link menu">Warranty</a>
+             <a href="#" class="nav-item nav-link menu">Blog</a>
+             <a href="#" class="nav-item nav-link menu">Contact</a>
+             <a href="#" class="nav-item nav-link menu-m">My settings</a>
+             <a href="#" class="nav-item nav-link menu-m">Sign out</a>
+             <div class="vr"></div>
+             <a href="#" class="nav-item nav-link"><img class="notification-bell" src="Assets/icon-notification.png" alt="notification">
+               <span class="notification-no">2</span></a>
+             <div class="vrline"  style="margin-left: 7px;"></div>
+             <div class="btn-group user_menu">
+               <button class="btn" type="button" id="defaultDropdown" data-toggle="dropdown" data-auto-close="true" aria-expanded="false">
+                 <img src="Assets/admin-user.png" alt="user">
+                 
+                 <img src="Assets/sp-arrow-down.png" alt="down-arrow-white">
+               </button>
+               <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+
+                 <li><a class="dropdown-item" href="#">signIn</a></li>
+                 <li><a class="dropdown-item" href="#">Help&FeedBack</a></li>
+                 <li><a class="dropdown-item" href="#">signOut</a></li>
+                
+               </ul>
+             </div>
+           </div>
+         </div>
+       </div>
+     </nav>
+    </section> 
+    <section class="section-1-1">
+       <nav class="navbar navbar-expand-lg navbar-light n1">
+          <div class="container-fluid">
+  
+            <a href="#" class="navbar-brand">
+              <img src="Assets/logo-small.png" height="28" alt="CoolBrand">
+            </a>
+            <a href="#" class="nav-item nav-link"><img class="notification-bell-s" src="Assets/icon-notification.png" alt="notification">
+               <span class="notification-no-s">2</span></a>
+             <button class="navbar-toggler ddmenu1" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse justify-content-right" id="navbarCollapse1">
+              <div class="navbar-nav text-light navi1"> 
+               <a href="#" class="nav-item nav-link menu1">welcome <strong>Gaurang</strong></a>
+
+               <a href="#" class="nav-item nav-link menu1">Dashboard</a>
+               <a href="#" class="nav-item nav-link menu1">Service history</a>
+               <a href="#" class="nav-item nav-link menu1">Service Schedule</a>
+               <a href="#" class="nav-item nav-link menu1">Favourite Pros</a>
+               <a href="#" class="nav-item nav-link menu1">invoices</a>  
+               <a href="#" class="nav-item nav-link menu1">Notifications</a>
+               <a href="#" class="nav-item nav-link menu1">My settings</a>
+               <a href="#" class="nav-item nav-link menu1">Logout</a>
+               
+
+               <a href="#" class="nav-item nav-link menu1 coloured text-white">Book now</a>   
+                <a href="#" class="nav-item nav-link menu1">Prices &amp; services</a>
+                <a href="#" class="nav-item nav-link menu1">Warranty</a>
+                <a href="#" class="nav-item nav-link menu1">Blog</a>
+                <a href="#" class="nav-item nav-link menu1">Contact</a>
+               
+                
+                
+              </div>
+            </div>
+          </div>
+        </nav>
+    </section>
+     <!--section-2-1--> 
+    <section class="section-2-1">
+     <div class="container">
+        <h2 class="text-center">
+         Welcome, <strong>Gaurang!</strong>
+        </h2> 
+     </div>
+    </section>
+  
+    <!--section-2-1-2-->
+    <section class="section-2-1-2">
+     <div class="container">
+        <h2 class="text-center text-capitalize">
+            Service History
+      </h2> 
+      </div>
+    </section>
+     <!--section-2-2-->
+     <section class="section-2-2">
+        <div class="container d-flex dashboard"  id="dashboard">
+            <!--leftside content code start-->
+            <div id="#leftsidebar" class="leftsidebar">
+                <a href="#" class="list-group-item list-group-item-action ">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action" id="sh">Service History</a>
+                <a href="#" class="list-group-item list-group-item-action">Service Schedule</a>
+                <a href="#" class="list-group-item list-group-item-action">Favourite Pros</a>
+                <a href="#" class="list-group-item list-group-item-action">Invoices</a>
+                <a href="#" class="list-group-item list-group-item-action">Notifications</a>
+            </div>
+            <!--leftside content code end-->
+            <!--rightside content code start-->
+           <div class="col" id="rightside">
+             <div class="container-fluid row">
+                <div class="sh-heading  d-flex justify-content-start">
+                    <h3>Service History</h3>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <input class="export" type="button" value="Export">
+                </div>
+             </div>
+
+            <div class="container-fluid row" id="rightsidebar"> 
+                <div class="col">
+                    <table id="content-table" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Service Details <img src="Assets/sort.png">
+                                </th>
+                                <th id="sd">
+                                    Service Provider <img src="Assets/sort.png">
+                                </th>
+                                <th id="cd">
+                                    Payment <img src="Assets/sort.png">
+                                </th>
+                                <th >Status <img src="Assets/sort.png">
+                                </th>
+                                <th>Rate SP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--1st row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 31/03/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png"> 
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-completed" type="button" value="completed">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--1st row end-->
+                            <!--2nd row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 15/03/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png"> 
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-completed" type="button" value="completed">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--2nd row end-->
+                            <!--3rd row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 10/03/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png"> 
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-completed" type="button" value="completed">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--3rd row end-->
+                            <!--4th row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 28/02/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png"> 
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-cancelled" type="button" value="Cancelled">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--4th row end-->
+                            <!--5th row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 15/02/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png"> 
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-completed" type="button" value="completed">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--5th row end-->
+                            <!--6th row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 11/02/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png">  
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-cancelled" type="button" value="Cancelled">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--6th row end-->
+                            <!--7th row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 31/01/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png"> 
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-completed" type="button" value="completed">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--7th row end-->
+                            <!--8th row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 19/01/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png"> 
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-completed" type="button" value="completed">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--8th row end-->
+                            <!--9th row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 05/01/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png"> 
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-cancelled" type="button" value="Cancelled">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--9th row end-->
+                            <!--10th row start-->
+                            <tr class="t-row">
+                                <td>
+                                    <p class="date">
+                                        <img src="Assets/calendar.png"> 01/01/2018
+                                    </p>
+                                    <p>
+                                         12:00 - 18:00
+                                    </p>
+                                </td>
+                                <td>
+                                    
+                                    <div class="a flex-wrap">
+                                        <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon">
+                                        <img src="Assets/cap.png">
+
+                                        </div>
+                                        <div>
+                                    
+                                        <p class="lum-watson">
+                                            Lyum Watson
+                                        </p>
+                                        <p>
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star1.png">
+                                            <img src="Assets/star2.png"> 
+                                        </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="euro d-flex justify-content-center">
+                                        &euro; 63
+                                    </p>
+                                </td>
+                                <td>
+                                    <input class="status-cancelled" type="button" value="Cancelled">
+                                </td>
+                                <td>
+                                    <input class="rate-sp" type="button" value="Rate SP">
+                                </td>
+                            </tr>
+                            <!--10th row end-->
+
+                               
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="container-fluid row d-flex flex-wrap">
+                <div class="sh-bottom  d-flex flex-wrap justify-content-start" id="sh-bottom">
+                    <a href="#" class="justify-content-center align-items-center mt-">Show</a>
+                    <select> <option>10</option> </select>
+                   
+                    <a href="#">entries</a>
+                    <a href="#">Total Record: 55</a>
+                </div>
+                <div class="d-flex flex-wrap justify-content-end page">
+                   <div class="rounded-circle d-flex justify-content-center page-no">
+                       <a href="#"><img src="Assets/first-page.png"/></a>
+                   </div>
+                   <div class="rounded-circle d-flex justify-content-center page-no">
+                       <a href="#"><img src="Assets/left-arrow-black.png"/></a>
+                   </div>
+                   <div class="rounded-circle d-flex justify-content-center page-no1 ">
+                       <a href="#rightside"><p>1</p>
+                   </div>
+                   <div class="rounded-circle d-flex justify-content-center page-no">
+                       <a href="#rightside"><p>2</p></a>
+                   </div>
+                   <div class="rounded-circle d-flex justify-content-center page-no">
+                       <a href="#rightside"><p>3</p></a>
+                   </div>
+                   <div class="rounded-circle d-flex justify-content-center page-no">
+                       <a href="#rightside"><p>4</p></a>
+                   </div>
+                   <div class="rounded-circle d-flex justify-content-center page-no">
+                       <a href="#"><img src="Assets/right-arrow-black.png"/></a>
+                   </div>
+                   <div class="rounded-circle d-flex justify-content-center  page-no">
+                    <a href="#"><img src="Assets/last-page.png"/></a>
+                </div>
+
+                </div>
+            </div> 
+          </div>
+            <!--rightside content code end-->
+        </div>
+    </section>
+
+    <!--footer-->
+    <section class="section-4 container-fluid">
+        <div class="footer1 row">
+          <div class="footer-img">
+              <img src="Assets/logo-large.png"
+                  srcset="Assets/logo-large.png" class="footer1-logo ">
+          </div>
+          <div class="footer-nav d-flex flex-row flex-wrap">
+              <div><a href="#home">HOME</a></div>
+              <div><a href="#news">ABOUT</a></div>
+              <div><a href="#contact">TESTIMONIALS</a></div>
+              <div><a href="#about">FAQS</a></div>
+              <div><a href="#news">INSURANCE</a></div>
+              <div><a href="#contact">POLICY</a></div>
+              <div><a href="#about">IMPRESSUM</a></div>
+          </div>
+          <div class="social">
+              <img src="Assets/ic-facebook.png" alt="">
+              <img src="Assets/ic-instagram.png" alt="">
+          </div>
+        </div>
+        <div class="Rectangle-12-copy-2 justify-content-center"></div>
+        <div class="footer2 d-flex flex-row flex-wrap justify-content-center align-items-center">
+          <p>©2018 Helperland. All rights reserved. Terms and Conditions | <span>Privacy Policy</span></p>
+        </div>
+      </section>
+  </body>
+</html>
