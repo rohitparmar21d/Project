@@ -1,76 +1,386 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FAQ</title>
-   <link rel="stylesheet" href="css/bootstrap.css">
-   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/4ae0bb5b6f.js" crossorigin="anonymous"></script>
- <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
 
-   </head>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet">
+
+</head>
    <body>
-    <div class="section-1 container-fluid">
-      <div class=" row">
-          <nav class="navbar navbar-expand-lg ">
-              <a class="navbar-brand" href="#">
-                  <img src="Assets/logo-large.png" alt="">
-              </a>
-              <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav"
-                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse text-white" id="navbarNav">
-                  <ul class="navbar-nav">
-                      <li class="nav-item">
-                          <button class="nav-link btn nav-btn" href="#">Book now</button>
-                      </li>
-                      <li class="nav-item">
-                          <button class="nav-link btn nav-btn" href="#">Prices & services</button>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">Warranty</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">Blog</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">Contact</a>
-                      </li>
-                      <li class="nav-item">
-                          <button class="nav-link btn nav-btn" href="#">Login</button>
-                      </li>
-                      <li class="nav-item">
-                          <button class="nav-link btn nav-btn" href="#">Become a
-                              Helper</button>
-                      </li>
-                  </ul>
-              </div>
-          </nav>
-      </div>
-
-      <div class="back_img row">
-      </div>
-       
-      <div class="faq row justify-content-center">
-        <span class="FAQs">
-            FAQs
-        </span>
-        <div class="Forma-1-copy-5">
+    <!--header-->
+    <section class="section-1 container-fluid bg-info ">
+        <div class=" row">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="#">
+                    <img src="Assets/logo-large.png" alt="">
+                </a>
+                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-white" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <button class="nav-link btn nav-btn coloured" href="#">Book now</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link btn nav-btn" href="#">Prices & services</button>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Warranty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link btn nav-btn coloured" href="#">Login</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link btn nav-btn coloured" href="#">Become a
+                                Helper</button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+  
+        <div class="back_img row">
+        </div>
+    </section>
+    <!--section-2-->
+    <section class="section-2 container-fluid ">
+      
+        <div class="text-center ">
+            <h1  >FAQs</h1>
+        </div>
+        <div class="row justify-content-center faq1">
             <div class="Rectangle-5-copy-5"></div>
             <img src="Assets/forma-1-copy-5.png" alt="">
             <div class="Rectangle-5-copy-6"></div>
-        </div>
-
-        <span class="Whether-you-are-Customer-or-Service-provider-We-have-tried-our">
+         </div>
+         <div class="row faqtxtdiv justify-content-center ">
+          <div class="faqtxt">
             Whether you are Customer or Service provider,<br>
             We have tried our best to solve all your queries and questions.
-        </span>
+          </div> 
+         </div>
 
-        <div class="d-flex d-flex flex-row flex-wrap justify-content-center">
+         <div class="row justify-content-center p1">
+             <div class="col-lg-8 col-md-10">
+                <ul class="tab-wrap bg-info">
+                    <li class="t1">
+                        <input type="radio" id="tab-1" name="tab" checked>
+                        <label for="tab-1" class="text-uppercase">
+                            for coustemer
+                        </label>
+                        <div class="tab-content">
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle1" type="checkbox" class="accordion-toggle toggle1" name="toggle" />
+                                    <label for="toggle1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle2" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle3" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle4" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle5" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle6" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle7" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle8" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle9" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle9">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                     </div>
+                    </li>
+                    <li class="t2">
+                        <input type="radio" id="tab-2" name="tab" />
+                        <label for="tab-2" class="text-uppercase">
+                            for service provider
+                        </label>
+                        <div class="tab-content">
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle10" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle11" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle11">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle12" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle13" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle13">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle14" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle15" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle16" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle17" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle17">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="accordion">
+                                <div class="accordion-tab">
+                                    <input id="toggle18" type="checkbox" class="accordion-toggle" name="toggle" />
+                                    <label for="toggle18">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisl nunc, iaculis mattis tellus ac ut non imperdiet velit?</label>
+                                    <div class="accordion-content">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id diam tincidunt, fringilla ante vitae, dapibus velit. Vivamus id tortor rhoncus, efficitur quam at, suscipit tortor. Integer fermentum convallis eros vel semper. Ut non imperdiet velit. Praesent eu dui vel lacus porta eleifend eget quis dui. Integer tempus massa in gravida tincidunt. Fusce in libero tristique, euismod nisi vel, luctus urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et placerat arcu. Suspendisse lacinia tristique massa. Etiam risus justo, scelerisque id arcu eu, sodales tempor eros. Aliquam efficitur pretium urna, sit amet congue risus malesuada rutrum. Donec id massa vel velit ullamcorper accumsan ut eget nisl. Fusce viverra commodo lacus, sit amet facilisis leo luctus dictum.
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                           
+                        </div>
+                    </li>
+                    </ul>
+             </div>
+           
+          
+         </div>
+         
+    </section>
+    <!--get newsletter-->
+    <section class="section-3 container-fluid  justify-content-center">
+        <div class=" msg-box">
+            <span class="GET-OUR-NEWSLETTER">
+                GET OUR NEWSLETTER
+            </span>
+            <div class="msg-foam d-flex flex-row flex-wrap">
+                <input type="text" class="Rounded-Rectangle-649" placeholder="YOUR EMAIL">
+                <button class="Rounded-Rectangle-649-copy">Submit</button>
+            </div>
+        </div>
+    </section>
+    <!--footer-->
+    <section class="section-4 container-fluid">
+        <div class="footer1 row">
+            <div class="footer-img">
+                <img src="Assets/logo-large.png"
+                    srcset="Assets/logo-large.png" class="footer1-logo ">
+            </div>
+            <div class="footer-nav d-flex flex-row flex-wrap">
+                <div><a href="#home">HOME</a></div>
+                <div><a href="#news">ABOUT</a></div>
+                <div><a href="#contact">TESTIMONIALS</a></div>
+                <div><a href="#about">FAQS</a></div>
+                <div><a href="#news">INSURANCE</a></div>
+                <div><a href="#contact">POLICY</a></div>
+                <div><a href="#about">IMPRESSUM</a></div>
+            </div>
+            <div class="social">
+                <img src="Assets/ic-facebook.png" alt="">
+                <img src="Assets/ic-instagram.png" alt="">
+            </div>
+        </div>
+        <div class="Rectangle-12-copy-2 justify-content-center"></div>
+        <div class="footer2 d-flex flex-row flex-wrap justify-content-center align-items-center">
+            <p>©2018 Helperland. All rights reserved. Terms and Conditions | <span>Privacy Policy</span></p>
+        </div>
+    </section>
+
+
+ 
+       
+      
+
+        <!--div class="d-flex d-flex flex-row flex-wrap justify-content-center">
             <div class="Rectangle-21-copy-3"><span class="For-Customer">
                     For Customer
                 </span></div>
@@ -238,96 +548,11 @@
                 </div>
   
             </div>
-        </div>
+        </div-->
 
-
-        <div class="container-fluid ebox justify-content-center">
-            <div class="msg-box">
-                <span class="GET-OUR-NEWSLETTER">
-                    GET OUR NEWSLETTER
-                </span>
-                <div class="msg-foam d-flex flex-row flex-wrap">
-                    <input type="text" class="Rounded-Rectangle-649" placeholder="YOUR EMAIL">
-                    <button class="Rounded-Rectangle-649-copy">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-4 row">
-        <div class="footer1 container d-flex flex-row flex-wrap">
-            <div class="footer-img">
-                <img src="Assets/logo-large.png"
-                    srcset="Assets/logo-large.png" class="footer1-logo ">
-            </div>
-            <div class="footer-nav d-flex flex-row flex-wrap">
-                <div><a href="#home">HOME</a></div>
-                <div><a href="#news">ABOUT</a></div>
-                <div><a href="#contact">TESTIMONIALS</a></div>
-                <div><a href="#about">FAQS</a></div>
-                <div><a href="#news">INSURANCE</a></div>
-                <div><a href="#contact">POLICY</a></div>
-                <div><a href="#about">IMPRESSUM</a></div>
-            </div>
-            <div class="social">
-                <img src="Assets/ic-facebook.png" alt="">
-                <img src="Assets/ic-instagram.png" alt="">
-            </div>
-        </div>
-        <div class="Rectangle-12-copy-2 justify-content-center"></div>
-        <div class="footer2 d-flex flex-row flex-wrap justify-content-center align-items-center">
-            <p>©2018 Helperland. All rights reserved. Terms and Conditions | <span>Privacy Policy</span></p>
-        </div>
-    </div>
-
-</div>
-
-
-  
-        
-
-        
-        <script>
-           /* $(document).ready(function () {
-                // Add down arrow icon for collapse element which is open by default
-                $(".collapse.show").each(function () {
-                    $(this).prev(".card1").find(".fas").addClass("fa-chevron-circle-down").removeClass("fa-chevron-circle-right");
-                });
-    
-                // Toggle right and down arrow icon on show hide of collapse element
-                $(".collapse").on('show.bs.collapse', function () {
-                    $(this).prev(".card1").find(".fas").removeClass("fa-chevron-circle-right").addClass("fa-chevron-circle-down");
-                }).on('hide.bs.collapse', function () {
-                    $(this).prev(".card1").find(".fas").removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-right");
-                });
-            });*/
-            
-           /* var myCollapsible = document.getElementById('myCollapsible')
-myCollapsible.addEventListener('show.bs.collapse', function () {
-    $(this).prev(".card1").find(".fas").addClass("fa-chevron-circle-down").removeClass("fa-chevron-circle-right");
-});
-$(".collapse").on('show.bs.collapse', function (){
-    $(this).prev(".card1").find(".fas").removeClass("fa-chevron-circle-right").addClass("fa-chevron-circle-down");
-}).on('hide.bs.collapse', function () {
- $(this).prev(".card1").find(".fas").removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-right");
-                });*/
-               /* $(".collapse").on('show.bs.collapse', function () {
-                    $(this).prev(".card1").find(".fas").removeClass("fa-chevron-circle-right").addClass("fa-chevron-circle-down");
-                }).on('hide.bs.collapse', function () {
-                    $(this).prev(".card1").find(".fas").removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-right");
-                });
-
-                var myCollapsible = document.getElementById('myCollapsible')
-myCollapsible.addEventListener('show.bs.collapse', function () {
-    $(this).prev(".card1").find(".fas").removeClass("fa-chevron-circle-right").addClass("fa-chevron-circle-down");
-})
-var myCollapsible = document.getElementById('myCollapsible')
-myCollapsible.addEventListener('hide.bs.collapse', function () {
-    $(this).prev(".card1").find(".fas").removeClass("fa-chevron-circle-down").addClass("fa-chevron-circle-right");
-})*/
-
-
-        </script>
 
        
+    
+
    </body>
+</html>

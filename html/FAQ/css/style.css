@@ -1,17 +1,18 @@
-* {
-    margin: 0 0;
-    font-family: Roboto;
-  }
-  body {
-    overflow-x: hidden;
-  }
- /*.section-1 {
-    width: 1582px;
-    height: 1627px;
-  }*/
 
+*{
+  margin: 0 ;
+  font-family: 'roboto' sans-serif;
+}
+body {
+  overflow-x: hidden;
+}
+  /*header-1*/
+  .section-1{
+    height: 500px;
+  }
   .navbar {
     background-color: #525252;
+    width: 100%;
   }
   .navbar-brand {
     padding: 15px;
@@ -30,6 +31,9 @@
   .nav-item {
     margin-left: 25px;
   }
+ .coloured{
+      background-color:#1D7A8C ;
+  }
   .nav-item .nav-btn {
     border-radius: 20px;
     color: white;
@@ -47,141 +51,172 @@
   .nav-item .nav-link:hover {
     color: white;
   }
-
+  
   .back_img {
     background-image: url("../Assets/faq-banner.png");
     height: 370px;
     background-repeat: no-repeat;
+    background-size:100%;
+    width:auto;
+    background-attachment:local;
   }
-  @media only screen and (max-width: 600px) {
-    .main {
-      overflow: hidden;
-      height: 2180px;
+    /*setion-2*/
+    .Rectangle-5-copy-5 {
+      width: 62px;
+      height: 1px;
+      background-color: #ccc;
+      margin-right: 9px;
+      margin-top: 12px;
     }
-    .navbar-brand img {
-      height: 40px;
-      width: 60px;
+    .Rectangle-5-copy-6 {
+      width: 62px;
+      height: 1px;
+      background-color: #ccc;
+      margin-left: 9px;
+      margin-top: 12px;
     }
-    .navbar-collapse {
-      background-color: #525252;
+    
+    .section-2 div h1{
+      font-size: 36px;
     }
-    .nav-item {
-      margin-left: 23px;
-      margin-top: 7px;
+    .faqtxtdiv {
+      text-align: center;
+      top: 10%;
+      margin-top: 34px;
+      font-size: 18px;
+      line-height: 1.44;
+      letter-spacing: normal;
+      color: #646464;
+      margin-bottom: 40px;
     }
-    .navbar-nav .nav-item .nav-link {
-      padding-right: 15px;
-      padding-left: 15px;
+    .faqtxt
+    {
+      height: 48px;
+      width: 498px;
     }
-    .back_img {
-      height: 200px;
-    }
+    /*tabs and accodain*/
+    .tab-wrap {
+      width: 90%;
+      list-style: none;
+      text-align:center;
+      padding: 0;
+      margin: 0 0 0 50px;
+      position: relative;
+      
+  }
+  .tab-wrap input[type="radio"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+.tab-wrap li {
+  float: left;
+  display: block;
+
+}
+.tab-wrap label {
+  background-color:#fff ;
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  border-radius:3px 3px 0 0;
+  margin: 0 10px 0 0px;
+  padding: 1em 5.5em;
+  cursor: pointer;
+  
+}
+.tab-wrap .t1{
+  margin-left: 100px;
+}
+.tab-wrap .tab-content {
+  background: #fff;
+  width: 100%;
+  border-radius:0 3px 3px 3px;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  padding: 20px;
+  display: none;
+}
+.tab-wrap [id^="tab"]:checked + label {
+  background-color:#1D7A8C ;
+}
+.tab-wrap [id^="tab"]:checked ~ .tab-content{
+  display: block;
+  }
+  .section-2 .p1{
+    margin-bottom: 35%;
+  }
+  /* accordian in tav*/
+  .accordion{
+    width: 100%;
+    background: #fff;
+}
+.accordion-tab > .accordion-toggle{
+  position: absolute;
+  display: none;
+}
+.accordion-tab > label{
+  color: #646464;
+  background-image: url(../Assets/vector-smart-object-copy.png);
+ 
+  background-repeat: no-repeat;
+  font-size: 13px;
+  line-height:20px;
+  font-weight: 700;
+  position: relative;
+  display: block;
+  padding: 2px 40px 13px 20px;
+   margin-bottom: 15px;
+  cursor: pointer;
+}
+.accordion-tab > .accordion-content{
+  max-height: 0;
+  transition: all .40s;
+  overflow: hidden;
+}
+
+.accordion-tab > label::after {
+
+  
+  
+  position: absolute;
+  top: 13px;
+  left: 10px;
+  
+  transform: rotate(90deg);
+  transition:transform .30s ;
+}.accordion-tab > .accordion-toggle:checked ~ label::after{
+ 
+  
+  transform: rotate(0deg);
+}
+
+.accordion-tab > .accordion-toggle:checked ~ .accordion-content{
+  max-height: 100vh;
+}
+
+.accordion-tab > .accordion-content p {
+  text-align: justify;
+  font-size: 12px;
+  padding:0px 32px 5px 32px;
+  margin-top:3px;
   }
 
-  .faq {
-    height: 1000px;
-    position: relative;
-  }
-  .FAQs {
-    position: absolute;
-    top: 2.3%;
-    width: 80px;
-    height: 30px;
-    font-size: 36px;
-    line-height: 0.67;
-    text-align: center;
-    color: #4f4f4f;
-  }
-  .Rectangle-5-copy-5 {
-    width: 62px;
-    height: 1px;
-    background-color: #ccc;
-  }
-  .Rectangle-5-copy-6 {
-    width: 62px;
-    height: 1px;
-    background-color: #ccc;
-  }
-  .Forma-1-copy-5 {
-    position: absolute;
-    top: 6.4%;
-    left: 48.5%;
-    height: 25px;
-  }
-  .Whether-you-are-Customer-or-Service-provider-We-have-tried-our {
-    position: absolute;
-    top: 10%;
-    width: 491px;
-    height: 54px;
-    font-size: 18px;
-    line-height: 1.44;
-    letter-spacing: normal;
-    text-align: center;
-    color: #646464;
-  }
-  .Rectangle-21-copy-3 {
-    width: 472px;
-    height: 66px;
-    background-color: #1d7a8c;
-  }
-  .Rectangle-21 {
-    width: 472px;
-    height: 66px;
-    background-color: #f6f6f6;
-    border-bottom: 3px solid #1d7a8c;
-  }
-  .faq .d-flex {
-    position: absolute;
-    top: 18%;
-  }
-  .For-Customer {
-    font-size: 24px;
-    margin: 0px 106px 0px 167px;
-    line-height: 2.8;
-    letter-spacing: normal;
-    color: #fff;
-  }
-  .For-Service-Provider {
-    margin: 0px 106px 0px 136px;
-    font-size: 24px;
-    line-height: 2.8;
-    letter-spacing: normal;
-    color: #646464;
-  }
-
+    
+  
+  
+  
+  /*get newsletter*/
   .section-3 {
-    position: absolute;
-    top:100%;
-    left: 19.3%;
-    width: 100px;
-  }
-  .card1 p {
-    margin-bottom: 0px;
-    color: #646464;
-    width: 888px;
-    line-height: 3;
-  }
-  .accordion .fas {
-    margin-right: 0.4rem;
-    font-size: 24px;
-    position: relative;
-    top: 3px;
-  }
-  .accordion .collapse {
-    width: 920px;
-    height: 156px;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: normal;
-    color: #646464;
-    padding-left: 33px;
-  }
-  .ebox {
     height: 100px;
-    position: absolute;
+    margin-top: 43px;
+    margin-bottom: 53px;
     top: 180%;
+  
   }
   .msg-box {
+  
     position: relative;
     left: 40%;
     height: 100px;
@@ -214,79 +249,15 @@
     border-radius: 20px;
     background-color: #ff7b6d;
   }
-  @media only screen and (max-width: 600px) {
-    .faq {
-      height: 1430px;
-    }
-    .FAQs {
-      font-size: 25px;
-    }
-    .Forma-1-copy-5 {
-      left: 44.5%;
-      top: 4.5%;
-    }
-    .Whether-you-are-Customer-or-Service-provider-We-have-tried-our {
-      top: 8%;
-      font-size: 14px;
-      line-height: 1.3;
-    }
-    .faq .d-flex {
-      top: 13.5%;
-    }
-    .Rectangle-21-copy-3 {
-      height: 55px;
-    }
-    .Rectangle-21 {
-      height: 55px;
-    }
-    .For-Customer {
-      font-size: 21px;
-      margin: 0px 98px 0px 112px;
-      line-height: 2.8;
-    }
-    .For-Service-Provider {
-      margin: 0px 65px 0px 82px;
-      font-size: 21px;
-      line-height: 2.8;
-    }
-    .section-3 {
-      top: 23%;
-      left: 0%;
-      width: 100px;
-    }
-    .card1 p {
-      margin-bottom: 6px;
-      width: 336px;
-      line-height: 1.3;
-    }
-    .accordion .fas {
-      margin-right: 0.4rem;
-      font-size: 16px;
-    }
-    .accordion .collapse {
-      width: 336px;
-      height: 349px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .faq .ebox {
-      top: 92%;
-    }
-    .faq .msg-box {
-      left: 1%;
-    }
-    .faq .msg-foam{
-      top: 15.5%;
-    }
-  }
-  
-  
+
+  /*footer*/
   .section-4 {
     height: 180px;
     background-color: black;
-    position: relative;
+    
   }
   .footer1 {
+    
     height: 120px;
     display: flex;
     flex-direction: row;
@@ -300,10 +271,11 @@
     height: 100px;
   }
   .footer1-logo {
+  
     width: 120px;
     height: 92px;
     padding: 17px 0 0 17px;
-    position: absolute;
+    margin-left: -30px;
   }
   .footer-nav {
     padding-top: 5px;
@@ -341,38 +313,314 @@
     height: 1.2px;
     background-color: #424242;
   }
-  @media only screen and (max-width: 600px) {
-    .section-4 {
-      height: 385px;
+  @media (min-width:992px ) and (max-width:1344px){
+    .navbar-collapse {
+      padding: 5px 0px;
+    }
+    .nav-item .nav-btn {
+      
+      font-size: 12px;
+    }
+    .nav-item {
+      margin-left: 15px;
+      font-size: 12px;
+    }
+    .navbar-nav {
+      margin-left: auto;
+      margin-right: 10px;
+    }
+    .back_img {
+    background-size:100%;
+    width:auto;
+    
+    }
+    .section-3 {
+      height: 100px;
+      margin-top:25px;
+      margin-bottom: 10px;
+      top: 10%;
+    }
+    .msg-box {
+     position: relative;
+      left: 35%;
+      height: 100px;
+    }
+    .footer-img {
+      margin-right: 40px;
+      height: 100px;
     }
     .footer1-logo {
-      width: 118px;
-      height: 85px;
-      /* padding: 17px 0 0 18px; */
-      left: 31%;
+       margin-left: -30px;
     }
-    .footer .footer1 {
-      height: 385px;
-      width: 206px;
-    }
-    .footer1 .social {
+    .social {
       float: right;
-      margin-left: 17px;
-      margin-top: 20px;
-    }
-    .footer1 .footer-nav {
-      width: 108px;
-      margin-left: 48px;
-    }
-    .footer2 {
-      position: absolute;
-      top: 100%;
-      height: 99px;
-      background-color: black;
-    }
-    .footer .footer2 p {
-      margin-left: 7px;
+      margin-left: 70px;
     }
   }
+
+  @media (min-width:768px ) and (max-width:992px){
+    .navbar-nav{
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .nav-item {
+      margin-bottom: 15px;
+    }
+   
+    .nav-item .nav-btn {
+      font-size: 20px;
+    }
+    .section-3 {
+      height: 100px;
+      margin-top:-5px;
+      margin-bottom: 10px;
+      top: 5%;
+    }
+    .msg-box {
+     position: relative;
+      left: 27%;
+      height: 100px;
+    }
+    .footer-nav a {
+      text-decoration: none;
+      font-size: 14px;
+      margin-right: 7px;
+      overflow: hidden;
+      color: #f1f1f1;
+      letter-spacing: 0.7px;
+    }
+    .footer-img {
+      margin-right: 15px;
+      height: 100px;
+    }
+    .footer1-logo {
+       margin-left: -50px;
+    }
+    .social {
+      float: right;
+      margin-left: 15px;
+      margin-right: -100px;
+    }
+    
+  }
+
+  @media (min-width:400px ) and (max-width:768px){
+    .navbar-nav{
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .nav-item {
+      margin-bottom: 10px;
+    }
+   
+    .nav-item .nav-btn {
+      font-size: 17px;
+    }
+    .section-3 {
+      height: 100px;
+      margin-top:25px;
+      margin-bottom: 10px;
+      top: 1%;
+    }
+    .msg-box {
+     position: relative;
+      left:17%;
+      height: 100px;
+    }
+    .GET-OUR-NEWSLETTER {
+      font-size: 16px;
+      font-weight: 500;
+      color: #353548;
+      padding-left: 63px;
+    }
+    .msg-foam {
+      margin-top: 9px;
+    }
+    .Rounded-Rectangle-649 {
+      width: 200px;
+      height: 40px;
+      padding: 13px 12px 15px 21px;
+      border-radius:20px;
+    }
+    .Rounded-Rectangle-649-copy {
+      width: 88px;
+      height: 40px;
+      border-radius: 20px;
+    }
+    .section-4 {
+      height: 280px;
+      background-color: black;
+      width: 100%;
+    }
+    .footer1 {
+     justify-content: center;
+      align-items: center;
+      height: 150px;
+      display: flex;
+      left: 50%;
+      flex-direction: row;
+      
+    }
+    .footer-img {
+      margin: 0 auto;
+      margin-left:50%;
+      flex-direction: column;
+    }
+    .footer-nav {
+    
+      
+    margin-left: 95px;
+    margin-right: 0;
+      text-align: center;
+    }
+    .footer-nav a {
+      font-size: 12px;
+      padding: 5px;
+      margin: 1px;
+      text-align: center;
+    }
+    
+    .social {
+       width: 100%;
+       margin-left: 50%;
+      margin-top: 5px;
+    }
+    .social img {
+    left: 10px;
+    }
+    .footer2 {
+      height: 60px;
+      font-size: 17px;
+      text-align: center;
+    }
+    
+    .Rectangle-12-copy-2 {
+      margin-top: 40px;
+      width: 100%;
+      height: 1.2px;
+      background-color: #424242;
+    }
+    
+     
+  }
+  @media (min-width:1132px) and (max-width:1321px){
+    .section-1{
+      height: 370px;
+    }
+    .section-2{
+      margin-top: 20px;
+    }
+    .tab-wrap {
+      width: 90%;
+    }
+    .tab-wrap .t1{
+       margin-left: 5px;
+      margin-right: 0;
+    }
+    .tab-wrap .t2{
+      margin-left:-50px;
+      margin-right: 0;
+    }
+    .tab-wrap label {
+      background-color:#fff ;
+      color: inherit;
+      text-decoration: none;
+      display: inline-block;
+      border-radius:3px 3px 0 0;
+      margin: 0 10px 0 0px;
+      padding: 1em 6em;
+      cursor: pointer;
+      text-align: center;
+    }
+    .accordion-tab > label{
+      color: #646464;
+      background-image: url(../Assets/vector-smart-object-copy.png);
+     
+      background-repeat: no-repeat;
+      font-size: 13px;
+      line-height:20px;
+      font-weight: 700;
+      position: relative;
+      display: block;
+      padding: 2px 20px 13px 20px;
+       margin-bottom: 15px;
+      cursor: pointer;
+    }
+    .accordion-tab > .accordion-content p {
+      text-align: justify;
+      font-size: 12px;
+      padding:0px 32px 5px 32px;
+      margin-top:1px;
+      }
+      .section-3 {
+        height: 100px;
+        margin-top:68%;
+        margin-bottom: 53px;
+        top: 180%;
+       }
+       .msg-box {
   
-  
+        position: relative;
+        left: 35%;
+        height: 100px;
+      }
+  }
+  @media (min-width:991px) and (max-width:1131px){
+    .section-1{
+      height: 340px;
+    }
+    .section-2{
+      margin-top: 40px;
+    }
+    .tab-wrap {
+      width: 80%;
+    }
+    .tab-wrap .t1{
+       margin-left:1px;
+      margin-right:0;
+    }
+    .tab-wrap .t2{
+      margin-left:-80px;
+      margin-right: 0;
+      
+    }
+    .tab-wrap label {
+      background-color:#fff ;
+      color: inherit;
+      text-decoration: none;
+      display: inline-block;
+      border-radius:3px 3px 0 0;
+      margin: 0 10px 0 0px;
+      padding: 1em 6em;
+      cursor: pointer;
+      text-align: center;
+    }
+    .accordion-tab > label{
+      color: #646464;
+      background-image: url(../Assets/vector-smart-object-copy.png);
+     
+      background-repeat: no-repeat;
+      font-size: 13px;
+      line-height:15px;
+      font-weight: 700;
+      position: relative;
+      display: block;
+      padding: 2px 15px 13px 20px;
+       margin-bottom: 13px;
+      cursor: pointer;
+    }
+    .section-3 {
+      height: 100px;
+      margin-top:55%;
+      margin-bottom: 53px;
+      top: 180%;
+     }
+     .msg-box {
+
+      position: relative;
+      left: 35%;
+      height: 100px;
+    }
+  }
