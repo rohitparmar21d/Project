@@ -672,16 +672,93 @@ margin-left:20px;
 
 @media (min-width:991px ) and (max-width:1200px){
     .nav_section  .text3  div{
-       left:-30%;
+       left:1.5%;
        right: 10px;
        height:5px;
+       width: 100px;
     
     }
     .text3 img{
         height: 47px;
         width: 45px;
     }
+    .text4 div{
+      margin-top: 20%;
+    }
+    .nav_section  .text3 .col-xl-1{
+      margin-left: 10px;
+      margin-right: 10px;
+      padding: 0;
+   
+  }
+  .nav_section  .text2{
+    margin-top: 20px;
+  }
 }
+@media (min-width:833px ) and (max-width:991px){
+  .nav_section  .text3  div{
+    left:1.5%;
+   width: 90px;
+ }
+ .nav_section  .text3 .col-xl-1{
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0;
+  
+
+}
+ .nav_section  .text2{
+  margin-top: 30px;
+}
+.nav_section  .text3 .col-xl-1 img{
+  margin-top:50px;
+
+}
+
+}
+
+@media (min-width:400px ) and (max-width:833px){
+  .navbar-brand img{
+    height: 130px;
+    width: 175px;
+    margin-left: 40px;
+  }
+  .nav_section  .text1 .col-xl-6 div{
+    font-size: 15px;
+}
+.nav_section  .text2{
+  margin-top: 35px;
+}
+.nav_section  .text3  div{
+  left:-8px;
+ width: 70px;
+ margin-right: 30px;
+ padding: 0;
+}
+.nav_section  .text3 .col-xl-2 img{
+  margin-bottom: 13px;
+  width: 42px;
+  height: 44px;
+}
+.nav_section  .text3 .col-xl-2 p{
+  font-size: 12px;
+  padding-left: 0;
+}
+}
+@media (max-width:400px ){
+  .nav_section{
+    height: 2100px;
+  }
+  .nav_section  .text1 .col-xl-6 div{
+    font-size: 15px;
+}
+.nav_section .text2{
+  margin-top: 30px;
+}
+}
+
+
+
 
 
 
