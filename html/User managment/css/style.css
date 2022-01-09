@@ -9,6 +9,19 @@
   .section-1{
     display: block;
   }
+  .navbar {
+   
+    background-color: #1FB6FF;
+    height: 60px;    
+}
+.section-1 nav div ul a span{
+  padding-left: 10px;
+}
+.navbar .navbar-brand{
+  color: #FFFFFF;
+  font-family: 'SwitzeraADF';
+  font-size: 38px;
+}
   .section-1-1{
     display: none;
   }
