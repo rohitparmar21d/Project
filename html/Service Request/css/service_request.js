@@ -1,67 +1,7 @@
-$(document).ready(function() {
-
-  $("#drop1").click(function () {
-    
-    $("#drop1").toggleClass('active');
-   $(this).css(  "background","#F9F9F9");
-  
-    $("#drops1").toggleClass('active');
-  
-  });
-  $("#drop2").click(function () {
-    
-    $("#drop2").toggleClass('active');
-   $(this).css(  "background","#F9F9F9");
-  
-    $("#drops2").toggleClass('active');
-  
-  
-  });
-  $("#drop3").click(function () {
-    
-    $("#drop3").toggleClass('active');
-   $(this).css(  "background","#F9F9F9");
-  
-    $("#drops3").toggleClass('active');
-  
-  
-  });
-
- 
-  });
-
-
-
-
-  $(document).ready(function(){
- 
-    // Initialize select2
-    $("#selUser").select2();
-    $("#selUserRole").select2();
-
-    // $('#selUser').select2({
-    //     placeholder: "User name",
-    //     allowClear: true // This is for clear get the clear button if wanted 
-    // });
-  });
-  $("#reset").on("click", function () {
-    $("#selUser").val("User name").trigger("change");
-    $("#selUser").trigger("change");
-    // $("#selUserRole").val("user").trigger("change");
-    // $("#selUserRole").trigger("change");
-    $('#selUserRole').select2({
-        placeholder: "User Role",
-        allowClear: true // This is for clear get the clear button if wanted 
-    });
-
-});
-
 $(document).ready(function () {
-    var table = $("#tblusermanagement").DataTable({
+    var table = $("#tblservicerequest").DataTable({
 "dom": '<"top">rt<"bottom"flpi><"clear">',
-// "bPaginate": false,
-"bFilter": false,  
-// "ordering": false,    
+"bFilter": false,    
 lengthMenu: [10, 5, 20, 50, 100, 200, 500],
 "info": false,
 

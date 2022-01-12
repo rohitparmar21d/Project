@@ -150,1212 +150,1804 @@
     </div>
     <form>
       <div class="form-row">
-        <select id='selUser' class="form-control">
-          <option  selected="true" disabled="disabled"  >User name</option> 
-          <option value='1'>John Smith</option> 
-          <option value='2'>Lyum watson</option> 
-          <option value='3'>John Smith</option> 
-          <option value='4'>Lyum watson</option> 
-          <option value='5'>John Smith</option> 
-          <option value='6'>Vijay Mourya</option> 
-          <option value='7'>Lyum watson</option> 
+        <div class="form-group serviceid ">
+            <input type="number" class="form-control  serviceid" id="serviceid" placeholder="Service Id">
+        </div> 
+        <select id='selcustomer' class=" form-control">
+          <option  selected="true" disabled="disabled" >Customer</option> 
+          <option value='1'>...</option>
         </select>
-   
-        <select id='selUserRole' class=" form-control">
-          <option  selected="true" disabled="disabled" >User role</option> 
-          <option value='1'>Call Center</option> 
-          <option value='2'>Service provider</option> 
-          <option value='3'>Customer </option> 
+        <select id='selserviceprovider' class=" form-control">
+          <option  selected="true" disabled="disabled" >Service Provider</option> 
+          <option value='1'>...</option>
         </select>
-        <div class="input-group mobiles ">
-            <div class="input-group-prepend" id="mobilenum">
-              <div class="input-group-text" >+49</div>
+        <select id='selstatus' class=" form-control">
+          <option  selected="true" disabled="disabled" >Status</option> 
+          <option value='1'>...</option>
+        </select>
+        <div class="input-group fromdate ">
+          <div class="input-group-prepend" id="imgcelender">
+            <div class="input-group-text"><img class="imgcelender" src="Assets/admin-calendar-blue.png" alt=""></div>
+          </div>
+          <input type="tel" class="form-control datein" id="phone" placeholder="From Date">
+        </div>
+        <div class="input-group todate ">
+          <div class="input-group-prepend" id="imgcelender">
+            <div class="input-group-text"><img class="imgcelender" src="Assets/admin-calendar-blue.png" alt=""></div>
+          </div>
+          <input type="tel" class="form-control datein" id="phone" placeholder="To Date">
+        </div>
+        <button type="submit" class="btn  search "  >Search</button>
+        <button class="btn  reset " type="reset" id="reset">Clear</button>
+      </div>
+    </form>
+
+        
+<div class="table_servicerequest">
+  <table class="table table-hover" id="tblservicerequest">
+    <thead id="headings">
+      <tr>
+        <th scope="col">Service Id <img src="Assets/sort.png" class="sort"></th>
+        <th scope="col">Service Date<img src="Assets/sort.png" class="sort"></th>
+        <th scope="col">Customer deatils<img src="Assets/sort.png" class="sort"></th>
+        <th scope="col">Service Provider<img src="Assets/sort.png" class="sort"></th>
+        <th scope="col" class="action">Status <img src="Assets/sort.png" class="sort"> </th>
+        <th scope="col " class="action" >Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
             </div>
-            <input type="tel" class="form-control" id="phone" placeholder="Phone Number">
-          </div> 
-          <div class="form-group zips ">
-           
-            <input type="number" class="form-control  zips" id="zipcode" placeholder="Zip Code">
-          </div> 
-          
-           
-          
-         
-         <button type="submit" class="btn  search "  >Search</button>
-         <button class="btn  reset " type="reset" id="reset">Clear</button>
-</div>
-        </form>
-
-        
-<div class="table_usermanagement">
-  <table class="table table-hover" id="tblusermanagement">
-
-              <thead id="headings">
-                  <tr>
-                      <th scope="col">User Name <img src="Assets/sort.png" class="sort"></th>
-                      <th scope="col">User Type </th>
-                      <th scope="col">Role </th>
-                      <th scope="col">Postal Code <img src="Assets/sort.png" class="sort"></th>
-                      <th scope="col">City </th>
-                      <th scope="col">Radius <img src="Assets/sort.png" class="sort"> </th>
-                      <th scope="col" class="action">User Status <img src="Assets/sort.png" class="sort"> </th>
-                      <th scope="col " class="action" >Actions </th>
-
-                  </tr>
-              </thead>
-        <tbody>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>10 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-              <a class="dropdown-toggle  Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                
-                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-              </a>
-              <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
-                <a class="dropdown-item" href="#">Edit </a>
-                <a class="dropdown-item" href="#">Deactivate</a>
-       
-        
-          </td>
-          </tr>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Content Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn inactive">Inactive</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>20 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Finance Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>10 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-              <a class="dropdown-toggle  Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                
-                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-              </a>
-              <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
-                <a class="dropdown-item" href="#">Edit </a>
-                <a class="dropdown-item" href="#">Deactivate</a>
-       
-        
-          </td>
-          </tr>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Content Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn inactive">Inactive</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>20 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Finance Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>10 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-              <a class="dropdown-toggle  Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                
-                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-              </a>
-              <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
-                <a class="dropdown-item" href="#">Edit </a>
-                <a class="dropdown-item" href="#">Deactivate</a>
-       
-        
-          </td>
-          </tr>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Content Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn inactive">Inactive</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>20 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Finance Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>10 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-              <a class="dropdown-toggle  Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                
-                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-              </a>
-              <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
-                <a class="dropdown-item" href="#">Edit </a>
-                <a class="dropdown-item" href="#">Deactivate</a>
-       
-        
-          </td>
-          </tr>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Content Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn inactive">Inactive</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>20 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Finance Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>10 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-              <a class="dropdown-toggle  Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                
-                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-              </a>
-              <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
-                <a class="dropdown-item" href="#">Edit </a>
-                <a class="dropdown-item" href="#">Deactivate</a>
-       
-        
-          </td>
-          </tr>
-          <tr>
-            <td>Lyum watson </td>
-          <td>Call Center</td>
-          <td>Inquiry Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Content Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith  </td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn inactive">Inactive</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Service provider</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td>20 km</td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Call Center</td>
-          <td>Finance Manager</td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-              <a class="dropdown-item" href="#">Service History</a>
-
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-          <tr>
-            <td>John Smith</td>
-          <td>Customer</td>
-          <td></td>
-          <td>123456</td>
-          <td>Berlin</td>
-          <td></td>
-          <td class="action"><button class="btn active">Active</button></td>
-          <td class="action">
-            
-            <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
               <a class="dropdown-item" href="#">Edit </a>
               <a class="dropdown-item" href="#">Deactivate</a>
-     
-      
+          </div>
         </td>          
-          </tr>
-        </tbody>
-          </table>
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+              <a class="dropdown-item" href="#">Edit </a>
+              <a class="dropdown-item" href="#">Deactivate</a>
+          </div>
+        </td>          
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+              <a class="dropdown-item" href="#">Edit </a>
+              <a class="dropdown-item" href="#">Deactivate</a>
+          </div>
+        </td>          
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+              <a class="dropdown-item" href="#">Edit </a>
+              <a class="dropdown-item" href="#">Deactivate</a>
+          </div>
+        </td>          
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+              <a class="dropdown-item" href="#">Edit </a>
+              <a class="dropdown-item" href="#">Deactivate</a>
+          </div>
+        </td>          
+      </tr>
+      <tr>
+        <td>323436</td>
+        <td>
+          <p class="date"><img src="Assets/calendar2.png">09/04/2018</p>
+          <p><img src="Assets/layer-14.png">12:00 - 18:00</p>
+        </td>
+        <td>
+          <p>David Bough</p>
+          <p><img src="Assets/layer-719.png"> Musterstrabe 5,12345 Bonn</p>
+        </td>
+        <td>
+          <div class="a flex-wrap">
+            <div class="rounded-circle d-flex justify-content-center align-items-center cap-icon"><img src="Assets/cap.png"></div>
+            <div>
+              <p class="lum-watson">Lyum Watson</p>
+              <p>
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star1.png">
+                <img src="Assets/star2.png"> 
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="action"><button class="btn active">Active</button></td>
+        <td class="action">
+          <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+          <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+              <a class="dropdown-item" href="#">Edit </a>
+              <a class="dropdown-item" href="#">Deactivate</a>
+          </div>
+        </td>          
+      </tr>
+    </tbody>
+  </table>
 </div>
 <p class="allright">©2018 Helperland. All rights reserved.</p>
 </section>
