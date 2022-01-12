@@ -321,11 +321,29 @@ background-color: #F4F4F4;
     padding-top: 9px;
 }
 
-.table .action .active{
+.table .action .completed{
     border-radius: 0px;
     font-size: 13px;
     color: #FFFFFF;
     background-color: #67B644;
+}
+.table .action .cencelled{
+  border-radius: 0px;
+  font-size: 13px;
+  color: #FFFFFF;
+  background-color: #FF6B6B;
+}
+.table .action .new{
+  border-radius: 0px;
+  font-size: 13px;
+  color: #FFFFFF;
+  background-color: #F2BB37;
+}
+.table .action .pending{
+  border-radius: 0px;
+  font-size: 13px;
+  color: #FFFFFF;
+  background-color: #1FB6FF;
 }
 .table .action .inactive{
     background-color: #FF6B6B;
