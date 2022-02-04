@@ -1,5 +1,9 @@
 <?php 
     $base_url = "http://localhost/Helperland/";
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
 ?>
 <header>
     <?php if (!isset($_SESSION['username'])) { ?>
@@ -25,7 +29,7 @@
 
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" id="box-3" title="Become a Helper" href="ServiceProvider-Become-a-pro.php">Become a Helper </a>
+                        <a class="nav-link" id="box-3" title="Become a Helper" href="Become_a_pro.php">Become a Helper </a>
 
                     </li>
 

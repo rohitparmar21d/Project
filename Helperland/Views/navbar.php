@@ -27,7 +27,7 @@ if (!isset($_SESSION['username'])) { ?>
                         <a class="nav-link log-in" title="Login" href=".#LoginModal' ">Login</a>
                     </li>
                     <li class="nav-item  helper">
-                        <a class="nav-link helper1" title="Become a Service Provider" href="./ServiceProvider-Become-a-pro.php">Become a Helper</a>
+                        <a class="nav-link helper1" title="Become a Service Provider" href="./Become_a_pro.php">Become a Helper</a>
                     </li>
                 </ul>
             </div>

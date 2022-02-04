@@ -9,4 +9,41 @@ $(document).ready(function () {
         if(target.addClass('active')){
             $(".navbar-nav .nav-item .active").css("color", "yellow");
         }
+
+
+
+     
+        $("#check1").click(function () { 
+            
+           
+            if(this.checked == true){
+
+                $("#submitButton").removeAttr("disabled");
+
+               }else{
+                
+                $("#submitButton").attr("disabled", true);
+
+            } 
+
+            
+        });
+        $("#exampleCheck2").click(function () { 
+            
+           
+            if(this.checked == true){
+
+                $("#register").removeAttr("disabled");
+
+               }else{
+                
+                $("#register").attr("disabled", true);
+
+            } 
+
+            
+        });
+
+
+
 });

@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="./assets/css/Homepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/validation.css">
+    <?php
+    if (!isset($_SESSION['username'])) { ?>
+        <link rel="stylesheet" href="./assets/css/Homenav.css">
+    <?php } ?>
+    <?php
+    if (isset($_SESSION['username'])) { ?>
+        <link rel="stylesheet" href="./assets/css/HomeLogin.css">
+    <?php } ?>
+
+
+
 </head>
 
 <body>
@@ -104,8 +115,8 @@
                         <div class="form-group">
                             <p class="bg-success text-white text-center">
                                 <?php
-                                if (isset($_SESSION['msg'])) {
-                                    echo $_SESSION['msg'];
+                                if (isset($_SESSION['loginmsg'])) {
+                                    echo $_SESSION['loginmsg'];
                                 }
                                 ?>
                             </p>
@@ -114,25 +125,16 @@
                         <form method="POST" action=<?= $base_url . "./?controller=Helperland&function=Login" ?>>
 
                             <div class="form-group email">
-                                <input type="email" class="form-control" id="loginemail" name="loginemail" value="<?php if (isset($_COOKIE['emailcookie'])) {
-                                                                                                                        echo $_COOKIE['emailcookie'];
-                                                                                                                    } ?>" placeholder="Email">
+                                <input type="email" class="form-control" id="loginemail" name="Email" value="" placeholder="Email">
                             </div>
                             <div class="email-msg mails mb-2"></div>
                             <div class="form-group password">
-                                <input type="password" class="form-control" id="loginpassword" name="password" value="<?php if (isset($_COOKIE['passwordcookie'])) {
-                                                                                                                            echo $_COOKIE['passwordcookie'];
-                                                                                                                        } ?>" placeholder="Password">
+                                <input type="password" class="form-control" id="loginpassword" name="Password" value="" placeholder="Password">
 
                             </div>
                             <div class="form-check mb-2 my-sm-2">
-                                <?php if (isset($_COOKIE)) { ?>
-                                    <input class="form-check-input" name="remember" type="checkbox" checked id="inlineFormCheck" />
-                                <?php } ?>
-                                <?php if (!isset($_COOKIE)) { ?>
-                                    <input class="form-check-input" name="remember" type="checkbox" id="inlineFormCheck" />
-                                <?php } ?>
-                                <label class="form-check-label" for="inlineFormCheck">
+                                 <input class="form-check-input" name="remember" type="checkbox" checked id="inlineFormCheck" />
+                                 <label class="form-check-label" for="inlineFormCheck">
                                     Remember me
                                 </label>
                             </div>
@@ -161,16 +163,24 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Forgot Password</h4>
+                        
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action=<?= $base_url . "./?controller=Helperland&function=ForgotMail" ?>>
+                        <form method="POST" action=<?= $base_url . "./?controller=Helperland&function=ForgotPassword" ?>>
+                        <?php if(isset($_SESSION['forgotmail'])){ ?>
+                <div class="form-row mb-3">
+                    <p class="text-center bg-danger text-white px-4 py-2 mx-auto my-auto">
+                    <?php echo $_SESSION['forgotmail']; ?>
+                    </p>
+                </div>
+                <?php } ?>
                             <div class="form-group email">
                                 <span class="email-msg float-left"></span>
                                 <span class="error-emails float-right" style="color:green;"></span>
-                                <input type="email" class="form-control forgot_email" id="forgotemail" name="forgot_email" placeholder="Email">
+                                <input type="email" class="form-control forgot_email" id="forgotemail" name="forgotemail" placeholder="Email">
                             </div>
 
                             <div class="form-group mt-3">
