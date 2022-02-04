@@ -6,6 +6,7 @@ class Helperland
     public function __construct()
     {
         try {
+            
             /* Properties */
             $dsn = 'mysql:dbname=helperland;host=localhost';
             $user = 'root';
