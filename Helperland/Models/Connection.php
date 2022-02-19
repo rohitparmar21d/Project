@@ -6,7 +6,6 @@ class Helperland
     public function __construct()
     {
         try {
-            
             /* Properties */
             $dsn = 'mysql:dbname=helperland;host=localhost';
             $user = 'root';
@@ -63,5 +62,29 @@ class Helperland
         $row  = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row; 
     }
+    function checkavail($zipcode)
+    {
+        $sql = "SELECT * FROM zipcode WHERE  ZipcodeValue = '$zipcode'";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $number_of_rows = $stmt->fetchColumn();
+        return $number_of_rows;
+
+    }
+    function addresslist($zipcode,$userid)
+    {
+        $sql = "SELECT * FROM useraddress WHERE  PostalCode = '$zipcode' AND  UserId ='$userid' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    function insert_address($array){
+        $sql_query = "INSERT INTO useraddress(UserId, AddressLine1, AddressLine2, City, PostalCode, Mobile)
+        VALUES (:UserId, :AddressLine1, :AddressLine2, :City, :PostalCode, :Mobile)";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute($array);
+    }
 
 }
+?>

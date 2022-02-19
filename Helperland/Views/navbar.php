@@ -2,10 +2,10 @@
 
 $base_url = "http://localhost/Helperland/";
 
-if (!isset($_SESSION['username'])) { ?>
+if (!isset($_SESSION['loggedin'])) { ?>
     <nav class="navbar  navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="assets/Image/white-logo-transparent-background.png" class="logo"></a>
+            <a class="navbar-brand" href="./homepage.php"><img src="assets/Image/white-logo-transparent-background.png" class="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) { ?>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  w-100 justify-content-end">
                     <li class="nav-item  booknow">
-                        <a class="nav-link book-now"title="Book Service" href="./BookService.php">Book Now</a>
+                        <a class="nav-link book-now"title="Book Service" href="<?= $base_url."./?controller=Helperland&function=gotobookservicepage"?>">Book Now</a>
                     </li>
                     <li class="nav-item ps">
                         <a class="nav-link ps1" title="Price" href="./Price.php">Prices & services</a>
@@ -24,7 +24,7 @@ if (!isset($_SESSION['username'])) { ?>
                         <a class="nav-link Contact" title="Contact" href="./Contact.php">Contact</a>
                     </li>
                     <li class="nav-item  login">
-                        <a class="nav-link log-in" title="Login" href=".#LoginModal' ">Login</a>
+                        <a class="nav-link log-in" title="Login" href=".#LoginModal">Login</a>
                     </li>
                     <li class="nav-item  helper">
                         <a class="nav-link helper1" title="Become a Service Provider" href="./Become_a_pro.php">Become a Helper</a>
@@ -37,7 +37,7 @@ if (!isset($_SESSION['username'])) { ?>
 <?php } ?>
 
 
-<?php if (isset($_SESSION['username'])) { ?>
+<?php if (isset($_SESSION['loggedin'])) { ?>
     <div class="header-navigationbar">
         <nav class="navbar navbar-expand-lg fixed-top">
             <a class="navbar-brand"><img src="assets/image/white-logo-transparent-background.png"></a>
@@ -49,7 +49,7 @@ if (!isset($_SESSION['username'])) { ?>
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item booked">
-                        <a class="nav-link booknow" href="#">Book now</a>
+                        <a class="nav-link booknow" href="<?= $base_url."./?controller=Helperland&function=gotobookservicepage"?>">Book now</a>
                     </li>
                     <li class="nav-item prices">
                         <a class="nav-link item1" href="./Price.php">Prices & services</a>
@@ -118,7 +118,7 @@ if (!isset($_SESSION['username'])) { ?>
                 <ul class=" nav ">
                     <li class="nav-item">
                         <h1 class="wlcm">Welcome,
-                    <li class="nav-item"><span class="wlcm-nm"><?php echo $_SESSION["firstname"]; ?></span></li>
+                    <li class="nav-item"><span class="wlcm-nm"><?php echo $_SESSION["name"]; ?></span></li>
                     </h1>
 
                     </li>
@@ -160,17 +160,17 @@ if (!isset($_SESSION['username'])) { ?>
                             My Setting </a>
                     </li>
                     <li class="nav-item">
-                    <form method="POST" action=<?= $base_url."./?controller=helperland&function=Logout"?>>
+                    <form method="POST" action=<?= $base_url."./?controller=helperland&function=logout"?>>
                                     <button class="dropdown-item" name="logout" type="submit">Logout</button>
                                 </form>
                     </li>
                     <li class="nav-item newnav">
-                        <a href="#" class="nav-link ">
+                        <a href="<?= $base_url."./?controller=Helperland&function=gotobookservicepage"?>" class="nav-link ">
                             Book now
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link ">
+                        <a href="./Price.php" class="nav-link ">
                             Prices & services
                         </a>
                     </li>
@@ -183,7 +183,7 @@ if (!isset($_SESSION['username'])) { ?>
                             Blog </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="#" class="nav-link ">
+                        <a href="./Contact.php" class="nav-link ">
                             Contact </a>
                     </li>
 

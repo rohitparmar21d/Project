@@ -29,7 +29,8 @@
                     <?php echo $_SESSION['message']; ?>
                     </p>
                 </div>
-                <?php } ?>
+                <?php }
+                unset($_SESSION['message']); ?>
                 <div class="form-row">
                     <div class="col-md-6 mb-2">
                         <input type="text" class="form-control" id="firstName" name="FirstName" placeholder="First name" required>
@@ -80,7 +81,7 @@
                 <div class="form-row part5 justify-content-center">
                   <div class="col-md-4 mb-2">
                     <div class="txtlogin">
-                        <p>Already registered? <a href=".#LoginModal'" class="text-primary">Log In</a></p>
+                        <p>Already registered? <a href=".#LoginModal" class="text-primary">Log In</a></p>
                     </div>
                   </div>
                 </div>

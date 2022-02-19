@@ -1,3 +1,35 @@
+<?php
+  if(isset($_SESSION['sentstatus']))
+  { if(($_SESSION['sentstatus'])== 1)
+    {
+        echo '<script> alert("Mail sent successfully"); </script>';
+    }
+    if(($_SESSION['sentstatus'])== 2)
+    {
+        echo '<script> alert("some went wrong"); </script>';
+    }
+    unset($_SESSION['sentstatus']);
+  }
+  if(isset($_SESSION['forgotmail']))
+  { 
+    echo '<script> alert("enter registerd mail"); </script>';
+  }
+  if(isset($_SESSION['login_alert']))
+  { 
+    if(($_SESSION['login_alert'])== 0) 
+   {  
+    echo '<script> alert("you are not a costomer , please login as a customer first"); </script>';
+   }
+   if(($_SESSION['login_alert'])== 1) 
+   {  
+    echo '<script> alert("please login first"); </script>';
+   }
+  }
+  unset($_SESSION['login_alert']);
+ ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,11 +47,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/validation.css">
     <?php
-    if (!isset($_SESSION['username'])) { ?>
+    if (!isset($_SESSION['loggedin'])) { ?>
         <link rel="stylesheet" href="./assets/css/Homenav.css">
     <?php } ?>
     <?php
-    if (isset($_SESSION['username'])) { ?>
+    if (isset($_SESSION['loggedin'])) { ?>
         <link rel="stylesheet" href="./assets/css/HomeLogin.css">
     <?php } ?>
 
@@ -40,7 +72,7 @@
                     <li>Lorem ipsum dolor sit amet, consectetur adipiscing</li>
                 </ul>
                 <div class="headbtn text-center">
-                    <a class="book-btn" href="#" role="button">Let's Book a Cleaner</a>
+                    <a class="book-btn" href=<?= $base_url."./?controller=Helperland&function=gotobookservicepage"?> role="button">Let's Book a Cleaner</a>
                 </div>
 
 
@@ -173,10 +205,11 @@
                         <?php if(isset($_SESSION['forgotmail'])){ ?>
                 <div class="form-row mb-3">
                     <p class="text-center bg-danger text-white px-4 py-2 mx-auto my-auto">
-                    <?php echo $_SESSION['forgotmail']; ?>
+                    <?php echo $_SESSION['forgotmail'];
+                     ?>
                     </p>
                 </div>
-                <?php } ?>
+                <?php unset($_SESSION['forgotmail']); } ?>
                             <div class="form-group email">
                                 <span class="email-msg float-left"></span>
                                 <span class="error-emails float-right" style="color:green;"></span>
@@ -469,6 +502,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="./assets/js/Homepage.js"></script>
+    <script src="./assets/js/modal.js"></script>
 
 </body>
 

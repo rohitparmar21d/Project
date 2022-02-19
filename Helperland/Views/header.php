@@ -21,10 +21,10 @@
     {
         session_start();
     }
-     if (!isset($_SESSION['username'])) { ?>
+     if (!isset($_SESSION['loggedin'])) { ?>
         <link rel="stylesheet" href="./assets/css/navbar.css">
     <?php  } ?>
-    <?php if (isset($_SESSION['username'])) { ?>
+    <?php if (isset($_SESSION['loggedin'])) { ?>
         <link rel="stylesheet" href="./assets/css/loginnav.css">
     <?php
     } ?>

@@ -6,7 +6,7 @@
     }
 ?>
 <header>
-    <?php if (!isset($_SESSION['username'])) { ?>
+    <?php if (!isset($_SESSION['loggedin'])) { ?>
         <nav class="navbar navbar-expand-lg fixed-top navbar-light">
             <a class="navbar-brand" href="index.php"><img src="./assets/image/white-logo-transparent-background.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link " href="#login" id="box-2" title="Login" data-toggle="modal" data-target="#LoginModal">Login </a>
+                        <a class="nav-link " href="#LoginModal" id="box-2" title="Login" data-toggle="modal" data-target="#LoginModal" onclick="LoginModal()">Login </a>
 
                     </li>
                     <li class="nav-item ">
@@ -48,7 +48,7 @@
         </nav>
 
     <?php   } ?>
-    <?php if (isset($_SESSION['username'])) { ?>
+    <?php if (isset($_SESSION['loggedin'])) { ?>
         <div class="header-navigationbar">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <a class="navbar-brand"><img src="assets/image/white-logo-transparent-background.png"></a>
@@ -129,7 +129,7 @@
                     <ul class=" nav ">
                         <li class="nav-item">
                             <h1 class="wlcm">Welcome,
-                        <li class="nav-item"><span class="wlcm-nm"><?php echo $_SESSION["firstname"]; ?></span></li>
+                        <li class="nav-item"><span class="wlcm-nm"><?php echo $_SESSION["name"]; ?></span></li>
                         </h1>
 
                         </li>

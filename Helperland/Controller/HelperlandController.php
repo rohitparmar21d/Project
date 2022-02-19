@@ -6,6 +6,7 @@ class HelperlandController
         include('Models/Connection.php');
         $this->model = new Helperland();
         session_start();
+        
     }
     public function HomePage()
     {
@@ -83,6 +84,7 @@ class HelperlandController
                 $_SESSION['message1'] = "Password and Confirm Password should be same";
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit;
+                
             }
 
            $check_email_duplicate_count =   $this->model->CheckEmail('user',$_POST['Email']);
@@ -133,46 +135,49 @@ class HelperlandController
                 $_SESSION['regmail']=$_POST['forgotemail'];
                 
                 if (mail($to_email, $subject, $body, $headers)) {
-                    echo "Email successfully sent to $to_email...";
+                    $_SESSION['sentstatus'] = "1";
                 } else {
-                    echo "Email sending failed...";
+                    $_SESSION['sentstatus'] = "2";
                 }
+
                 $base_url = "http://localhost/Helperland";
                 header('Location: ' . $base_url);
+               
             }
             else
             {
                 $_SESSION['forgotmail'] = "Enter registerd mail";
-                $base_url = "http://localhost/Helperland/#ForgotModal";
-                header('Location: ' . $base_url);
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit;
             }
-            unset($_SESSION['forgotmail']); 
+            
+            
         }  
+        
     }
 
     public function resetpass()
     {
         if (isset($_POST))
-        {
+        {    
             if(($_POST['Password']) == ($_POST['confirmPassword']))
             {
                 $new_password=$_POST['Password'];
                 $email= $_SESSION['regmail'];
-                echo " $email";
                 $this->model->resetpass('user', $email,$new_password);
+                unset($_SESSION['regmail']);
+                $base_url = "http://localhost/Helperland";
+                header('Location: ' . $base_url);
             } 
             else
             {
-                $_SESSION['reset'] = "Password and Confirm Password should be same";
+                $_SESSION['reset']="Password and Confirm Password should be same";
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit;
             }
-            unset($_SESSION['reset']);
-            $base_url = "http://localhost/Helperland";
-            header('Location: ' . $base_url);
+           
         }
-        unset($_SESSION['regmail']);
+        
     }
     public function Login()
     {
@@ -190,13 +195,14 @@ class HelperlandController
                 $Password = $_POST['Password'];
                 $row = $this->model->userData($email,$Password);
                 $usertypeid = $row['UserTypeId'];
+                $_SESSION['UserId'] = $row['UserId'];
                 $_SESSION['name'] = $row['FirstName'];
-                
-                
+                $_SESSION['loggedin'] = $usertypeid;
                 if($usertypeid == 1){
                     
                     header('Location:' . $customer);
-                }else if($usertypeid == 2){
+                }
+                 if($usertypeid == 2){
                     
                     header('Location:' . $sp);
                 } else{
@@ -205,14 +211,84 @@ class HelperlandController
             }
         }
     }
-
+    public function gotobookservicepage()
+    {
+        if(isset($_SESSION['loggedin']))
+        {
+            if($_SESSION['loggedin'] == 1)
+            {
+                $base_url ="http://localhost/Helperland/bookservice";
+                header('Location:' . $base_url);
+            }
+            else
+            {
+                $_SESSION['login_alert']="0";
+                $base_url ="http://localhost/Helperland/#LoginModal";
+                header('Location:' . $base_url);
+            }
+        }
+        else
+        {
+            $_SESSION['login_alert']="1";
+            $base_url ="http://localhost/Helperland/#LoginModal";
+            header('Location:' . $base_url);
+        }
+    }
     public function logout()
     {
         $base_url = "http://localhost/Helperland/";
+        session_unset();
         session_destroy();
         header('Location:' . $base_url);
 
     }
+    public function checkavail()
+    {
+       $zipcode =$_POST['zipcode'];
+       $avail = $this->model->checkavail($zipcode);
+       if($avail != 0)
+       {
+           echo 1;
+       }
+       else
+       {
+           echo 0;
+       }
+    }
+    public function add_addresses()
+    {
+        $zipcode =$_POST['zipcode'];
+        $userid = $_SESSION['UserId'];
+        $list = $this->model->addresslist($zipcode,$userid);
+         $i=0;
+        foreach($list as $address)
+        {
+            ?>
+            <label class="area-label">
+                <input type="radio" class="area-radio" id="age<?php echo $i?>" name="age" value="30" onclick="getseladd(this.id)">
+                <span><b>Address:</b></span><?php echo " ".$address['AddressLine1']."  ".$address['AddressLine2'].", ".$address['City']."  ".$address['State']." - ".$address['PostalCode']." ";  ?><br>
+                <span><b>Telephone number:</b></span><?php echo " ".$address['Mobile']." "; ?>
+                </label>
+        <?php
+        $i++; }
+
+    }
+    public function insert_address()
+    {
+        
+            $array = [
+                'UserId' => $_SESSION['UserId'],
+                'AddressLine1'=>$_POST['housenumber'],
+                'AddressLine2' => $_POST['streetname'],
+                'City' =>$_POST['city'],
+                'PostalCode' => $_POST['postalcode'],
+                'Mobile' => $_POST['phonenumber']
+            ];
+            $this->model->insert_address($array);
+
+    
+    }
 
 
 }
+?>

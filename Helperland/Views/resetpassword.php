@@ -1,5 +1,14 @@
+
+
+
+
 <?php include('./header.php');
 $base_url = "http://localhost/Helperland/";
+if(isset($_SESSION['reset']))
+  { 
+    echo '<script> alert("Password and Confirm Password should be same"); </script>';
+    unset($_SESSION['reset']);
+  }
 ?>
 
 <link rel="stylesheet" href="./assets/css/Customer-Signup.css">
