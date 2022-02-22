@@ -1,4 +1,6 @@
 
+<?php include('servicerequest.php'); ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -200,9 +202,9 @@
                                         <div>
                                             <textarea name="comments" class="service-comment" cols="50" rows="5"></textarea>
                                         </div>
-                                        <div>
-                                            <input type="checkbox" id="terms-conditions" name="terms-conditions" class="checkbox">
-                                            <label class="checkbox-text" for="terms-conditions"> I have pets at home</label><br>
+                                        <div class="haspet">
+                                            <input type="checkbox" id="pet" name="terms-conditions" class="checkbox pet">
+                                            <label class="checkbox-text" for="pet"> I have pets at home</label><br>
                                         </div>
                                     </div>
                                     <hr>
@@ -214,7 +216,7 @@
                                 </div>
                                 <div class="tab-pane  fade" id="pills-YourDetails" role="tabpanel" aria-labelledby="pills-YourDetails-tab">
                                     <span class="text-1 temp"><b>Please enter your address so that your helper can find you.</b></span>
-                                    <div class="row address">
+                                    <div class="row address"  id="add">
                                         <!-- <label class="area-label">
                                             <input type="radio" class="area-radio" id="age1" name="age" value="30" onclick="getseladd(this.id)">
                                             <span><b>Address:</b></span> Abcd 45, Bonn 53225 <br>
@@ -275,7 +277,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade " id="pills-MakePayment" role="tabpanel" aria-labelledby="pills-MakePayment-tab">
-                                    <span class="text-1"><b>Choose one of the following payment methods.</b></span>
+                                    <span class="text-1 temp1"><b>Choose one of the following payment methods.</b></span>
                                     <div>
                                         <label for="promocode">Promo code (optional)</label><br>
                                         <div class="promocode-check">

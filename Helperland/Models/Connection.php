@@ -86,5 +86,39 @@ class Helperland
         $statement->execute($array);
     }
 
+    function add_service_request($array)
+    {
+        $sql_query = "INSERT INTO servicerequest(UserId, ServiceStartDate,ZipCode, ServiceHours,ExtraHours, SubTotal,TotalCost, Comments,HasPets,CreatedDate)
+        VALUES (:UserId, :ServiceStartDate, :ZipCode, :ServiceHours, :ExtraHours, :SubTotal,:TotalCost,:Comments,:HasPets,:CreatedDate)";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute($array);
+
+    }
+    // function add_service_request($array)
+    // {
+    //     $sql_query = "INSERT INTO servicerequest(UserId, ServiceStartDate, ZipCode, ServiceHours, ExtraHours, SubTotal,TotalCost,Comments,HasPets,CreatedDate)
+    //     VALUES (:UserId, :ServiceStartDate, :ZipCode, :ServiceHours, :ExtraHours, :SubTotal,:TotalCost,:Comments,:HasPets ,:CreatedDate)";
+    //     $statement= $this->conn->prepare($sql_query);
+    //     $statement->execute($array);
+    // }
+    // function getAddressById($id)
+    // {
+    //     $sql = "SELECT * FROM useraddress WHERE  AddressId = '$id'";
+    //     $stmt =  $this->conn->prepare($sql);
+    //     $stmt->execute();
+    //     $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+    //     return $row;
+
+    // }
+    // function getreqId($array)
+    // {
+    //     $sql = "SELECT * FROM servicerequest WHERE  PostalCode = '$zipcode' AND  UserId ='$userid' ";
+    //     $stmt =  $this->conn->prepare($sql);
+    //     $stmt->execute();
+    //     $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+    //     return $row;
+
+    // }
+
 }
 ?>

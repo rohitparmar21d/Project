@@ -265,7 +265,7 @@ class HelperlandController
         {
             ?>
             <label class="area-label">
-                <input type="radio" class="area-radio" id="age<?php echo $i?>" name="age" value="30" onclick="getseladd(this.id)">
+                <input type="radio" class="area-radio" id="age<?php echo $i?>" name="age" value="<?php echo $address['AddressId'] ?>" >
                 <span><b>Address:</b></span><?php echo " ".$address['AddressLine1']."  ".$address['AddressLine2'].", ".$address['City']."  ".$address['State']." - ".$address['PostalCode']." ";  ?><br>
                 <span><b>Telephone number:</b></span><?php echo " ".$address['Mobile']." "; ?>
                 </label>
@@ -285,6 +285,27 @@ class HelperlandController
                 'Mobile' => $_POST['phonenumber']
             ];
             $this->model->insert_address($array);
+
+    
+    }
+    public function add_service_request()
+    {
+        $reqtime=date('Y-m-d H:i:s');
+            $array = [
+                'UserId' => $_SESSION['UserId'],
+                'ServiceStartDate'=>$_POST['servicedatetime'],
+                'ZipCode' => $_POST['postalcode'],
+                'ServiceHours' =>$_POST['servicehours'],
+                'ExtraHours' => $_POST['extraservicehours'],
+                'SubTotal' => $_POST['subtotal'],
+                'TotalCost' => $_POST['totalpayment'],
+                'Comments' => $_POST['comments'],
+                'HasPets'=>$_POST['haspet'],
+                'CreatedDate' => $reqtime
+            ];
+        
+            $this->model->add_service_request($array);
+            
 
     
     }

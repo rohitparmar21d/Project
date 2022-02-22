@@ -1,5 +1,15 @@
-$(document).ready(function(){
 
+$(document).ready(function(){
+    var seladdid ;
+    var postalcode;
+    var servicedatetime;
+    var servicehours;
+    var extraservicehours = 0;
+    var comments;
+    var haspet =0;
+    var subtotal= 0;
+    var totalpayment = 0;
+    var useraddId ;
      var base_url = "http://localhost/Helperland/";
        function switchtab(from, to )
     {
@@ -13,7 +23,7 @@ $(document).ready(function(){
 
     $(".check-avail").click(function () { 
 
-        var postalcode = $(".postalcode").val();
+        postalcode = $(".postalcode").val();
         if(postalcode == "")
         {
           document.querySelector(".avail-msg").innerHTML="Please enter the postalcode";
@@ -28,7 +38,7 @@ $(document).ready(function(){
                 {
                     if(response == 0)
                     {
-                         document.querySelector(".avail-msg").innerHTML="We are not providing service in this area. We’ll notify you if any helper would start working near your area.";
+                         document.querySelector(".avail-msg").innerHTML="We are not providing service in this area. We'll notify you if any helper would start working near your area.";
                     }
                     else
                     {
@@ -46,6 +56,7 @@ $(document).ready(function(){
      });
      $(".continue-tab-2").click(function () { 
         switchtab("SchedulePlan","YourDetails");
+        comments = $(".service-comment").val();
         
     });
     $(".extra-image-1").click(function ()
@@ -152,9 +163,10 @@ $(document).ready(function(){
         document.querySelector("."+srvc_name+" img").src=document.querySelector("."+srvc_name+" img").src.replace("-green.png",".png");
     }
     /***payment summary*/
-    
-    document.querySelector(".basic").innerHTML=$("#servicetime  option:selected").val() +" "+ "Hrs";
-    document.querySelector(".datetime").innerHTML=$("#formdate").val() + " " + $("#formtime").val();
+    servicehours =parseFloat($("#servicetime  option:selected").val());
+    document.querySelector(".basic").innerHTML=servicehours +" "+ "Hrs";
+    servicedatetime =$("#formdate").val() + " " + $("#formtime").val();
+    document.querySelector(".datetime").innerHTML=servicedatetime;
 
     $("#servicetime").click(function () { 
         document.querySelector(".basic").innerHTML=$("#servicetime  option:selected").val() +" "+ "Hrs";
@@ -162,13 +174,27 @@ $(document).ready(function(){
 
     $("#servicetime").on("change", function () {
       totaltime();
-      totalpayment();
+      
     });
     $("#formdate").click(function () { 
         document.querySelector(".datetime").innerHTML=$("#formdate").val() + " " + $("#formtime").val();
     });
     $("#formtime").click(function () { 
         document.querySelector(".datetime").innerHTML=$("#formdate").val() + " " + $("#formtime").val();
+    });
+
+    $("#pet").click(function () { 
+        if(this.checked == true){
+
+            haspet = 1;
+
+           }else{
+            
+            haspet = 0;
+
+        } 
+        
+        
     });
 
     //total service time
@@ -218,12 +244,14 @@ $(document).ready(function(){
         {
             var ex5 = 0;
         }
+        
         total = total + ex1 + ex2 + ex3 + ex4 + ex5;
+        extraservicehours= ex1 + ex2 + ex3 + ex4 + ex5 ;
         document.querySelector(".totaltime").innerHTML=total +" "+ "Hrs";
-         tatpay = total*25;
-         document.querySelector(".totalpayment b").innerHTML= "$"+tatpay ;
-         charge =total*25;
-         document.querySelector(".charge").innerHTML= "$"+charge ;
+         totalpayment = total*25;
+         document.querySelector(".totalpayment b").innerHTML= "$"+totalpayment ;
+         subtotal =total*25;
+         document.querySelector(".charge").innerHTML= "$"+subtotal ;
     
     }
     $(".add-new-address").click(function () { 
@@ -290,7 +318,9 @@ $(document).ready(function(){
 
     $(".continue-tab-3").click(function () { 
         switchtab("YourDetails", "MakePayment");
+        
     });
+
     $("#terms-conditions-last").click(function () { 
             
            
@@ -306,14 +336,35 @@ $(document).ready(function(){
 
         
     });
-    // $(selector).click(function (e) { 
-    //     e.preventDefault();
-        
-    // });
+    $(".complete-booking").click(function () { 
+        // add_service_request();
+
+        alert(totalpayment);
+    });
+    $(".address").click(function (event) { 
+         seladdid =event.target.id;
+    });
+    function add_service_request()
+    {
+        $.ajax({
+            type: "POST",
+            url:  base_url + "?controller=Helperland&function=add_service_request",
+            data: {
+                "servicedatetime" : servicedatetime,
+                "postalcode" : postalcode,
+                "servicehours" : servicehours,
+                "extraservicehours" : extraservicehours,
+                "subtotal" : subtotal,
+                "totalpayment" : totalpayment,
+                "comments":comments,
+                "haspet" : haspet,
+                 "useraddId" : useraddId
+               },
+            success: function (response) {
+                alert("request submited successfully");
+            }
+        });
+    }
  
 });
 
-function getseladd(i)
-{
-  alert(i);
-}
