@@ -194,20 +194,31 @@ class HelperlandController
                 $email = $_POST['Email'];
                 $Password = $_POST['Password'];
                 $row = $this->model->userData($email,$Password);
-                $usertypeid = $row['UserTypeId'];
-                $_SESSION['UserId'] = $row['UserId'];
-                $_SESSION['name'] = $row['FirstName'];
-                $_SESSION['loggedin'] = $usertypeid;
-                if($usertypeid == 1){
+                if($row == NULL)
+                {
+                    $_SESSION['login_wrong']="1";
+                    $base_url ="http://localhost/Helperland/#LoginModal";
+                    header('Location:' . $base_url);
+                }
+                else
+                {
+                    $usertypeid = $row['UserTypeId'];
+                    $_SESSION['UserId'] = $row['UserId'];
+                    $_SESSION['name'] = $row['FirstName'];
+                    $_SESSION['loggedin'] = $usertypeid;
+                    if($usertypeid == 1){
                     
                     header('Location:' . $customer);
-                }
-                 if($usertypeid == 2){
+                    }
+                    if($usertypeid == 2){
                     
                     header('Location:' . $sp);
-                } else{
+                    }
+                    else{
                     echo "Admin";
+                    }
                 }
+                
             }
         }
     }
@@ -290,7 +301,7 @@ class HelperlandController
     }
     public function add_service_request()
     {
-        $reqtime=date('Y-m-d H:i:s');
+    
             $array = [
                 'UserId' => $_SESSION['UserId'],
                 'ServiceStartDate'=>$_POST['servicedatetime'],
@@ -301,10 +312,17 @@ class HelperlandController
                 'TotalCost' => $_POST['totalpayment'],
                 'Comments' => $_POST['comments'],
                 'HasPets'=>$_POST['haspet'],
-                'CreatedDate' => $reqtime
+                'CreatedDate' =>date('Y-m-d H:i:s')
             ];
         
-            $this->model->add_service_request($array);
+            $reqid = $this->model->add_service_request($array);
+            $seladdid =$_POST['seladdid'];
+            $reqAdd = [
+                'reqid' =>$reqid,
+                'addid' => $seladdid,
+            ];
+            $this->model->add_service_request_address($reqAdd);
+
             
 
     

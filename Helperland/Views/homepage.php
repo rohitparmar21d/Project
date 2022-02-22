@@ -26,6 +26,11 @@
    }
   }
   unset($_SESSION['login_alert']);
+  if(isset($_SESSION['login_wrong']))
+  {
+    echo '<script> alert("wrong Email And Password"); </script>';  
+  }
+  unset($_SESSION['login_wrong']);
  ?>
 
 

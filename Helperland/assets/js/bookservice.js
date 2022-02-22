@@ -317,8 +317,7 @@ $(document).ready(function(){
     });
 
     $(".continue-tab-3").click(function () { 
-        switchtab("YourDetails", "MakePayment");
-        
+        switchtab("YourDetails", "MakePayment");        
     });
 
     $("#terms-conditions-last").click(function () { 
@@ -337,12 +336,12 @@ $(document).ready(function(){
         
     });
     $(".complete-booking").click(function () { 
-        // add_service_request();
+        add_service_request();
 
-        alert(totalpayment);
+        
     });
     $(".address").click(function (event) { 
-         seladdid =event.target.id;
+         seladdid =event.target.value;
     });
     function add_service_request()
     {
@@ -358,7 +357,7 @@ $(document).ready(function(){
                 "totalpayment" : totalpayment,
                 "comments":comments,
                 "haspet" : haspet,
-                 "useraddId" : useraddId
+                 "seladdid" : seladdid
                },
             success: function (response) {
                 alert("request submited successfully");
