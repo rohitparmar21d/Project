@@ -6,6 +6,7 @@ class Helperland
     public function __construct()
     {
         try {
+        
             /* Properties */
             $dsn = 'mysql:dbname=helperland;host=localhost';
             $user = 'root';
@@ -102,6 +103,14 @@ class Helperland
         VALUES (:reqid,:addid)";
         $statement= $this->conn->prepare($sql_query);
         $statement->execute($Add);
+    }
+    function getSPById($zip)
+    {
+        $sql = "SELECT * FROM user WHERE UserTypeId = 2 AND ZipCode = '$zip' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row; 
     }
     // function getAddressById($id)
     // {
