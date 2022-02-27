@@ -360,7 +360,8 @@ $(document).ready(function(){
                  "seladdid" : seladdid
                },
             success: function (response) {
-                alert("request submited successfully");
+                alert("request submited successfully, we'll mail you when it will get confirmed");
+                window.location.href = base_url;
             }
         });
     }

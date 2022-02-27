@@ -322,6 +322,16 @@ class HelperlandController
                 'addid' => $seladdid,
             ];
             $this->model->add_service_request_address($reqAdd);
+            $SPList=$this->model->getSPById($_POST['postalcode']);
+
+            foreach($SPList as $SPs)
+            {
+                $to_email = $SPs['Email'];
+                $subject = "NEW SERVICE REQUEST";
+                $body = "we got new service request for you, accept if you are available";
+                $headers = "From: rohit1parmar11@gmail.com";
+                mail($to_email, $subject, $body, $headers);
+            }
 
             
 
