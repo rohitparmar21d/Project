@@ -6,7 +6,6 @@ class Helperland
     public function __construct()
     {
         try {
-        
             /* Properties */
             $dsn = 'mysql:dbname=helperland;host=localhost';
             $user = 'root';
@@ -104,6 +103,13 @@ class Helperland
         $statement= $this->conn->prepare($sql_query);
         $statement->execute($Add);
     }
+    function add_extraservice($Add)
+    {
+        $sql_query = "INSERT INTO servicerequestextra(ServiceRequestId, ServiceExtraId)
+        VALUES (:reqid,:selectextraserviceid)";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute($Add);
+    }
     function getSPById($zip)
     {
         $sql = "SELECT * FROM user WHERE UserTypeId = 2 AND ZipCode = '$zip' ";
@@ -112,24 +118,143 @@ class Helperland
         $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $row; 
     }
-    // function getAddressById($id)
-    // {
-    //     $sql = "SELECT * FROM useraddress WHERE  AddressId = '$id'";
-    //     $stmt =  $this->conn->prepare($sql);
-    //     $stmt->execute();
-    //     $row  = $stmt->fetch(PDO::FETCH_ASSOC);
-    //     return $row;
+    function service_history($userid)
+    {
+        $sql = "SELECT * FROM servicerequest WHERE UserId = '$userid' AND NOT Status=1 ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row; 
+    }
+    function getUserbyId($id)
+    {
+        $sql = "SELECT * FROM user WHERE UserId = '$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row; 
+    }
+    function rate($id)
+    {
+        $sql = "SELECT * FROM rating WHERE RatingTo = '$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row; 
+    }
+    function rateByreqId($id)
+    {
+        $sql = "SELECT * FROM rating WHERE ServiceRequestId = '$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row; 
+    }
 
-    // }
-    // function getreqId($array)
-    // {
-    //     $sql = "SELECT * FROM servicerequest WHERE  PostalCode = '$zipcode' AND  UserId ='$userid' ";
-    //     $stmt =  $this->conn->prepare($sql);
-    //     $stmt->execute();
-    //     $row  = $stmt->fetch(PDO::FETCH_ASSOC);
-    //     return $row;
+    function dboard($userid)
+    {
+        $sql = "SELECT * FROM servicerequest WHERE UserId = '$userid' AND  Status=1 ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;  
+    }
+    function SRByreqId($id)
+    {
+        $sql = "SELECT * FROM servicerequest WHERE ServiceRequestId = '$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row; 
+    }
+    function reschedule($datetime,$reqid)
+    {
+        $sql_query = "UPDATE servicerequest SET ServiceStartDate ='$datetime' WHERE  ServiceRequestId = '$reqid'";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute();
+       
+    }
 
-    // }
+    function cancel($comment,$reqid)
+    {
+        $sql_query = "UPDATE servicerequest SET Status =3,  Comments='$comment' WHERE  ServiceRequestId = '$reqid'";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute();  
+    }
+    function getSRAddbySRId($id)
+    {
+        $sql = "SELECT * FROM servicerequestaddress WHERE ServiceRequestId = '$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row; 
+    }
+    function getUserAddbyAddId($id)
+    {
+        $sql = "SELECT * FROM useraddress WHERE AddressId = '$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row; 
+    }
+    function getextrabySRId($rqid)
+    {
+        $sql = "SELECT * FROM servicerequestextra WHERE ServiceRequestId = '$rqid' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row; 
+    }
+    function getextrasbyextraId($id)
+    {
+        $sql = "SELECT * FROM extraservices WHERE ServiceExtraId = '$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row; 
+    }
+    function israted($id)
+    {
+        $sql = "SELECT * FROM rating WHERE  ServiceRequestId = '$id'";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $number_of_rows = $stmt->fetchColumn();
+        return $number_of_rows;
 
+    }
+    function submitrate($a,$israted)
+    {
+        if($israted==0)
+        {
+            $sql_query = "INSERT INTO rating(ServiceRequestId, RatingFrom,RatingTo,Ratings,Comments,RatingDate,OnTimeArrival,Friendly,QualityOfService)
+            VALUES (:ServiceRequestId,:RatingFrom,:RatingTo,:Ratings,:Comments,:RatingDate,:OnTimeArrival,:Friendly,:QualityOfService)";
+            $statement= $this->conn->prepare($sql_query);
+            $statement->execute($a);
+        }
+        else
+        {
+            $sql_query = "UPDATE rating SET RatingFrom='".$a['RatingFrom']."' , RatingTo='".$a['RatingTo']."' , Ratings='".$a['Ratings']."' , Comments='".$a['Comments']."' , RatingDate='".$a['RatingDate']."' , OnTimeArrival='".$a['OnTimeArrival']."' , Friendly='".$a['Friendly']."' , QualityOfService='".$a['QualityOfService']."'  WHERE  ServiceRequestId = '".$a['ServiceRequestId']."' ";
+            $statement= $this->conn->prepare($sql_query);
+            $statement->execute();
+        }
+        
+    }
+    public function check_password($email, $oldpassword)
+    {
+        $sql_qry = "SELECT * FROM user where Email = '$email' AND Password = '$oldpassword'";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute();
+        $count = $statement->rowCount();
+        return $count;
+    }
+
+    public function update_password($email, $newpassword)
+    {
+        $sql_qry = "UPDATE user
+                    SET Password = '$newpassword'
+                    WHERE Email = '$email'";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute();
+    }
 }
 ?>

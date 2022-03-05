@@ -48,7 +48,7 @@
         </nav>
 
     <?php   } ?>
-    <?php if (isset($_SESSION['loggedin'])) { ?>
+    <?php if (isset($_SESSION['loedin'])) { ?>
         <div class="header-navigationbar">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <a class="navbar-brand"><img src="assets/image/white-logo-transparent-background.png"></a>

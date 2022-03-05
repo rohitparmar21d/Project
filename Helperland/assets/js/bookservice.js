@@ -9,7 +9,9 @@ $(document).ready(function(){
     var haspet =0;
     var subtotal= 0;
     var totalpayment = 0;
-    var useraddId ;
+    var date;
+    var time;
+    var extraserv=[] ;
      var base_url = "http://localhost/Helperland/";
        function switchtab(from, to )
     {
@@ -55,10 +57,50 @@ $(document).ready(function(){
         }
      });
      $(".continue-tab-2").click(function () { 
-        switchtab("SchedulePlan","YourDetails");
+         alert(extraserv);
+        // switchtab("SchedulePlan","YourDetails");
         comments = $(".service-comment").val();
         
     });
+
+    
+    
+     $(".im").click(function (e) { 
+         var id =parseInt(e.target.id);
+        for (let j=0 ; j<5 ; j++)
+        {
+            const index = extraserv.indexOf(id);
+
+            if(extraserv==id)
+            {
+                extraserv.splice(index, 1);
+            }
+            else if(extraserv!=id)
+            {
+                extraserv.push(id);
+            }
+        }
+        
+        console.log(extraserv);
+         
+     });
+    // for (let i=1 ; i<=images.length ; i++)
+    // {
+    //     $(images[i]).click(function () { 
+    //         alert("njs");
+    //         // const index = extraserv.indexOf(i);
+
+    //         // if(!(document.getElementById("im"+i).classList.contains("active")))
+    //         // {
+    //         //     extraserv.push(i);
+    //         // }
+    //         // else
+    //         // {
+    //         //     extraserv.splice(index, 1);
+    //         // } 
+    //         // console.log(extraserv);
+    //     });
+    // }
     $(".extra-image-1").click(function ()
     { 
         
@@ -67,7 +109,7 @@ $(document).ready(function(){
             extra_service_active("extra-image-1");
             $(".cabinet").show();
             $(".cabinet-txt").show();
-         }
+        }
         else
         {
             extra_service_diactive("extra-image-1");
@@ -75,8 +117,6 @@ $(document).ready(function(){
             $(".cabinet-txt").hide();
         }
         totaltime();
-    
-        
     });
     $(".extra-image-5").click(function ()
     { 
@@ -176,10 +216,24 @@ $(document).ready(function(){
       totaltime();
       
     });
+    $("#formdate").change(function () { 
+        date =$("#formdate").val();
+        time=$("#formtime").val();
+        document.querySelector(".datetime").innerHTML=$("#formdate").val() + " " + $("#formtime").val();
+    });
     $("#formdate").click(function () { 
+        date =$("#formdate").val();
+        time=$("#formtime").val();
         document.querySelector(".datetime").innerHTML=$("#formdate").val() + " " + $("#formtime").val();
     });
     $("#formtime").click(function () { 
+        date =$("#formdate").val();
+        time=$("#formtime").val();
+        document.querySelector(".datetime").innerHTML=$("#formdate").val() + " " + $("#formtime").val();
+    });
+    $("#formtime").change(function () { 
+        date =$("#formdate").val();
+        time=$("#formtime").val();
         document.querySelector(".datetime").innerHTML=$("#formdate").val() + " " + $("#formtime").val();
     });
 
@@ -337,19 +391,22 @@ $(document).ready(function(){
     });
     $(".complete-booking").click(function () { 
         add_service_request();
+        
 
         
     });
-    $(".address").click(function (event) { 
-         seladdid =event.target.value;
+    $(".address").click(function (e) { 
+         seladdid =e.target.value;
     });
     function add_service_request()
-    {
+    {servicedatetime= date+time;
+
         $.ajax({
             type: "POST",
             url:  base_url + "?controller=Helperland&function=add_service_request",
             data: {
-                "servicedatetime" : servicedatetime,
+                "date" : date,
+                "time" : time,
                 "postalcode" : postalcode,
                 "servicehours" : servicehours,
                 "extraservicehours" : extraservicehours,
@@ -357,11 +414,25 @@ $(document).ready(function(){
                 "totalpayment" : totalpayment,
                 "comments":comments,
                 "haspet" : haspet,
-                 "seladdid" : seladdid
+                 "seladdid" : seladdid,
+                 "extraserv":extraserv
                },
             success: function (response) {
-                alert("request submited successfully, we'll mail you when it will get confirmed");
-                window.location.href = base_url;
+               
+               if(response){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Done',
+                    text: 'Booking has been successfully submitted.',
+                    
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = base_url;
+                    }
+                      
+                  });
+               }
+               
             }
         });
     }

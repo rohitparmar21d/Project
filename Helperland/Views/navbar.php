@@ -40,7 +40,7 @@ if (!isset($_SESSION['loggedin'])) { ?>
 <?php if (isset($_SESSION['loggedin'])) { ?>
     <div class="header-navigationbar">
         <nav class="navbar navbar-expand-lg fixed-top">
-            <a class="navbar-brand"><img src="assets/image/white-logo-transparent-background.png"></a>
+            <a class="navbar-brand" href="homepage.php"><img src="assets/image/white-logo-transparent-background.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"><i class="fa fa-bars bars"></i></span>
             </button>
@@ -80,7 +80,7 @@ if (!isset($_SESSION['loggedin'])) { ?>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">User Profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Setting</a>
+                            <a class="dropdown-item mysettingbtn" id="<?php echo $_SESSION['loggedin']; ?>" href="<?php if($_SESSION['loggedin']==1){ ?> ./Customer.php <?php } ?>" >Setting</a>
                             <div class="dropdown-divider"></div>
                             <form method="POST" action=<?= $base_url."./?controller=helperland&function=Logout"?>>
                                     <button class="dropdown-item" name="logout" type="submit">Logout</button>

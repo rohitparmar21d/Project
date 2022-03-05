@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/sweetalert2.min.css">
+    
     <!--script src="https://www.google.com/recaptcha/api.js" async defer></script-->
     <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/validation.css">
@@ -46,6 +48,7 @@
     <section>
         <img src="./assets/Image/book-service-banner.jpg" class="img-fluid price-banner" alt="Responsive image">
     </section>
+    
     <!--section-2-->
     <section class="section-2 container-fluid">
       <div class="text-center ">
@@ -123,7 +126,7 @@
                                             <div>
                                                 <div class="row">
                                                 <input class="input-element" type="date" id="formdate" name="formdate" data placeholder="From Date">
-                                                <input class="input-element" type="time" id="formtime" name="formtime" data placeholder="From Time"></div>
+                                                <input class="input-element" type="time" id="formtime" name="formtime" data placeholder="From Time">
                                                 <!-- <select name="booktime" id="booktime">
                                                     <option value="2:00 PM">2:00 PM</option>
                                                     <option value="3:00 PM">3:00 PM</option>
@@ -131,7 +134,7 @@
                                                     <option value="5:00 PM">5:00 PM</option>
                                                     <option value="6:00 PM">6:00 PM</option>
                                                 </select> -->
-                                                
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
@@ -151,12 +154,12 @@
                                         <span class="text-1"><b>Extra Services</b></span>
                                         <div class="extra-service">
                                             <div class="extra-content ">
-                                                <div class="extra-image-1"><img src="./assets/Image/3.png"></div><br>
+                                                <div class="extra-image-1 im" id="0"><img id="0" src="./assets/Image/3.png"></div><br>
                                                 <label class="extra-text" ><span class="extra-text-1">Inside cabinets</span><br></label>
                                             </div>
                                             <div class="extra-content">
-                                                <div class="extra-image-2">
-                                                  <img src="./assets/Image/5.png">
+                                                <div class="extra-image-2 im" id="1">
+                                                  <img id="1" src="./assets/Image/5.png">
                                                 </div>
                                                 <br>
                                                 <div class="extra-text">
@@ -165,8 +168,8 @@
                                                 </div>
                                             </div>
                                             <div class="extra-content">
-                                                <div class="extra-image-3">
-                                                    <img src="./assets/Image/4.png">
+                                                <div class="extra-image-3 im" id="2">
+                                                    <img id="2" src="./assets/Image/4.png">
                                                 </div>
                                                 <br>
                                                 <div class="extra-text">
@@ -175,8 +178,8 @@
                                                 </div>
                                             </div>
                                             <div class="extra-content">
-                                                <div class="extra-image-4">
-                                                    <img src="./assets/Image/2.png">
+                                                <div class="extra-image-4 im" id="3">
+                                                    <img id="3" src="./assets/Image/2.png">
                                                 </div>
                                                 <br>
                                                 <div class="extra-text">
@@ -185,8 +188,8 @@
                                                 </div>
                                             </div>
                                             <div class="extra-content">
-                                                <div class="extra-image-5">
-                                                    <img src="./assets/Image/1.png">
+                                                <div class="extra-image-5 im" id="4">
+                                                    <img id="4" src="./assets/Image/1.png">
                                                 </div>
                                                 <br>
                                                 <div class="extra-text">
@@ -546,11 +549,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 <!--script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script-->
 <script src="https://cdn.jsdelivr.net/npm/table2csv@1.1.6/src/table2csv.min.js"></script>
 <script src="./assets/js/Script.js"></script>
 <script src="./assets/js/bookservice.js"></script>
+<script src="./assets/js/sweetalert2.all.min.js"></script>
 </body>
 
 </html>
