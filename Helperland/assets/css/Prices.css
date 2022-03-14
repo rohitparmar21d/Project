@@ -20,7 +20,16 @@ body {
     margin-top: 64px;
 }
 
-
+.pricetext {
+    /* width: 84px; */
+    height: 43px;
+    letter-spacing: 0px;
+    color: #4F4F4F;
+    font-size: 36px;
+    font-family: Roboto;
+    font-weight: bold;
+    margin-top: 32px;
+}
 .maintext {
     /* width: 84px; */
     height: 43px;

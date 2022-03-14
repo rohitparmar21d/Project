@@ -66,9 +66,9 @@ body {
     font-size: 13px;
     margin-bottom: 6px;
 }
-.serhist{
+.serarea{
     font-weight: bold;
-    font-size: 22px;
+    font-size: 15px;
     color:#646464;
     
     padding-left:15px;
@@ -140,15 +140,25 @@ body {
 	border: 1px solid #E1E1E1;
 }
 
-.modal .modal-dialog .modal-content .modal-body .register-inputs #booktime {
-	width: 100%;
-	height: 45px;
-	font-family: 'Roboto';
-	font-size: 16px;
+.serareadropdown {
+	margin-top: 4px;
+	height: 22px;
 	color: #4F4F4F;
-	margin: 5px 0 15px 0;
+	margin-left: 6px;
+	font-size: 13px;
 	border: 1px solid #E1E1E1;
 }
+.paymentstatus {
+	margin-top: 4px;
+	height: 22px;
+	color: #4F4F4F;
+	margin-left:-280px;
+	font-size: 13px;
+	border: 1px solid #E1E1E1;
+}
+.tab-pane .row{
+	margin-bottom: 3px;
+} 
 .modal .modal-dialog .modal-content .modal-footer .btn-cancelnow, .btn-update ,.btn-ratesp-submit {
 	width: 100%;
 	height: 46px;
@@ -229,6 +239,24 @@ body {
 	margin: 5px 0 15px 0;
 	padding: 0 0 0 5px;
 	border: 1px solid #E1E1E1;
+}
+.cancel-btn {
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.complete-btn{
+	background: #0c7286;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .modal .modal-dialog .modal-content .modal-body .register-inputs #booktime {
@@ -360,21 +388,21 @@ body {
 	color: #646464;
 	padding: 15px 30px;
 }
-.modal .modal-dialog .modal-content .modal-footer .btn-reschedule {
+.modal .modal-dialog .modal-content .modal-body .btn-accept {
 	font-family: 'Roboto';
 	font-size: 14px;
 	padding: 5px 10px;
 	height: 35px;
 	border-radius: 17.5px;
 	color: #FFFFFF;
-	background: #1D7A8C;
-	border: 1px solid #1D7A8C;
+	background: #0c830c;
+	border: 1px solid #0c830c;
 }
-.modal .modal-dialog .modal-content .modalfooter .btn-reschedule:hover {
-	background: #29626D;
+.modal .modal-dialog .modal-content .modal-body .btn-accept:hover {
+	background: #1d5a01;
 }
 
-.modal .modal-dialog .modal-content .modal-footer .btn-cancel {
+.modal .modal-dialog .modal-content .modal-body .btn-cancel {
 	font-family: 'Roboto';
 	font-size: 14px;
 	padding: 5px 10px;
@@ -385,7 +413,7 @@ body {
 	border: #FF6B6B;
 }
 
-.modal .modal-dialog .modal-content .modal-footer .btn-cancel:hover {
+.modal .modal-dialog .modal-content .modal-body .btn-cancel:hover {
 	background: #fD4B4B;
 }
 
@@ -426,7 +454,7 @@ body {
 }
 
 #mod{
-	max-width: 600px;
+	max-width: 800px;
 }
 .ft
 {
@@ -497,8 +525,15 @@ body {
 .mysetting .button-body .details-body select {
 	color: #4F4F4F;
 	height: 46px;
+	width: 100%;
 	border: 1px solid #E1E1E1;
 	margin: 5px 10px 15px 0;
+}
+.gender{
+	margin-left: 15px;
+}
+.gender label{
+	margin-right: 5px;
 }
 
 .mysetting .button-body .details-body .details-save {
@@ -703,112 +738,150 @@ body {
 .modal .modal-dialog .modal-content .modal-footer .btn-addresssave:hover {
 	background-color: #29626D;
 }
-/* .modal .modal-dialog .modal-content .modal-header {
-	font-family: 'Roboto';
-	color: #646464;
-	padding: 15px 30px;
-} */
-
-/*.modal .modal-dialog .modal-content .modal-body .register-inputs .rate-service-text {
-	font-family: 'Roboto';
-	font-size: 18px;
-	font-weight: 600;
-	color: #4F4F4F;
-	margin-bottom: 10px;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .subtext {
-	font-family: 'Roboto';
-	font-size: 16px;
-	font-weight: 300;
-	color: #4F4F4F;
-	margin: 10px 0;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .rate-feedback {
-	font-family: 'Roboto';
-	font-size: 16px;
-	color: #4F4F4F;
-	width: 100%;
-	height: 60px;
-	margin-bottom: 15px;
-	padding: 5px 10px;
-	border: 1px solid #E1E1E1;
-	border-radius: 3px;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .btn-ratesp-submit {
-	width: auto;
-	height: 46px;
-	font-family: 'Roboto';
-	font-size: 16px;
-	font-weight: 400;
-	color: #FFFFFF;
-	background-color: #1D7A8C;
-	border: 1px solid #1D7A8C;
-	padding: 5px 20px;
-	border-radius: 23px;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .btn-ratesp-submit:hover {
-	background-color: #29626D;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .input-group {
-	font-family: 'Roboto';
-	font-size: 16px;
-	opacity: 1;
-	letter-spacing: 0px;
-	margin: 20px 0px;
-	height: 48px;
-	border: 1px solid #C8C8C8;
-	border-radius: 4px;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .input-group input {
-	font-family: 'Roboto';
-	font-size: 16px;
-	opacity: 1;
-	letter-spacing: 0px;
-	padding-left: 10px;
-	height: 46px;
+.accept-btn {
+	background:#1D7A8C;
+	color: white;
 	border: none;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .input-group .input-group-text {
-	margin: -1px -1px -1px 0;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .checkbox-content {
-	display: flex;
-	text-align: left;
-	margin: 20px 0px;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .checkbox-content .checkbox {
-	width: 20px;
-	height: 20px;
-	margin-top: 2px;
-}
-
-.modal .modal-dialog .modal-content .modal-body .register-inputs .checkbox-content label {
+	border-radius: 25px;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+  }
+  .haspet{
+	margin-top: 4px;
+	font-size: 16px;
+	margin-left: 20px;
+	color: #4F4F4F;  
+  }
+  .tags{
 	height: 20px;
 	font-family: 'Roboto';
 	font-size: 16px;
 	color: #4F4F4F;
 	padding-left: 10px;
-}
+  }
 
-.modal .modal-dialog .modal-content .modal-body .register-inputs .btn-login {
+  /*loader*/
+  
+/* Absolute Center Spinner */
+.loading {
+	position: fixed;
+	z-index: 999;
+	height: 2em;
+	width: 2em;
+	overflow: show;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+  }
+  
+  /* Transparent Overlay */
+  .loading:before {
+	content: '';
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100%;
-	height: 50px;
-	font-family: 'Roboto';
-	font-size: 18px;
-	font-weight: bold;
-	color: #FFFFFF;
-	text-align: center;
-	background: #1D7A8C;
-	border: 1px solid #1D7A8C;
-	border-radius: 25px;
-	margin-bottom: 20px;
-}*/
+	height: 100%;
+	  background: radial-gradient(rgba(20, 20, 20,.8), rgba(0, 0, 0, .8));
+  
+	background: -webkit-radial-gradient(rgba(20, 20, 20,.8), rgba(0, 0, 0,.8));
+  }
+  
+  /* :not(:required) hides these rules from IE9 and below */
+  .loading:not(:required) {
+	/* hide "loading..." text */
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+  }
+  
+  .loading:not(:required):after {
+	content: '';
+	display: block;
+	font-size: 10px;
+	width: 1em;
+	height: 1em;
+	margin-top: -0.5em;
+	-webkit-animation: spinner 150ms infinite linear;
+	-moz-animation: spinner 150ms infinite linear;
+	-ms-animation: spinner 150ms infinite linear;
+	-o-animation: spinner 150ms infinite linear;
+	animation: spinner 150ms infinite linear;
+	border-radius: 0.5em;
+	-webkit-box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
+  }
+  
+  /* Animation */
+  
+  @-webkit-keyframes spinner {
+	0% {
+	  -webkit-transform: rotate(0deg);
+	  -moz-transform: rotate(0deg);
+	  -ms-transform: rotate(0deg);
+	  -o-transform: rotate(0deg);
+	  transform: rotate(0deg);
+	}
+	100% {
+	  -webkit-transform: rotate(360deg);
+	  -moz-transform: rotate(360deg);
+	  -ms-transform: rotate(360deg);
+	  -o-transform: rotate(360deg);
+	  transform: rotate(360deg);
+	}
+  }
+  @-moz-keyframes spinner {
+	0% {
+	  -webkit-transform: rotate(0deg);
+	  -moz-transform: rotate(0deg);
+	  -ms-transform: rotate(0deg);
+	  -o-transform: rotate(0deg);
+	  transform: rotate(0deg);
+	}
+	100% {
+	  -webkit-transform: rotate(360deg);
+	  -moz-transform: rotate(360deg);
+	  -ms-transform: rotate(360deg);
+	  -o-transform: rotate(360deg);
+	  transform: rotate(360deg);
+	}
+  }
+  @-o-keyframes spinner {
+	0% {
+	  -webkit-transform: rotate(0deg);
+	  -moz-transform: rotate(0deg);
+	  -ms-transform: rotate(0deg);
+	  -o-transform: rotate(0deg);
+	  transform: rotate(0deg);
+	}
+	100% {
+	  -webkit-transform: rotate(360deg);
+	  -moz-transform: rotate(360deg);
+	  -ms-transform: rotate(360deg);
+	  -o-transform: rotate(360deg);
+	  transform: rotate(360deg);
+	}
+  }
+  @keyframes spinner {
+	0% {
+	  -webkit-transform: rotate(0deg);
+	  -moz-transform: rotate(0deg);
+	  -ms-transform: rotate(0deg);
+	  -o-transform: rotate(0deg);
+	  transform: rotate(0deg);
+	}
+	100% {
+	  -webkit-transform: rotate(360deg);
+	  -moz-transform: rotate(360deg);
+	  -ms-transform: rotate(360deg);
+	  -o-transform: rotate(360deg);
+	  transform: rotate(360deg);
+	}
+  }
+  /*loader end*/

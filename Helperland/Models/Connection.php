@@ -73,7 +73,7 @@ class Helperland
     }
     function addresslist($zipcode,$userid)
     {
-        $sql = "SELECT * FROM useraddress WHERE  PostalCode = '$zipcode' AND  UserId ='$userid' ";
+        $sql = "SELECT * FROM useraddress WHERE  PostalCode = '$zipcode' AND  UserId ='$userid' AND IsDeleted=0 ";
         $stmt =  $this->conn->prepare($sql);
         $stmt->execute();
         $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -255,6 +255,111 @@ class Helperland
                     WHERE Email = '$email'";
         $statement = $this->conn->prepare($sql_qry);
         $statement->execute();
+    }
+    public function updatemydetails($array)
+    {
+        $sql_qry = "UPDATE user
+                    SET FirstName = :FirstName, LastName = :LastName , Mobile = :Mobile, DateOfBirth = :DateOfBirth
+                    WHERE UserId = :UserId ";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute($array);
+    }
+    function UserAdresses($userid)
+    {
+        $sql = "SELECT * FROM useraddress WHERE UserId ='$userid' AND IsDeleted=0 ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    function deleteaddressesinsettings($id)
+    {
+        $sql_query = "UPDATE useraddress SET IsDeleted =1 WHERE  AddressId = '$id'";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute();  
+    }
+    function getAddressbyId($id)
+    {
+        $sql = "SELECT * FROM useraddress WHERE AddressId = '$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row; 
+    }
+    function editadd($array,$edittype)
+    {
+        if($edittype==0)
+        {
+            $sql_query = "INSERT INTO useraddress(UserId,AddressLine1, AddressLine2, City, PostalCode, Mobile)
+            VALUES (:UserId,:AddressLine1, :AddressLine2, :City, :PostalCode, :Mobile)";
+            $statement= $this->conn->prepare($sql_query);
+            $statement->execute($array);
+        }
+        else
+        {
+            $sql_query = "UPDATE useraddress
+                    SET AddressLine1 = :AddressLine1, AddressLine2 = :AddressLine2 , City = :City, PostalCode = :PostalCode, Mobile = :Mobile
+                    WHERE AddressId = :AddressId ";
+            $statement = $this->conn->prepare($sql_query);
+            $statement->execute($array);
+        }
+        
+    }
+    function newservicesrequests($id)
+    {
+        $sql = "SELECT * FROM servicerequest WHERE SPAcceptedDate IS NULL AND  Status=1  AND (ServiceProviderId IS NULL OR ServiceProviderId='$id') ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;  
+    }
+    function upcoming($id)
+    {
+        $sql = "SELECT * FROM servicerequest WHERE SPAcceptedDate IS NOT NULL AND  Status=1 AND  ServiceProviderId='$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    function acceptrequest($array)
+    {
+        $sql_query = "UPDATE servicerequest
+                    SET ServiceProviderId = :ServiceProviderId, SPAcceptedDate = :SPAcceptedDate 
+                    WHERE ServiceRequestId = :ServiceRequestId ";
+        $statement = $this->conn->prepare($sql_query);
+        $statement->execute($array);
+    }
+    function getSPScheduledetail($id)
+    {
+        $sql = "SELECT * FROM servicerequest WHERE ServiceProviderId='$id' ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    function cancelrequest($id)
+    {
+        $sql_query = "UPDATE servicerequest
+                      SET ServiceProviderId=NULL, SPAcceptedDate=NULL
+                      WHERE ServiceRequestId = '$id' ";
+        $statement = $this->conn->prepare($sql_query);
+        $statement->execute();  
+    }
+    function completerequest($id)
+    {
+        $sql_query = "UPDATE servicerequest
+                      SET Status=2
+                      WHERE ServiceRequestId = '$id' ";
+        $statement = $this->conn->prepare($sql_query);
+        $statement->execute();
+    }
+    function sphistory($id)
+    {
+        $sql = "SELECT * FROM servicerequest WHERE ServiceProviderId = '$id' AND Status=2";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row; 
     }
 }
 ?>

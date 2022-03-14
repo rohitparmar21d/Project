@@ -45,5 +45,25 @@ $(document).ready(function () {
         });
          
 
+        $(".logout").click(function (e) { 
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/Helperland/?controller=helperland&function=logout",
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Logged Out',
+                        showConfirmButton: false,
+                        timer: 1500
+                        }).then((result) => {
+                            window.location.href = "http://localhost/Helperland/";
+                         });
+                    
+                }
+            });
+            
+        });
 
 });

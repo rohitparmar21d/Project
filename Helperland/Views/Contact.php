@@ -52,7 +52,7 @@ $base_url = "http://localhost/Helperland/";
     <section class="contactus">
         <div class="container forms">
             <h3 class="gettouch">Get In Touch With US</h3>
-            <form class="cntfm" method="POST" action=<?= $base_url."./?controller=Helperland&function=cSignup"?>>
+            <form class="cntfm" method="POST" action=<?= $base_url."./?controller=Helperland&function=ContactUs"?>>
               <?php if(isset($_SESSION['message'])){ ?>
                 <div class="form-row mb-3">
                     <p class="text-center bg-success text-white px-4 py-2 mx-auto my-auto">

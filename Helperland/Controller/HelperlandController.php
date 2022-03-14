@@ -184,7 +184,7 @@ class HelperlandController
         if (isset($_POST))
         {
             $customer = "http://localhost/Helperland/Customer";
-            $sp = "http://localhost/Helperland/upcoming_service";
+            $sp = "http://localhost/Helperland/SP";
             if(($_POST['Email'] == "") || ($_POST['Password'] == "")){
                 
                 $base_url ="http://localhost/Helperland/#LoginModal'";
@@ -591,7 +591,7 @@ class HelperlandController
                         <label class="subtext">Friendly</label>
                     </div>
                     <div class="col-sm-7">
-                        <div class="rateyo friendly" id= ""  data-rateyo-rating="<?php if($rt!=NULL){ echo $rt['Friendly']; } else{ echo 0; } ?>"></div>
+                        <div class="rateyo friendly r1" id= ""  data-rateyo-rating="<?php if($rt!=NULL){ echo $rt['Friendly']; } else{ echo 0; } ?>"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -613,8 +613,8 @@ class HelperlandController
         <div class="modal-footer rateft">
             <button name="submit" id="<?php echo $_POST['reqId'] ?>" class="btn btn-ratesp-submit">Submit</button>
         </div> 
-
-    <?php }
+        <?php 
+    }
 
     public function reschedule()
     {
@@ -710,7 +710,7 @@ class HelperlandController
                     <div><span class="service-detail">Comments: </span></div>
                     <div class="service-detail-text"><span> <?php echo $SR['Comments']; ?> </span></div>
                 </div>
-                <div class="row"> <?php if($SR['HasPets']){ ?>
+                <div class="row"> <?php if(!$SR['HasPets']){ ?>
                     <div><span><i class="fas fa-times-circle"></i> </span></div>
                     <div class="service-detail-text"><span> I don't have pets at home</span></div><?php } ?>
                 </div>
@@ -769,7 +769,375 @@ class HelperlandController
         }
         
     }
+    public function mydetails()
+    {
+        $userdetail = $this->model->getUserbyId($_SESSION['UserId']);
+        ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="text-danger error-message"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="fname">First name</label><br>
+                    <input type="text" class="input" name="fname" placeholder="First name" reqiured value="<?php echo $userdetail['FirstName']; ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="lname">Last name</label><br>
+                    <input type="text" class="input" name="lname" placeholder="Last name" required value="<?php echo $userdetail['LastName']; ?>">
+                </div>
+                <div class="col-md-4">
+                    <label for="email">E-mail address</label><br>
+                    <input type="email" class="input" name="email" placeholder="E-mail address" disabled value="<?php echo $userdetail['Email']; ?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="mobile">Mobile number</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">+49</span>
+                        <input type="text" name="mobile" placeholder="Mobile number" value="<?php echo $userdetail['Mobile'] ?>" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="birthdate">Date of Birth</label><br>
+                    <input class="input-element birthdate" type="date" id="birthdate" name="dob" data placeholder="From Date" value="<?php if(isset($userdetail['DateOfBirth'])){ echo $userdetail['DateOfBirth']; } ?>">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="language">Language</label><br>
+                    <select name="language" id="language" required>
+                        <option value="Gujarati">English</option>
+                        <option value="Maths">Hindi</option>
+                        <option value="Science">Gujarati</option>
+                    </select>
+                </div>
+            </div>
+            <div><button class="details-save">Save</button></div>
+        <?php
+        
+    }
+    public function updatemydetails()
+    {
+        $array = [
+            'FirstName' => $_POST['fname'],
+            'LastName' => $_POST['lname'],
+            'Mobile' => $_POST['mobile'],
+            'DateOfBirth' => $_POST['birthdate'],
+            'UserId'=>$_SESSION['UserId'],
+        ];
+        $this->model->updatemydetails($array);
+    }
+    public function addressesinsettings()
+    {
+        $list = $this->model->UserAdresses($_SESSION['UserId']);
 
+        foreach($list as $Add)
+        {
+            ?>
+            <tr>
+                <td>
+                    <div class="addressline">
+                        <div><b>Address:</b></div>&nbsp;
+                        <div><?php echo $Add['AddressLine1']."  ".$Add['AddressLine2'].", ".$Add['City']."  ".$Add['State']." - ".$Add['PostalCode']." ";  ?></div>
+                    </div>
+                    <div class="addressline">
+                        <div><b>Phone Number:</b></div>&nbsp;
+                        <div><?php echo $Add['Mobile']; ?></div>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div>
+                        <i id="<?php echo $Add['AddressId']; ?>" class="address-edit fas fa-edit"></i>&nbsp;
+                        <i id="<?php echo $Add['AddressId']; ?>" class="fas fa-trash-alt"></i>
+                    </div>
+                </td>
+            </tr>
+            <?php
+        }
+    }
+    public function deleteaddressesinsettings()
+    {
+        $this->model->deleteaddressesinsettings($_POST['AddId']);
+        echo "hhii";
+    }
+    public function addmodal()
+    {
+        if(isset($_POST['Addnum']))
+        {
+            $add=$this->model->getAddressbyId($_POST['Addnum']);
+        }
+        ?>
+        <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Edit Address</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="text-danger err"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="addresslable" for="streetname">Street name</label><br>
+                                <input class="input" type="text" name="streetname" placeholder="Street name" value="<?php if(isset($_POST['Addnum'])){ echo $add['AddressLine2']; } ?>">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="addresslable" for="housenumber">House number</label><br>
+                                <input class="input" type="text" name="housenumber" placeholder="House number" value="<?php if(isset($_POST['Addnum'])){ echo $add['AddressLine1']; } ?>">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="addresslable" for="postalcode">Postal code</label><br>
+                                <input class="input" type="text" name="postal_code" placeholder="360005" value="<?php if(isset($_POST['Addnum'])){ echo $add['PostalCode']; } ?>">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="addresslable" for="city">City</label><br>
+                                <input class="input" type="text" name="city" placeholder="Bonn" value="<?php if(isset($_POST['Addnum'])){ echo $add['City']; } ?>">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="addresslable" for="phonenumber">Phone number</label><br>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1">+49</span>
+                                    <input type="text" id="phonenumber" name="phonenumber" placeholder="9745643546" value="<?php if(isset($_POST['Addnum'])){ echo $add['Mobile']; } ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button name="submit" id="<?php echo $add['AddressId'] ?>" class="btn btn-addresssave">save</button>
+                </div>
+        <?php
+    }
+    public function editadd()
+    {
+        if(isset($_POST['adid']))
+        {
+            $edittype=1;//to update
+            $array = [
+                'AddressLine1' => $_POST['addline1'],
+                'AddressLine2' => $_POST['addline2'],
+                'City' => $_POST['city'],
+                'PostalCode' => $_POST['postalcode'],
+                'Mobile'=>$_POST['mobile'],
+                'AddressId'=>$_POST['adid'],
+            ];
+        }
+        else
+        {
+            $edittype=0;//to insert
+            $array = [
+                'AddressLine1' => $_POST['addline1'],
+                'AddressLine2' => $_POST['addline2'],
+                'City' => $_POST['city'],
+                'PostalCode' => $_POST['postalcode'],
+                'Mobile'=>$_POST['mobile'],
+                'UserId'=>$_SESSION['UserId'],
+            ];
 
+        }
+        
+        $this->model->editadd($array,$edittype);
+    }
+    public function exporthistory()
+    {
+        $list=$this->model->service_history($_SESSION['UserId']);
+        $filename='Service_History.csv';
+        $file = fopen($filename,"w");
+        foreach ($list as $line)
+        {
+            fputcsv($file,$line);
+        }
+        fclose($file);
+
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=".$filename);
+        header("Content-Type: application/csv; "); 
+
+        readfile($filename);
+
+       // deleting file
+       unlink($filename);
+       exit();  
+    }
+    public function newservicesrequests()
+    {
+        $list=$this->model->newservicesrequests($_SESSION['UserId']);
+        function HourMinuteToDecimal($hour_minute) 
+        {
+            $t = explode(':', $hour_minute);
+            return $t[0] * 60 + $t[1];
+        }
+        function DecimalToHoursMins($mins)
+        {
+            $h=(int)($mins/60);
+            $m=round($mins%60);
+            if($h<10){$h="0".$h;}
+            if($m<10){$m="0".$m;}
+            return $h.":".$m;
+        }
+        foreach($list as $rq)
+        {
+            $customer= $this->model->getUserbyId($rq['UserId']);
+            $SRAddress=$this->model->getSRAddbySRId($rq['ServiceRequestId']);
+            $customerAdd=$this->model->getUserAddbyAddId($SRAddress['AddressId']);
+            $dt=substr($rq['ServiceStartDate'],0,10);
+            $tm=substr($rq['ServiceStartDate'],11,5);
+            $totalmins=HourMinuteToDecimal($tm)+ (($rq['ServiceHours']+$rq['ExtraHours'])*60);
+            $totime=DecimalToHoursMins($totalmins);
+            ?>
+            <tr class="t-row" data-toggle="modal" data-target="#servicedetailmodal">
+                <td><p><?php echo $rq['ServiceRequestId']; ?></p></td>
+                <td>
+                    <div class="date"><img src="./assets/Image/calendar2.png"><?php echo $dt; ?></div>
+                    <div><img src="./assets/Image/layer-14.png"><?php echo $tm."-".$totime; ?></div>
+                </td>
+                <td> 
+                    <div><?php echo $customer['FirstName'] ?></div>
+                    <div><img src="./assets/Image/layer-719.png"><?php echo $customerAdd['AddressLine1']."  ".$customerAdd['AddressLine2'].", " ?></div>
+                    <div><?php echo $customerAdd['City']." - ".$customerAdd['PostalCode']; ?></div>
+                </td>
+                <td><p class="euro d-flex justify-content-center">&euro;<?php echo $rq['TotalCost'] ?></p></td>
+                <td><p></p></td>
+                <td ><button id="<?php echo $rq['ServiceRequestId']; ?>"  class="btn accept-btn">Accept</button></td>
+            </tr>
+        <?php   
+        }
+    }
+    public function acceptrequest()
+    {
+        $array = [
+            'ServiceRequestId' => $_POST['reqId'],
+            'ServiceProviderId' => $_SESSION['UserId'],
+            'SPAcceptedDate' => date('Y-m-d H:i:s'),
+        ];
+
+        $this->model->acceptrequest($array);
+        
+        $SR=$this->model->SRByreqId($_POST['reqId']);
+        $SP= $this->model->getUserbyId($SR['ServiceProviderId']);
+        $customer=$this->model->getUserbyId($SR['UserId']);
+        
+        $to_email = $customer['Email'];
+        $subject = "SERVICE REQUEST ACCEPTED";
+        $body = "Your Service Request ID  ".$_POST['reqId']."  Accepted By " .$SP['FirstName']."  ".$SP['LastName'].". Check out your Upcoming Services";
+        $headers = "From: rohit1parmar11@gmail.com";
+        mail($to_email, $subject, $body, $headers);
+
+    }
+    public function upcoming()
+    {
+        $list=$this->model->upcoming($_SESSION['UserId']);
+        function HourMinuteToDecimal($hour_minute) 
+        {
+            $t = explode(':', $hour_minute);
+            return $t[0] * 60 + $t[1];
+        }
+        function DecimalToHoursMins($mins)
+        {
+            $h=(int)($mins/60);
+            $m=round($mins%60);
+            if($h<10){$h="0".$h;}
+            if($m<10){$m="0".$m;}
+            return $h.":".$m;
+        }
+        foreach($list as $rq)
+        {
+            $customer= $this->model->getUserbyId($rq['UserId']);
+            $SRAddress=$this->model->getSRAddbySRId($rq['ServiceRequestId']);
+            $customerAdd=$this->model->getUserAddbyAddId($SRAddress['AddressId']);
+            $dt=substr($rq['ServiceStartDate'],0,10);
+            $tm=substr($rq['ServiceStartDate'],11,5);
+            $totalmins=HourMinuteToDecimal($tm)+ (($rq['ServiceHours']+$rq['ExtraHours'])*60);
+            $totime=DecimalToHoursMins($totalmins);
+        ?>
+        <tr class="t-row" data-toggle="modal" data-target="#servicedetailmodal" >
+            <td><p><?php echo $rq['ServiceRequestId']; ?></p></td>
+            <td>
+                <div class="date"><img src="./assets/Image/calendar2.png"><?php echo $dt; ?></div>
+                <div><img src="./assets/Image/layer-14.png"><?php echo $tm."-".$totime; ?></div>
+            </td>
+            <td> 
+                <div><?php echo $customer['FirstName']." ".$customer['LastName'] ?></div>
+                <div><img src="./assets/Image/layer-719.png"><?php echo $customerAdd['AddressLine1']."  ".$customerAdd['AddressLine2'].", " ?></div>
+                <div><?php  echo $customerAdd['City']." - ".$customerAdd['PostalCode']; ?></div>
+            </td>
+            <td><p class="euro d-flex justify-content-center">&euro;<?php echo $rq['TotalCost'] ?></p></td>
+            <td><p></p></td>
+            <td ><button id="<?php echo $rq['ServiceRequestId']; ?>" class="cancel-btn">Cancel</button><button id="<?php echo $rq['ServiceRequestId']; ?>" class="complete-btn">Complete</button>
+        </td>
+        </tr>
+        <?php
+        }
+    }
+    public function cancelrequest()
+    {
+        $SR=$this->model->SRByreqId($_POST['reqId']);
+        $SP= $this->model->getUserbyId($SR['ServiceProviderId']);
+        $customer=$this->model->getUserbyId($SR['UserId']);
+
+        $this->model->cancelrequest($_POST['reqId']);
+
+        $to_email = $customer['Email'];
+        $subject = "Your SERVICE REQUEST is Cancelled";
+        $body = "Your Service Request ID  ".$_POST['reqId']." is Cancelled  By " .$SP['FirstName']."  ".$SP['LastName'].". we'll notify you when other sevice provider  will your request ";
+        $headers = "From: rohit1parmar11@gmail.com";
+        mail($to_email, $subject, $body, $headers);
+        
+    } 
+    public function completerequest()
+    {
+        $this->model->completerequest($_POST['reqId']);
+    }
+    public function sphistory()
+    {
+        $list=$this->model->sphistory($_SESSION['UserId']);
+        function HourMinuteToDecimal($hour_minute) 
+        {
+            $t = explode(':', $hour_minute);
+            return $t[0] * 60 + $t[1];
+        }
+        function DecimalToHoursMins($mins)
+        {
+            $h=(int)($mins/60);
+            $m=round($mins%60);
+            if($h<10){$h="0".$h;}
+            if($m<10){$m="0".$m;}
+            return $h.":".$m;
+        }
+        foreach($list as $history)
+        {
+            $customer= $this->model->getUserbyId($history['UserId']);
+            $SRAddress=$this->model->getSRAddbySRId($history['ServiceRequestId']);
+            $customerAdd=$this->model->getUserAddbyAddId($SRAddress['AddressId']);
+            $dt=substr($history['ServiceStartDate'],0,10);
+            $tm=substr($history['ServiceStartDate'],11,5);
+            $totalmins=HourMinuteToDecimal($tm)+ (($history['ServiceHours']+$history['ExtraHours'])*60);
+            $totime=DecimalToHoursMins($totalmins);
+        ?>
+            <tr class="t-row">
+                <td><?php echo $history['ServiceRequestId'] ?></td>
+                <td>
+                    <div class="date"><img src="./assets/Image/calendar2.png"><?php echo $dt; ?></div>
+                    <div><?php echo $tm."-".$totime; ?></div>
+                </td>
+                <td>
+                    <div><?php echo $customer['FirstName']." ".$customer['LastName'] ?></div>
+                    <div><img src="./assets/Image/layer-719.png"><?php echo $customerAdd['AddressLine1']."  ".$customerAdd['AddressLine2'].", " ?></div>
+                    <div><?php  echo $customerAdd['City']." - ".$customerAdd['PostalCode']; ?></div> 
+                </td>
+            </tr>
+        <?php
+        }
+    }
 }
 ?>

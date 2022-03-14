@@ -15,7 +15,7 @@
             <div class="collapse navbar-collapse float-right" id="navbarNavDropdown">
                 <ul class="navbar-nav ">
                     <li class="nav-item link1">
-                        <a class="nav-link box-5" id="box-1" href="BookService.php" title="Book a Cleaner">Book a
+                        <a class="nav-link box-5" id="box-1" href="<?= $base_url."./?controller=Helperland&function=gotobookservicepage"?>" title="Book a Cleaner">Book a
                             Cleaner </a>
                         <a class="nav-link box-5" href="Price.php" title="Prices">Prices</a>
                         <a class="nav-link box-5" href="OurGuaruntee.php" title="Our Guranteee">Our Guaruntee</a>
@@ -48,7 +48,7 @@
         </nav>
 
     <?php   } ?>
-    <?php if (isset($_SESSION['loedin'])) { ?>
+    <?php if (isset($_SESSION['loggedin'])) { ?>
         <div class="header-navigationbar">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <a class="navbar-brand"><img src="assets/image/white-logo-transparent-background.png"></a>
@@ -60,14 +60,18 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item booked">
-                            <a class="nav-link booknow" href="BookService.php">Book now</a>
+                            <a class="nav-link booknow" href="<?= $base_url."./?controller=Helperland&function=gotobookservicepage"?>">Book now</a>
                         </li>
                         <li class="nav-item prices">
                             <a class="nav-link item1" href="./Price.php">Prices & services</a>
                         </li>
                         <li class="nav-item wbg">
                             <a class="nav-link warrenty" href="#">Warranty</a>
+                        </li> 
+                        <li class="nav-item wbg"> 
                             <a class="nav-link blog" href="#">Blog</a>
+                        </li> 
+                        <li class="nav-item wbg">
                             <a class="nav-link Contact" href="./Contact.php">Contact</a>
                         </li>
                         <li class="nav-item dropdown notification">
@@ -89,12 +93,12 @@
                                 <img src="assets/image/admin-user.png">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-item" >Welcome,<br><b><?php echo $_SESSION["name"]; ?></b></div>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">User Profile</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Setting</a>
-                                <div class="dropdown-divider"></div>
                                 <form method="POST" action=<?= $base_url."./?controller=helperland&function=Logout"?>>
-                                    <button class="dropdown-item" name="logout" type="submit">Logout</button>
+                                    <button class="dropdown-item logout" name="logout" type="submit">Logout</button>
                                 </form>
                             </div>
                         </li>
@@ -172,11 +176,11 @@
                         </li>
                         <li class="nav-item">
                         <form method="POST" action=<?= $base_url."./?controller=helperland&function=Logout"?>>
-                                    <button class="dropdown-item" name="logout" type="submit">Logout</button>
+                                    <button class="dropdown-item logout" name="logout" type="submit">Logout</button>
                         </form>
                         </li>
                         <li class="nav-item newnav">
-                            <a href="#" class="nav-link ">
+                            <a href="<?= $base_url."./?controller=Helperland&function=gotobookservicepage"?>" class="nav-link ">
                                 Book now
                             </a>
                         </li>

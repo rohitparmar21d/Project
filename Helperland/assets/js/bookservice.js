@@ -57,8 +57,8 @@ $(document).ready(function(){
         }
      });
      $(".continue-tab-2").click(function () { 
-         alert(extraserv);
-        // switchtab("SchedulePlan","YourDetails");
+        
+        switchtab("SchedulePlan","YourDetails");
         comments = $(".service-comment").val();
         
     });
