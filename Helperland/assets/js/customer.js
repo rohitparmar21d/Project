@@ -19,6 +19,26 @@ $(document).ready(function () {
             success: function (response) 
             {
                    $(".history").html(response);
+                   $('#history').DataTable({
+                     paging: true,
+                     "pagingType": "full_numbers",
+                     // bFilter: false,
+                    ordering: true,
+                    searching: false,
+                    info: false,
+                    // "columnDefs": [
+                    //     { "orderable": false, "targets": 1 },
+                    //     { "orderable": false, "targets": 2 },
+                    //     { "orderable": false, "targets": 4 },
+                    //     { "orderable": false, "targets": 7 }
+                    // ],
+                    // "oLanguage": {
+                    //     "sInfo": "Total Records: TOTAL"
+                    // },
+                    "dom": '<"top">rt<"bottom"lip><"clear">',
+                     responsive: true,
+                    "order": []
+                   });
                    $(".rateyo").rateYo({
                     starWidth: "20px",
                     readOnly: true
@@ -37,6 +57,26 @@ $(document).ready(function () {
         success: function (response) 
         {
                $(".dboard").html(response);
+               $('#dboard').DataTable({
+                paging: true,
+                "pagingType": "full_numbers",
+                // bFilter: false,
+               ordering: true,
+               searching: false,
+               info: false,
+               // "columnDefs": [
+               //     { "orderable": false, "targets": 1 },
+               //     { "orderable": false, "targets": 2 },
+               //     { "orderable": false, "targets": 4 },
+               //     { "orderable": false, "targets": 7 }
+               // ],
+               // "oLanguage": {
+               //     "sInfo": "Total Records: TOTAL"
+               // },
+               "dom": '<"top">rt<"bottom"lip><"clear">',
+                responsive: true,
+               "order": []
+               });
                $(".rateyo").rateYo({
                 starWidth: "20px",
                 readOnly: true
@@ -505,27 +545,6 @@ $(document).ready(function () {
                  });
             }
         });
-   });
-
-   $("#export").click(function () { 
-       $.ajax({
-           type: "POST",
-           url: base_url +"?controller=Helperland&function=exporthistory",
-           success: function (response) {
-               $(".serhist").html(response);
-            // if(response)
-            // {
-            //     Swal.fire({
-            //         icon: 'success',
-            //         title: 'Exported ',
-            //         showConfirmButton: false,
-            //         timer: 1500
-            //         })
-            // }
-               
-           }
-       });
-       
    });
 });
 

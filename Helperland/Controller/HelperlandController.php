@@ -33,7 +33,6 @@ class HelperlandController
             echo 'Error Occurring in Data';
         }
     }
-
     public function cSignup()
     {
         if (isset($_POST))
@@ -69,6 +68,9 @@ class HelperlandController
                 'Password' =>$_POST['Password'],
                 'Mobile' => $_POST['Mobile'],
                 'UserTypeId' => 1,
+                'IsApproved' => 1,
+                'IsActive' =>1,
+                'CreatedDate' =>date('Y-m-d H:i:s')
             ];
             $this->model->Signup('user', $array);
             unset($_SESSION['message']);  
@@ -115,6 +117,9 @@ class HelperlandController
                 'Password' =>$_POST['Password'],
                 'Mobile' => $_POST['Mobile'],
                 'UserTypeId' => 2,
+                'IsApproved' => 0,
+                'IsActive' => 0,
+                'CreatedDate' =>date('Y-m-d H:i:s')
             ];
             $this->model->Signup('user', $array);
             unset($_SESSION['message1']);  
@@ -155,7 +160,6 @@ class HelperlandController
         }  
         
     }
-
     public function resetpass()
     {
         if (isset($_POST))
@@ -185,6 +189,7 @@ class HelperlandController
         {
             $customer = "http://localhost/Helperland/Customer";
             $sp = "http://localhost/Helperland/SP";
+            $admin="http://localhost/Helperland/Admin";
             if(($_POST['Email'] == "") || ($_POST['Password'] == "")){
                 
                 $base_url ="http://localhost/Helperland/#LoginModal'";
@@ -202,20 +207,27 @@ class HelperlandController
                 }
                 else
                 {
-                    $usertypeid = $row['UserTypeId'];
-                    $_SESSION['UserId'] = $row['UserId'];
-                    $_SESSION['name'] = $row['FirstName'];
-                    $_SESSION['loggedin'] = $usertypeid;
-                    if($usertypeid == 1){
-                    
-                    header('Location:' . $customer);
+                    if($row['IsApproved']==1)
+                    {
+                        $usertypeid = $row['UserTypeId'];
+                        $_SESSION['UserId'] = $row['UserId'];
+                        $_SESSION['name'] = $row['FirstName'];
+                        $_SESSION['loggedin'] = $usertypeid;
+                        if($usertypeid == 1){
+                             header('Location:' . $customer);
+                        }
+                        if($usertypeid == 2){
+                            header('Location:' . $sp);
+                        }
+                        if($usertypeid == 3){
+                            header('Location:' . $admin);
+                        }
                     }
-                    if($usertypeid == 2){
-                    
-                    header('Location:' . $sp);
-                    }
-                    else{
-                    echo "Admin";
+                    else
+                    {
+                        $_SESSION['login_wrong']="2";
+                        $base_url ="http://localhost/Helperland";
+                        header('Location:' . $base_url);
                     }
                 }
                 
@@ -615,7 +627,6 @@ class HelperlandController
         </div> 
         <?php 
     }
-
     public function reschedule()
     {
        $datetime=$_POST['rescheduledate']." ".$_POST['rescheduletime'];
@@ -950,12 +961,25 @@ class HelperlandController
     }
     public function exporthistory()
     {
-        $list=$this->model->service_history($_SESSION['UserId']);
-        $filename='Service_History.csv';
+        $userid = $_SESSION['UserId'];
+        $list = $this->model->export_service_history($userid);
+        $haspetArray = [0 => 'No', 1 => 'Yes'];
+        $statusArray = [1 => 'Pending', 2 => 'Completed', 3 => 'Cancelled'];
+
+        $filename = 'Service_History.csv';
         $file = fopen($filename,"w");
+
+        $fields = array('ServiceRequest Id', 'ServiceProvider Name', 'Service Date-Time', 'Service Rate(/hour)', 'Service Hours', 'ExtraService Hours', 'HasPets', 'SubTotal', 'Discount', 'TotalCost', 'Status');
+        fputcsv($file, $fields);
+
         foreach ($list as $line)
         {
-            fputcsv($file,$line);
+            $csvHasPets = $haspetArray[$line['HasPets']];
+            $csvStatus = $statusArray[$line['Status']];
+            $line['HasPets'] = $csvHasPets;
+            $line['Status'] = $csvStatus;
+
+            fputcsv($file, $line);
         }
         fclose($file);
 
@@ -967,11 +991,78 @@ class HelperlandController
 
        // deleting file
        unlink($filename);
-       exit();  
+       exit();   
+    }
+    public function exporthistory_sp()
+    {
+        $userid = $_SESSION['UserId'];
+        $list = $this->model->export_service_history_sp($userid);
+
+        $filename = 'Service_History.csv';
+        $file = fopen($filename,"w");
+
+        $fields = array('ServiceRequest Id', 'Customer Name', 'Service Date-Time','Service Address');
+        fputcsv($file, $fields);
+
+        foreach ($list as $line)
+        {
+            fputcsv($file, $line);
+        }
+        fclose($file);
+
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=".$filename);
+        header("Content-Type: application/csv; "); 
+
+        readfile($filename);
+
+       // deleting file
+       unlink($filename);
+       exit();   
+    }
+    public function exportuserlist()
+    {
+        $list = $this->model->users();
+        $usertype = [1 => 'Customer', 2 => 'ServiceProvider'];
+        $approve = [0 => 'Approved', 1 => 'Not Approved'];
+        $active = [0 => 'Active', 1 => 'InActive'];
+        $delete = [0 => '-', 1 => 'Deleted'];
+        $gender = [1 => 'Male', 2 => 'Female', 3 => 'Rather Not to Say'];
+
+        $filename = 'Users.csv';
+        $file = fopen($filename,"w");
+
+        $fields = array('User Id', 'User Name', 'Email', 'Mobile', 'UserType', 'Gender', 'DOB', 'ZipCode', 'CreateDate', 'IsApprove', 'IsActive','IsDelete');
+        fputcsv($file, $fields);
+
+        foreach ($list as $line)
+        {
+            $line['UserTypeId'] = $usertype[$line['UserTypeId']];
+            if(isset($line['Gender']))
+            {
+                $line['Gender'] = $gender[$line['Gender']];
+            }
+            $line['IsApproved'] = $approve[$line['IsApproved']];
+            $line['IsActive'] = $active[$line['IsActive']];
+            $line['IsDeleted'] = $delete[$line['IsDeleted']];
+            fputcsv($file, $line);
+        }
+        fclose($file);
+
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=".$filename);
+        header("Content-Type: application/csv; "); 
+
+        readfile($filename);
+
+       // deleting file
+       unlink($filename);
+       exit();   
     }
     public function newservicesrequests()
     {
-        $list=$this->model->newservicesrequests($_SESSION['UserId']);
+        $user= $this->model->getUserbyId($_SESSION['UserId']);
+        $list=$this->model->newservicesrequests($_SESSION['UserId'],$user['ZipCode'],$_POST['pet']);
         function HourMinuteToDecimal($hour_minute) 
         {
             $t = explode(':', $hour_minute);
@@ -1015,24 +1106,56 @@ class HelperlandController
     }
     public function acceptrequest()
     {
-        $array = [
-            'ServiceRequestId' => $_POST['reqId'],
-            'ServiceProviderId' => $_SESSION['UserId'],
-            'SPAcceptedDate' => date('Y-m-d H:i:s'),
-        ];
+        $row = $this->model->fill_selected_pending_request($_POST['reqId']);
 
-        $this->model->acceptrequest($array);
-        
-        $SR=$this->model->SRByreqId($_POST['reqId']);
-        $SP= $this->model->getUserbyId($SR['ServiceProviderId']);
-        $customer=$this->model->getUserbyId($SR['UserId']);
-        
-        $to_email = $customer['Email'];
-        $subject = "SERVICE REQUEST ACCEPTED";
-        $body = "Your Service Request ID  ".$_POST['reqId']."  Accepted By " .$SP['FirstName']."  ".$SP['LastName'].". Check out your Upcoming Services";
-        $headers = "From: rohit1parmar11@gmail.com";
-        mail($to_email, $subject, $body, $headers);
+        $date = substr($row['ServiceStartDate'], 0, 10);
+        $nextdate = date("Y-m-d H-i-s", strtotime($date . '+1 day'));
 
+        $timecomplete = "+" . ($row['ServiceHours'] + $row['ExtraHours']) . " " . "hours";
+        $newserviceenddate = date("Y-m-d H-i-s", strtotime($row['ServiceStartDate'] . $timecomplete));
+
+        $allrequests = $this->model->get_requests_for_that_date($_SESSION['UserId'], $date, $nextdate);
+        $count = true;
+        // print_r($date.$nextdate);
+
+        foreach ($allrequests as $request) {
+            // for old request
+
+            $oldstartdate = date("Y-m-d H-i-s", strtotime($request['ServiceStartDate'] . '-1 hour'));
+            $totaltimeforcompletion = "+" . ($request['ServiceHours'] + $request['ExtraHours'] + 1) . " " . "hours";
+            $oldenddate = date("Y-m-d H-i-s", strtotime($request['ServiceStartDate'] . $totaltimeforcompletion));
+
+            
+            if ($oldstartdate >= $date && $newserviceenddate <= $oldenddate) {
+                global $count;
+                $count = false;
+                break;
+            }
+            
+        }
+        if ($count != false) {
+            $array = [
+                'ServiceRequestId' => $_POST['reqId'],
+                'ServiceProviderId' => $_SESSION['UserId'],
+                'SPAcceptedDate' => date('Y-m-d H:i:s'),
+            ];
+    
+            $this->model->acceptrequest($array);
+            
+            $SR=$this->model->SRByreqId($_POST['reqId']);
+            $SP= $this->model->getUserbyId($SR['ServiceProviderId']);
+            $customer=$this->model->getUserbyId($SR['UserId']);
+            
+            $to_email = $customer['Email'];
+            $subject = "SERVICE REQUEST ACCEPTED";
+            $body = "Your Service Request ID  ".$_POST['reqId']."  Accepted By " .$SP['FirstName']."  ".$SP['LastName'].". Check out your Upcoming Services";
+            $headers = "From: rohit1parmar11@gmail.com";
+            mail($to_email, $subject, $body, $headers);
+        } 
+        else
+        {
+            echo 1;
+        }
     }
     public function upcoming()
     {
@@ -1059,6 +1182,10 @@ class HelperlandController
             $tm=substr($rq['ServiceStartDate'],11,5);
             $totalmins=HourMinuteToDecimal($tm)+ (($rq['ServiceHours']+$rq['ExtraHours'])*60);
             $totime=DecimalToHoursMins($totalmins);
+            $timecomplete = "+".($rq['ServiceHours'] + $rq['ExtraHours'])." "."hours";
+            $previousdate = date('Y-m-d H-i-s', strtotime($rq['ServiceStartDate'] .'-1 day'));
+            $serviceenddate = date("Y-m-d H-i-s", strtotime($rq['ServiceStartDate'] .$timecomplete));
+                        
         ?>
         <tr class="t-row" data-toggle="modal" data-target="#servicedetailmodal" >
             <td><p><?php echo $rq['ServiceRequestId']; ?></p></td>
@@ -1073,7 +1200,12 @@ class HelperlandController
             </td>
             <td><p class="euro d-flex justify-content-center">&euro;<?php echo $rq['TotalCost'] ?></p></td>
             <td><p></p></td>
-            <td ><button id="<?php echo $rq['ServiceRequestId']; ?>" class="cancel-btn">Cancel</button><button id="<?php echo $rq['ServiceRequestId']; ?>" class="complete-btn">Complete</button>
+            <td >
+                <?php if($serviceenddate < date('Y-m-d H-i-s')) { ?>
+                    <button id="<?php echo $rq['ServiceRequestId']; ?>" class="complete-btn">Complete</button>
+                    <?php } if($previousdate > date('Y-m-d H-i-s')) { ?>
+                    <button id="<?php echo $rq['ServiceRequestId']; ?>" class="cancel-btn">Cancel</button>
+                    <?php  } ?>
         </td>
         </tr>
         <?php
@@ -1081,22 +1213,37 @@ class HelperlandController
     }
     public function cancelrequest()
     {
+        $row = $this->model->fill_selected_pending_request($_POST['reqId']);
+        $previousdate = date('Y-m-d H-i-s', strtotime($row['ServiceStartDate'] .'-1 day'));
         $SR=$this->model->SRByreqId($_POST['reqId']);
         $SP= $this->model->getUserbyId($SR['ServiceProviderId']);
         $customer=$this->model->getUserbyId($SR['UserId']);
 
-        $this->model->cancelrequest($_POST['reqId']);
+        if($previousdate > date('Y-m-d H-i-s'))
+        {
+            $this->model->cancelrequest($_POST['reqId']);
 
-        $to_email = $customer['Email'];
-        $subject = "Your SERVICE REQUEST is Cancelled";
-        $body = "Your Service Request ID  ".$_POST['reqId']." is Cancelled  By " .$SP['FirstName']."  ".$SP['LastName'].". we'll notify you when other sevice provider  will your request ";
-        $headers = "From: rohit1parmar11@gmail.com";
-        mail($to_email, $subject, $body, $headers);
-        
+            $to_email = $customer['Email'];
+            $subject = "Your SERVICE REQUEST is Cancelled";
+            $body = "Your Service Request ID  ".$_POST['reqId']." is Cancelled  By " .$SP['FirstName']."  ".$SP['LastName'].". we'll notify you when other sevice provider  will your request ";
+            $headers = "From: rohit1parmar11@gmail.com";
+            mail($to_email, $subject, $body, $headers);
+        }
+        else
+        {
+            echo 1;
+        }
     } 
     public function completerequest()
     {
-        $this->model->completerequest($_POST['reqId']);
+        $row = $this->model->fill_selected_pending_request($_POST['reqId']);
+        $timecomplete = "+".($row['ServiceHours'] + $row['ExtraHours'])." "."hours";
+        $serviceenddate = date("Y-m-d H-i-s", strtotime($row['ServiceStartDate'] .$timecomplete));
+
+        if($serviceenddate < date('Y-m-d H-i-s'))
+        {
+            $this->model->completerequest($_POST['reqId']);
+        }
     }
     public function sphistory()
     {
@@ -1138,6 +1285,531 @@ class HelperlandController
             </tr>
         <?php
         }
+    }
+    public function sprate()
+    {
+        $rates=$this->model->rate($_SESSION['UserId']);
+        function HourMinuteToDecimal($hour_minute) 
+        {
+            $t = explode(':', $hour_minute);
+            return $t[0] * 60 + $t[1];
+        }
+        function DecimalToHoursMins($mins)
+        {
+            $h=(int)($mins/60);
+            $m=round($mins%60);
+            if($h<10){$h="0".$h;}
+            if($m<10){$m="0".$m;}
+            return $h.":".$m;
+        }
+        foreach($rates as $rate)
+        {
+            $customer = $this->model->getUserbyId($rate['RatingFrom']);
+            $rq=$this->model->SRByreqId($rate['ServiceRequestId']);
+            $dt=substr($rq['ServiceStartDate'],0,10);
+            $tm=substr($rq['ServiceStartDate'],11,5);
+            $totalmins=HourMinuteToDecimal($tm)+ (($rq['ServiceHours']+$rq['ExtraHours'])*60);
+            $totime=DecimalToHoursMins($totalmins);
+            ?>
+            <tr class="mt-20 pt-20">
+                <td>
+                    <div class="rate-detail">
+                        <div class="rate-content">
+                            <div><?php echo $rate['ServiceRequestId']; ?></div>
+                            <div><b><?php echo $customer['FirstName'] . " " . $customer['LastName']; ?></b></div>
+                        </div>
+                        <div class="rate-content">
+                            <div>
+                                <img src="./assets/Image/layer-712.png" alt="clock">&nbsp; <span><?php echo $dt; ?></span><br>
+                                <img src="./assets/Image/calendar2.png" alt="calendar">&nbsp; <span><?php echo $tm."-".$totime; ?></span>
+                            </div>
+                            </div>
+                                <div class="rate-content">
+                                    <div><b>Ratings</b></div>
+                                    <div class="rate-detail">
+                                        <div class="rateyo pe-0 ps-0" id="rating" data-rateyo-rating="<?php echo $rate['Ratings']; ?>"></div>
+                                        <div>
+                                        <?php
+                                                if(0 < $rate['Ratings'] && $rate['Ratings'] <= 1)
+                                                {
+                                                    echo 'bad';
+                                                }
+                                                else if(1 < $rate['Ratings'] && $rate['Ratings'] <= 2)
+                                                {
+                                                    echo 'not bad';
+                                                }
+                                                else if(2 < $rate['Ratings'] && $rate['Ratings'] <= 3)
+                                                {
+                                                    echo 'good';
+                                                }
+                                                else if(3 < $rate['Ratings'] && $rate['Ratings'] <= 4)
+                                                {
+                                                    echo 'very good';
+                                                }
+                                                else if(4 < $rate['Ratings'] && $rate['Ratings'] <= 5)
+                                                {
+                                                    echo 'excellent';
+                                                }
+                                                ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <div><b>Customer Comment</b></div>
+                                <div><?php echo $rate['Comments']; ?></div>
+                            </div>
+                        </td>
+                    </tr>
+            <?php
+        }
+    }
+    public function blockcard()
+    {
+        $data = $this->model->blockcard($_SESSION['UserId']);
+        foreach($data as $rq)
+        {
+            $customer = $this->model->getUserbyId($rq['UserId']);
+            ?>
+            <div class="card">
+                <div class="customer-image"><img src="./assets/Image/forma-1-copy-19.png" alt=""></div>
+                <div class="customer-name"><b> <?php echo $customer['FirstName'] . " " . $customer['LastName']; ?> </b></div>
+                <div class="block-unblock-button">
+                    <?php
+                    $checkblockunblock = $this->model->checkblocked($rq['UserId'], $_SESSION['UserId']);
+                    if ($checkblockunblock == null) {
+                    ?>
+                        <button class="block-button" id="<?php echo $rq['UserId']; ?>">Block</button>
+                    <?php
+                    } else {
+                    ?>
+                        <button class="unblock-button" id="<?php echo $rq['UserId']; ?>">Unblock</button>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            <?php
+        }
+    }
+    public function blockcustomer()
+    {
+        $this->model->blockcustomer($_POST['userid'], $_SESSION['UserId']);
+    }
+    public function unblockcustomer()
+    {
+        $this->model->unblockcustomer($_POST['userid'], $_SESSION['UserId']);
+    }
+    public function spdetails()
+    {
+        $SP = $this->model->getUserbyId($_SESSION['UserId']);
+        $SPAdd=$this->model->UserAddress($_SESSION['UserId']);
+        ?>
+         <div class="d-flex align-items-center pb-2">
+            <div><b>Account Status:</b></div>
+            <div class="ps-2 <?php if($SP['IsActive'] == 1) { echo 'active'; } else { echo ' notactive'; } ?>"><?php if($SP['IsActive'] == 1) { echo 'Active'; } else { echo 'Not Active'; } ?></div>
+        </div>
+        <div class="row">
+            <div class="sp-basic col-md-12">
+                <b>Basic details</b>
+                <hr class="sp-breakline">
+                <div class="sp-avatar"><img src="<?php if($SP['UserProfilePicture'] != null) { echo $SP['UserProfilePicture']; } ?>" alt=""></div>
+            </div>
+        </div>
+        <div class="error-line row">
+            <div class="col-md-12"><label class="label text-danger sp-error-message"></label></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="label" for="spfname">First name</label><br>
+                <input type="text" class="input" name="spfname" placeholder="First name" required value="<?php echo $SP['FirstName'] ?>">
+            </div>
+            <div class="col-md-4">
+                <label class="label" for="splname">Last name</label><br>
+                <input type="text" class="input" name="splname" placeholder="Last name" required value="<?php echo $SP['LastName'] ?>">
+            </div>
+            <div class="col-md-4">
+                <label class="label" for="spemail">E-mail address</label><br>
+                <input type="email" class="input" name="spemail" disabled placeholder="E-mail address" required value="<?php echo $SP['Email'] ?>">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="label" for="spmobile">Mobile number</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">+49</span>
+                    <input type="text" name="spmobile" placeholder="Mobile number" value="<?php echo $SP['Mobile'] ?>" required>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="label" for="spdob">Date of Birth</label><br>
+                <input type="date" class="input" name="spdob" required value="<?php echo $SP['DateOfBirth'] ?>">
+            </div>
+            <div class="col-md-4">
+                <label class="label" for="spnationality">Nationality</label><br>
+                <select name="spnationality" id="spnationality">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1" <?php echo ($SP['NationalityId']==1)?'selected="selected"':'' ?>>German</option>
+                    <option value="2" <?php echo ($SP['NationalityId']==2)?'selected="selected"':'' ?>>Italian</option>
+                    <option value="3" <?php echo ($SP['NationalityId']==3)?'selected="selected"':'' ?>>British</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="label" for="splanguage">Language</label><br>
+                <select name="splanguage" id="splanguage" required>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1" <?php echo ($SP['LanguageId']==1)?'selected="selected"':'' ?>>German</option>
+                    <option value="2" <?php echo ($SP['LanguageId']==2)?'selected="selected"':'' ?>>English</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <label class="label" for="spgender">Gender</label><br>
+            <div class="gender col-md-6">
+                <div>
+                    <input type="radio" id="male" name="spgender" value="1" <?php echo ($SP['Gender']==1)?'checked':'' ?>>
+                    <label for="male">Male</label>
+                </div>
+                <div>
+                    <input type="radio" id="female" name="spgender" value="2" <?php echo ($SP['Gender']==2)?'checked':'' ?>>
+                    <label for="female">Female</label>
+                </div>
+                <div>
+                    <input type="radio" id="notsay" name="spgender" value="0" <?php echo ($SP['Gender']==null)?'checked':'' ?>>
+                    <label for="notsay">Rather not to say</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="label" for="avatar">Select Avatar</label><br>
+                <div class="choose-avatar">
+                    <div class="avatar-image"><img id="avatar1" <?php if($SP['UserProfilePicture'] == "./assets/Image/avatar-car.png") { echo 'class="active"'; } ?> src="./assets/Image/avatar-car.png" alt=""></div>
+                    <div class="avatar-image"><img id="avatar2" <?php if($SP['UserProfilePicture'] == "./assets/Image/avatar-female.png") { echo 'class="active"'; } ?> src="./assets/Image/avatar-female.png" alt=""></div>
+                    <div class="avatar-image"><img id="avatar3" <?php if($SP['UserProfilePicture'] == "./assets/Image/avatar-hat.png") { echo 'class="active"'; } ?> src="./assets/Image/avatar-hat.png" alt=""></div>
+                    <div class="avatar-image"><img id="avatar4" <?php if($SP['UserProfilePicture'] == "./assets/Image/avatar-iron.png") { echo 'class="active"'; } ?> src="./assets/Image/avatar-iron.png" alt=""></div>
+                    <div class="avatar-image"><img id="avatar5" <?php if($SP['UserProfilePicture'] == "./assets/Image/avatar-male.png") { echo 'class="active"'; } ?> src="./assets/Image/avatar-male.png" alt=""></div>
+                    <div class="avatar-image"><img id="avatar6" <?php if($SP['UserProfilePicture'] == "./assets/Image/avatar-ship.png") { echo 'class="active"'; } ?> src="./assets/Image/avatar-ship.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <b>My address</b>
+                <hr class="sp-breakline">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="label" for="spstreetname">Street name</label><br>
+                <input type="text" class="input" name="spstreetname" placeholder="street name" required value="<?php if($SPAdd == null) { echo ''; } else { echo $SPAdd['AddressLine1']; } ?>">
+            </div>
+            <div class="col-md-4">
+                <label class="label" for="sphousenumber">House number</label><br>
+                <input type="text" class="input" name="sphousenumber" placeholder="house number" required value="<?php if($SPAdd == null) { echo ''; } else { echo $SPAdd['AddressLine2']; } ?>">
+            </div>
+            <div class="col-md-4">
+                <label class="label" for="sppostalcode">Postal code</label><br>
+                <input type="email" class="input" name="sppostalcode" placeholder="postalcode" required value="<?php if($SPAdd == null) { echo ''; } else { echo $SPAdd['PostalCode']; } ?>">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="label" for="spcity">City</label><br>
+                <input type="text" class="input" name="spcity" placeholder="city" required value="<?php if($SPAdd == null) { echo ''; } else { echo $SPAdd['City']; } ?>">
+            </div>
+        </div>
+        <div>
+            <button type="submit" id="<?php if($SPAdd == null) { echo ''; } else { echo $SPAdd['AddressId']; } ?>" class="sp-details-save">Save</button>
+        </div>
+        <?php
+    }
+    public function savespdetails()
+    {
+        $userid = $_SESSION['UserId'];
+        $spfname = $_POST['spfname'];
+        $splname = $_POST['splname'];
+        $spmobile = $_POST['spmobile'];
+        $spemail = $_POST['spemail'];
+        $spdob = $_POST['spdob'];
+        $spnationality = $_POST['spnationality'];
+        $splanguage = $_POST['splanguage'];
+        $spgender = $_POST['spgender'];
+        $spstreetname = $_POST['spstreetname'];
+        $sphousenumber = $_POST['sphousenumber'];
+        $sppostalcode = $_POST['sppostalcode'];
+        $spcity = $_POST['spcity'];
+
+        if($_POST['selectedavatar'][0] == 1)
+        {
+            $selectedavatar = "./assets/Image/avatar-car.png";
+        }
+        else if($_POST['selectedavatar'][0] == 2)
+        {
+            $selectedavatar = "./assets/Image/avatar-female.png";
+        }
+        else if($_POST['selectedavatar'][0] == 3)
+        {
+            $selectedavatar = "./assets/Image/avatar-hat.png";
+        }
+        else if($_POST['selectedavatar'][0] == 4)
+        {
+            $selectedavatar = "./assets/Image/avatar-iron.png";
+        }
+        else if($_POST['selectedavatar'][0] == 5)
+        {
+            $selectedavatar = "./assets/Image/avatar-male.png";
+        }
+        else if($_POST['selectedavatar'][0] == 6)
+        {
+            $selectedavatar = "./assets/Image/avatar-ship.png";
+        }
+
+        $array = [
+            'spfname' => $spfname,
+            'splname' => $splname,
+            'spmobile' => $spmobile,
+            'spdob' => $spdob,
+            'spnationality' => $spnationality,
+            'splanguage' => $splanguage,
+            'spgender' => $spgender,
+            'selectedavatar' => $selectedavatar,
+        ];
+        $this->model->update_sp_details('user', $userid, $array);
+
+        if(isset($_POST['selectedaddressid']))
+        {
+            $edit = 1;
+            $array2 = [
+                'AddressId' => $_POST['selectedaddressid'],
+                'AddressLine1' => $spstreetname,
+                'AddressLine2' => $sphousenumber,
+                'PostalCode' => $sppostalcode,
+                'City' => $spcity,
+            ];
+        }
+        else
+        {
+            $edit = 0;
+            $array2 = [
+                'UserId' => $userid,
+                'AddressLine1' => $spstreetname,
+                'AddressLine2' => $sphousenumber,
+                'PostalCode' => $sppostalcode,
+                'City' => $spcity,
+                'Mobile' => $spmobile,
+                'Email' => $spemail,
+            ];
+        }
+        $this->model->insert_update_spaddress('useraddress', $array2, $edit);
+    
+    }
+    public function adminservicesrequests()
+    {
+        $SRs=$this->model->getallservicerequest();
+        function HourMinuteToDecimal($hour_minute) 
+        {
+            $t = explode(':', $hour_minute);
+            return $t[0] * 60 + $t[1];
+        }
+        function DecimalToHoursMins($mins)
+        {
+            $h=(int)($mins/60);
+            $m=round($mins%60);
+            if($h<10){$h="0".$h;}
+            if($m<10){$m="0".$m;}
+            return $h.":".$m;
+        }
+        foreach($SRs as $SR)
+        {
+            $dt=substr($SR['ServiceStartDate'],0,10);
+            $tm=substr($SR['ServiceStartDate'],11,5);
+            $totalmins=HourMinuteToDecimal($tm)+ (($SR['ServiceHours']+$SR['ExtraHours'])*60);
+            $totime=DecimalToHoursMins($totalmins);
+            $SRAdd=$this->model->getSRAddbySRId($SR['ServiceRequestId']);
+            $customer=$this->model->getUserbyId($SR['UserId']);
+            $SP=$this->model->getUserbyId($SR['ServiceProviderId']);
+            $customeraddress=$this->model->getAddressbyId($SRAdd['AddressId']);
+            ?>
+                <tr>
+                    <td><?php echo $SR['ServiceRequestId']; ?></td>
+                    <td>
+                        <div><img src="./assets/Image/calendar2.png"><?php echo $dt; ?></div>
+                        <div><img src="./assets/Image/layer-14.png"><?php echo $tm."-".$totime; ?></div>
+                    </td>
+                    <td>
+                        <div><?php echo $customer['FirstName']." ".$customer['LastName']; ?></div>
+                        <divp><img src="./assets/Image/layer-719.png"><?php echo $customeraddress['AddressLine1'].",".$customeraddress['AddressLine2'].","; ?></divp>
+                        <div><?php echo $customeraddress['City'].",".$customeraddress['PostalCode']."."; ?></div>
+                    </td>
+                    <td><?php if(isset($SR['ServiceProviderId'])){ echo $SP['FirstName']." ".$SP['LastName'];} ?></td>
+                    <td>&euro;<?php echo $SR['TotalCost']; ?></td>
+                    <td class="action">
+                        <?php  
+                         if($SR['Status']==1)
+                         {?>
+                            <button class="btn pending"><b>New</b></button>
+                         <?php
+                         }
+                         elseif($SR['Status']==2)
+                         {?>
+                             <button class="btn complete"><b>Completed</b></button>
+                         <?php
+                         }
+                         elseif($SR['Status']==3)
+                         {?>
+                              <button class="btn cancel"><b>Cancelled</b></button>
+                         <?php
+                         }
+                        ?>
+                    </td>
+                    <td class="action"></td>
+                    <td class="action">
+                        <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+                            <?php if($SR['Status']==1) {  ?>
+                                <a class="dropdown-item editreschedule" id="<?php echo $SR['ServiceRequestId']; ?>" >Edit & Reschedule</a>
+                                <a class="dropdown-item cancelrq" id="<?php echo $SR['ServiceRequestId']; ?>" href="#" >Cancel SR By Customer</a>
+                            <?php }  ?>
+                            <a class="dropdown-item editreschedule" href="#" >Inquiry</a>
+                            <a class="dropdown-item editreschedule" href="#" >History Log</a>
+                            <a class="dropdown-item editreschedule" href="#" >Download Invoice</a>
+                            <a class="dropdown-item editreschedule" href="#" >Other Transactions</a>
+                        </div>
+                    </td>
+                </tr>
+            <?php
+        }
+    }
+    public function usermanagement()
+    {
+        $users=$this->model->usermanagement();
+        function HourMinuteToDecimal($hour_minute) 
+        {
+            $t = explode(':', $hour_minute);
+            return $t[0] * 60 + $t[1];
+        }
+        function DecimalToHoursMins($mins)
+        {
+            $h=(int)($mins/60);
+            $m=round($mins%60);
+            if($h<10){$h="0".$h;}
+            if($m<10){$m="0".$m;}
+            return $h.":".$m;
+        }
+        foreach($users as $user)
+        {
+            ?>
+                <tr>
+                    <td><?php echo $user['FirstName']." ".$user['LastName']; ?></td>
+                    <td></td>
+                    <td><img class="calender" src="./assets/Image/calendar2.png"><?php echo substr($user['CreatedDate'],0,10) ?></td>
+                    <td><?php if($user['UserTypeId']==1){ echo "Customer";} elseif($user['UserTypeId']==2){ echo "Service Provider"; } ?></td>
+                    <td><?php echo $user['Mobile']; ?></td>
+                    <td><?php echo $user['ZipCode']; ?></td>
+                    <td class="action">
+                        <?php 
+                        if($user['IsActive']==0 && $user['IsApproved']==1)
+                        {?>
+                            <button class="btn inactive">Inactive</button>
+                        <?php
+                        }
+                        elseif($user['IsActive']==1 && $user['IsApproved']==1)
+                        {?>
+                            <button class="btn active">Active</button>
+                        <?php
+                        }
+                        elseif($user['IsApproved']==0){
+                        ?>
+                        <button class="btn approve">Not Approved</button>
+                        <?php
+                        }?>
+                    </td>
+                    <td class="action">
+                        <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+                            <?php 
+                                if($user['IsActive']==0 && $user['IsApproved']==1)
+                                {?>
+                                    <a class="dropdown-item letactive" id="<?php echo $user['UserId']; ?>" href="#">Activate</a>
+                                <?php
+                                }
+                                elseif($user['IsActive']==1 && $user['IsApproved']==1)
+                                {?>
+                                    <a class="dropdown-item letdeactive" id="<?php echo $user['UserId']; ?>" href="#">Deactivate</a>
+                                <?php
+                                }
+                            ?>
+                            <?php 
+                                if($user['UserTypeId']==2 && $user['IsApproved']==0)
+                                {?>
+                                <a class="dropdown-item letapprove" id="<?php echo $user['UserId']; ?>" href="#">Approve</a>
+                                <?php
+                                }
+                            ?>
+                        </div>
+                    </td>          
+                </tr>
+            <?php
+        }
+    }
+    public function activeuser()
+    {
+        $this->model->activeuser($_POST['userid']);
+        $user=$this->model->getUserbyId($_POST['userid']);
+
+        $to_email = $user['Email'];
+        $subject = "Account activated";
+        $body = "Your Account with UserId:".$user['UserId']." is Activated by Admin";
+        $headers = "From: rohit1parmar11@gmail.com";
+        mail($to_email, $subject, $body, $headers);
+        
+    }
+    public function deactiveuser()
+    {
+        $this->model->deactiveuser($_POST['userid']);
+        $user=$this->model->getUserbyId($_POST['userid']);
+
+        $to_email = $user['Email'];
+        $subject = "Account deactivated";
+        $body = "Your Account with UserId:".$user['UserId']." is Activated by Admin";
+        $headers = "From: rohit1parmar11@gmail.com";
+        mail($to_email, $subject, $body, $headers);
+    }
+    public function approvesp()
+    {
+        $this->model->approvesp($_POST['userid']);
+        $user=$this->model->getUserbyId($_POST['userid']);
+
+        $to_email = $user['Email'];
+        $subject = "Registration Approved";
+        $body = "Your Registration Request approved with  UserId:".$user['UserId']." by Admin";
+        $headers = "From: rohit1parmar11@gmail.com";
+        mail($to_email, $subject, $body, $headers);
+    }
+    public function cancelfromadmin()
+    {
+        $this->model->cancelfromadmin($_POST['reqid']);
+        $SR=$this->model->SRByreqId($_POST['reqid']);
+
+        if(isset($SR['ServiceProviderId']))
+        {
+            $user=$this->model->getUserbyId($SR['ServiceProviderId']);
+
+            $to_email = $user['Email'];
+            $subject = "Service Cancelled";
+            $body = "The Service (Service RequestId =".$_POST['reqid']." DateTime: ".$SR['ServiceStartDate'].")  Assigned to you is cancelled by Customer";
+            $headers = "From: rohit1parmar11@gmail.com";
+            mail($to_email, $subject, $body, $headers);
+        }
+        
     }
 }
 ?>

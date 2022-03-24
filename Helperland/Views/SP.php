@@ -15,7 +15,7 @@ $base_url = "http://localhost/Helperland/";
         <?php include('./navbar.php'); ?>
     </header>
     <!--Service detail Modal-->
-    <div class="modal fade" id="servicedetailmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="servicedetailmodal_remove" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" id="mod" role="document">
             <div class="modal-content SD">
                 <div class="modal-header">
@@ -79,139 +79,6 @@ $base_url = "http://localhost/Helperland/";
             </div>
         </div>
     </div>
-    <!--reschedule modal-->
-    <!-- <div class="modal fade" id="reschedule_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLongTitle">Reschedule Service Request</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="register-inputs me-0 ms-0">
-                        <label class="cancel-question "><b>Select New Date and Time</b></label>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <input class="input-element rescheduledate" type="date" id="formdate" name="formdate" data placeholder="From Date">                   
-                            </div>
-                            <div class="col-sm-6">
-                                <select name="booktime" class="rescheduletime" id="booktime">
-                                    <option value=0>00:00</option>
-                                    <option value="3:00">3:00 PM</option>
-                                    <option value="4:00">4:00 PM</option>
-                                    <option value="5:00">5:00 PM</option>
-                                    <option value="6:00">6:00 PM</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-update">Update</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!--cancel-->
-    <!-- <div class="modal fade" id="cancel_bookingrequest_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLongTitle"><b>Cancel Service Request</b></h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="register-inputs me-0 ms-0">
-                        <label class="cancel-question temp"><b>Why you want to cancel the service request?</b></label>
-                        <textarea class="why-cancel" name="whycancel"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button name="submit" class="btn btn-cancelnow">Cancel Now</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!--Rate SP-->
-    <!-- <div class="modal fade" id="ratesp_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content ratesp">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLongTitle">
-                        <div class="d-flex align-items-center justify-content-left">
-                            <div>
-                                <img class="round-border" src="./assets/Image/forma-1-copy-19.png" alt="cap">
-                            </div>
-                            <div class="ps-2">
-                                <p class="sp-details">Lyum Watson</p>
-                                <p class="sp-details">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star2.png" alt="star">
-                                    <span>3.67</span>
-                                </p>
-                            </div>
-                        </div>
-                    </h3>y
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="register-inputs me-0 ms-0">
-                        <label class="rate-service-text">Rate your service provider</label>
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <label class="subtext">On time arrival</label>
-                            </div>
-                            <div class="col-sm-7">
-                            <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star2.png" alt="star">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <label class="subtext">Friendly</label>
-                            </div>
-                            <div class="col-sm-7">
-                            <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star2.png" alt="star">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <label class="subtext">Quality of service</label>
-                            </div>
-                            <div class="col-sm-7">
-                            <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star1.png" alt="star">
-                                    <img src="./assets/Image/star2.png" alt="star">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="subtext">Feedback on service provider</label>
-                        </div>
-                        <div class="row me-0 ms-0">
-                            <textarea class="rate-feedback" name="feedback"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button name="submit" class="btn btn-ratesp-submit">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
      <!--section-2-1--> 
      <section class="section-2-1">
@@ -234,20 +101,18 @@ $base_url = "http://localhost/Helperland/";
                     <a class="nav-link" id="v-pills-servicehistory-tab" data-toggle="pill" href="#v-pills-servicehistory" role="tab" aria-controls="v-pills-servicehistory" aria-selected="false">Service History</a>
                     <a class="nav-link" id="v-pills-myratings-tab" data-toggle="pill" href="#v-pills-myratings" role="tab" aria-controls="v-pills-myratings" aria-selected="false">My Ratings</a>
                     <a class="nav-link" id="v-pills-bolckcustomer-tab" data-toggle="pill" href="#v-pills-bolckcustomer" role="tab" aria-controls="v-pills-bolckcustomer" aria-selected="false">Block Customer</a>
-                    <a class="nav-link" id="v-pills-invoices-tab" data-toggle="pill" href="#v-pills-invoices" role="tab" aria-controls="v-pills-invoices" aria-selected="true">Invoices</a>
-                    <a class="nav-link" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</a>
-                    <a class="nav-link" id="v-pills-notification-tab" data-toggle="pill" href="#v-pills-notification" role="tab" aria-controls="v-pills-notification" aria-selected="false">Notifications</a>
-                    
+                    <a class="nav-link" id="v-pills-invoices-tab" data-toggle="pill" href="#v-pills-invoices" role="tab" aria-controls="v-pills-invoices" aria-selected="true" disabled>Invoices</a>
+                    <a class="nav-link" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-notifications" aria-selected="false" disabled>Notifications</a>
                 </div>
             </div>
             <!-- ended nav -->
             <!-- content -->
             <div class="col-9" id="rightside">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade" id="v-pills-newservicerequest" role="tabpanel" aria-labelledby="v-pills-newservicerequest-tab">
+                    <div class="tab-pane fade  show active" id="v-pills-newservicerequest" role="tabpanel" aria-labelledby="v-pills-newservicerequest-tab">
                         <div class="container-fluid row justify-content-right">
                             <div class=" "><span class="serarea">Service Area</span></div>
-                            <select name="serareadropdown" class="serareadropdown" id="serareadropdown">
+                            <select name="serareadropdown" class="serareadropdown" id="serareadropdown" disabled>
                                 <option value=5 >5 KM</option>
                                 <option value="10">10 KM</option>
                                 <option value="15">15 KM</option>
@@ -255,13 +120,13 @@ $base_url = "http://localhost/Helperland/";
                                 <option value="25" selected>25 KM</option>
                             </select>
                             <div class="haspet">
-                                <input type="checkbox" class="checkbox pet">
+                                <input type="checkbox" class="checkbox pet" id="pet">
                                 <label class="checkbox-text" for="pet">Include Pet at home</label>
                             </div>
                         </div>
                         <div class="container-fluid row db" > 
                             <div class="col">
-                                <table  class="table table-hover">
+                                <table  class="table table-hover" id="newrequest">
                                     <thead>
                                         <tr>
                                             <th>Service Id </th>
@@ -298,7 +163,7 @@ $base_url = "http://localhost/Helperland/";
                     <div class="tab-pane fade" id="v-pills-upcomingservices" role="tabpanel" aria-labelledby="v-pills-upcomingservices-tab">
                         <div class="container-fluid row" id="rightsidebar"> 
                             <div class="col" >
-                                <table id="content-table" class="table table-hover">
+                                <table id="upcoming" class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>ServiceId</th>
@@ -332,9 +197,7 @@ $base_url = "http://localhost/Helperland/";
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-serviceschedule" role="tabpanel" aria-labelledby="v-pills-serviceschedule-tab">
-                        nbfgkjs
-                    </div>
+                    <div class="tab-pane fade" id="v-pills-serviceschedule" role="tabpanel" aria-labelledby="v-pills-serviceschedule-tab"> nbfgkjs</div>
                     <div class="tab-pane fade" id="v-pills-servicehistory" role="tabpanel" aria-labelledby="v-pills-servicehistory-tab">
                         <div class="container-fluid row">
                             <div class="mr-auto"><span class="serarea">Payment Status</span></div>
@@ -343,11 +206,13 @@ $base_url = "http://localhost/Helperland/";
                                 <option value="10">Pendimg</option>
                                 <option value="15">Completed</option>>
                             </select>
-                            <a class="btn ml-auto export text-white">Export</a>
+                            <form method="POST" action="http://localhost/Helperland/?controller=Helperland&function=exporthistory_sp">
+                                <button type="submit" class="btn ml-auto export" id="export">Export</button>
+                            </form>
                         </div>
                         <div class="container-fluid row" > 
                             <div class="col">
-                                <table  class="table table-hover">
+                                <table  class="table table-hover" id="sphistory">
                                     <thead>
                                         <tr>
                                             <th>Service Id </th>
@@ -374,11 +239,86 @@ $base_url = "http://localhost/Helperland/";
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-myratings" role="tabpanel" aria-labelledby="v-pills-myratings-tab">.ratings..</div>
-                    <div class="tab-pane fade" id="v-pills-bolckcustomer" role="tabpanel" aria-labelledby="v-pills-bolckcustomer-tab">..block.</div>
-                    <div class="tab-pane fade" id="v-pills-invoices" role="tabpanel" aria-labelledby="v-pills-invoices-tab">.invoice..</div>
-                    <div class="tab-pane fade" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-notifications-tab">..notification.</div>
-                    <div class="tab-pane fade  show active" id="v-pills-notification" role="tabpanel" aria-labelledby="v-pills-notification-tab">
+                    <div class="tab-pane fade sp-ratings-body" id="v-pills-myratings" role="tabpanel" aria-labelledby="v-pills-myratings-tab">
+                        <div class="container-fluid row justify-content-right">
+                            <div class=" "><span class="serarea">Ratings</span></div>
+                            <select name="serareadropdown" class="serareadropdown" id="serareadropdown" disabled>
+                                <option value=5 >5 KM</option>
+                                <option value="10">10 KM</option>
+                                <option value="15">15 KM</option>
+                                <option value="20">20 KM</option>
+                                <option value="25" selected>All</option>
+                            </select>
+                        </div>
+                        <table id="tablerating" class="table display">
+                            <thead class="d-none"><th>details</th></thead>
+                            <tbody class="sprate">
+                                <!-- <tr class="mt-20 pt-20">
+                                    <td>
+                                        <div class="rate-detail">
+                                            <div class="rate-content">
+                                                <div>2323</div>
+                                                <div><b>Rohit Parmar</b></div>
+                                            </div>
+                                            <div class="rate-content">
+                                                <div>
+                                                    <img src="./assets/Image/layer-712.png" alt="clock">&nbsp; <span><b>23/12/2020</b></span><br>
+                                                    <img src="./assets/Image/calendar2.png" alt="calendar">&nbsp; <span> 19:20 to 19:30 </span>
+                                                </div>
+                                            </div>
+                                            <div class="rate-content">
+                                                <div><b>ratings</b></div>
+                                                <div class="rate-detail">
+                                                    <div class="rateyo pe-0 ps-0" id="rating" data-rateyo-rating="4"></div>
+                                                    <div>good</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div>
+                                            <div><b>Customer Comment</b></div>
+                                            <div>kjgsdjhgjkfkjsdkf</div>
+                                        </div>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade block-card sp-block-customer-body" id="v-pills-bolckcustomer" role="tabpanel" aria-labelledby="v-pills-bolckcustomer-tab">
+                        <div class="card-customer">
+                            <!-- <div class="card">
+                                <div class="customer-image"><img src="./assets/Image/forma-1-copy-19.png" alt=""></div>
+                                <div class="customer-name"><b>Rohit Parmar</b></div>
+                                <div class="block-unblock-button">
+                                    <button class="block-button">Block</button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="customer-image"><img src="./assets/Image/forma-1-copy-19.png" alt=""></div>
+                                <div class="customer-name"><b>Rohit Parmar</b></div>
+                                <div class="block-unblock-button">
+                                    <button class="block-button">Block</button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="customer-image"><img src="./assets/Image/forma-1-copy-19.png" alt=""></div>
+                                <div class="customer-name"><b>Rohit Parmar</b></div>
+                                <div class="block-unblock-button">
+                                    <button class="block-button">Block</button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="customer-image"><img src="./assets/Image/forma-1-copy-19.png" alt=""></div>
+                                <div class="customer-name"><b>Rohit Parmar</b></div>
+                                <div class="block-unblock-button">
+                                    <button class="block-button">Block</button>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-invoices" role="tabpanel" aria-labelledby="v-pills-invoices-tab" disabled>.invoice..</div>
+                    <div class="tab-pane fade" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-notifications-tab" disabled>..notification.</div>
+                    <div class="tab-pane fade " id="v-pills-notification" role="tabpanel" aria-labelledby="v-pills-notification-tab">
                         <div class="customer-table mysetting">
                             <div class="d-flex align-items-center justify-content-center">
                                 <button class="btn btn-setting details active">My Details</button>
@@ -386,90 +326,127 @@ $base_url = "http://localhost/Helperland/";
                             </div>
                             <div class="button-body">
                                 <div class="details-body">
-                                    <div class="row">
-                                        <div class="col-md-12 tags"><b>Basic Details</b></div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="fname">First name</label><br>
-                                            <input type="text" class="input" name="fname" placeholder="First name">
+                                    <div class="sp-details-body">
+                                        <!-- <div class="d-flex align-items-center pb-2">
+                                            <div><b>Account Status:</b></div>
+                                            <div class="ps-2 active">Active</div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label for="lname">Last name</label><br>
-                                            <input type="text" class="input" name="lname" placeholder="Last name">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="email">E-mail address</label><br>
-                                            <input type="email" class="input" name="email" placeholder="E-mail address">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="mobile">Mobile number</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text" id="basic-addon1">+49</span>
-                                                <input type="text" name="mobile" placeholder="Mobile number" required>
+                                        <div class="row">
+                                            <div class="sp-basic col-md-12">
+                                                <b>Basic details</b>
+                                                <hr class="sp-breakline">
+                                                <div class="sp-avatar"><img src="./assets/Image/cap.png" alt=""></div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label for="birthdate">Date of Birth</label><br>
-                                            <input class="input-element birthdate" type="date" id="birthdate" name="dob" data placeholder="From Date">
+                                        <div class="d-none row">
+                                            <div class="col-md-12"><label class="label text-danger sp-error-message"></label></div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label for="nationality">Nationality</label><br>
-                                            <select name="language" id="nationality" required>
-                                                <option value="German">German</option>
-                                                <option value="Indian">Indian</option>
-                                                <option value="African">African</option>
-                                            </select>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class="label" for="spfname">First name</label><br>
+                                                <input type="text" class="input" name="spfname" placeholder="First name" required value="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="label" for="splname">Last name</label><br>
+                                                <input type="text" class="input" name="splname" placeholder="Last name" required value="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="label" for="spemail">E-mail address</label><br>
+                                                <input type="email" class="input" name="spemail" disabled placeholder="E-mail address" required value="">
+                                            </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class="label" for="spmobile">Mobile number</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text" id="basic-addon1">+49</span>
+                                                    <input type="text" name="spmobile" placeholder="Mobile number" value="" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="label" for="spdob">Date of Birth</label><br>
+                                                <input type="date" class="input" name="spdob" required value="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="label" for="spnationality">Nationality</label><br>
+                                                <select name="spnationality" id="spnationality">
+                                                    <option disabled selected value> -- select an option -- </option>
+                                                    <option value="1" >German</option>
+                                                    <option value="2" >Italian</option>
+                                                    <option value="3" >British</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class="label" for="splanguage">Language</label><br>
+                                                <select name="splanguage" id="splanguage" required>
+                                                    <option disabled selected value> -- select an option -- </option>
+                                                    <option value="1" >German</option>
+                                                    <option value="2" >English</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="label" for="spgender">Gender</label><br>
+                                            <div class="gender col-md-6">
+                                                <div>
+                                                    <input type="radio" id="male" name="male" value="1" checked>
+                                                    <label for="male">Male</label>
+                                                </div>
+                                                <div>
+                                                    <input type="radio" id="female" name="female" value="2" >
+                                                    <label for="female">Female</label>
+                                                </div>
+                                                <div>
+                                                    <input type="radio" id="notsay" name="notsay" value="0">
+                                                    <label for="notsay">Rather not to say</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="label" for="avatar">Select Avatar</label><br>
+                                                <div class="choose-avatar">
+                                                    <div class="avatar-image"><img id="avatar1" src="./assets/Image/avatar-car.png" alt=""></div>
+                                                    <div class="avatar-image"><img id="avatar2" src="./assets/Image/avatar-female.png" alt=""></div>
+                                                    <div class="avatar-image"><img id="avatar3" src="./assets/Image/avatar-hat.png" alt=""></div>
+                                                    <div class="avatar-image"><img id="avatar4" src="./assets/Image/avatar-iron.png" alt=""></div>
+                                                    <div class="avatar-image"><img id="avatar5" src="./assets/Image/avatar-male.png" alt=""></div>
+                                                    <div class="avatar-image"><img id="avatar6" src="./assets/Image/avatar-ship.png" alt=""></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <b>My address</b>
+                                                <hr class="sp-breakline">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class="label" for="spstreetname">Street name</label><br>
+                                                <input type="text" class="input" name="spstreetname" placeholder="street name" required value="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="label" for="sphousenumber">House number</label><br>
+                                                <input type="text" class="input" name="sphousenumber" placeholder="house number" required value="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="label" for="sppostalcode">Postal code</label><br>
+                                                <input type="email" class="input" name="sppostalcode" placeholder="postalcode" required value="">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class="label" for="spcity">City</label><br>
+                                                <input type="text" class="input" name="spcity" placeholder="city" required value="">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="sp-details-save">Save</button>
+                                        </div> -->
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="streetname">Gender</label><br>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-check gender">
-                                            <input class="form-check-input" type="radio" name="male" id="male" value="Male" checked>
-                                            <label class="form-check-label" for="male">Male</label>
-                                        </div>
-                                        <div class="form-check gender">
-                                            <input class="form-check-input" type="radio" name="female" id="female" value="Female">
-                                            <label class="form-check-label" for="female">Female</label>
-                                        </div>
-                                        <div class="form-check gender">
-                                            <input class="form-check-input" type="radio" name="nottosay" id="nottosay" value="Rather not to say">
-                                            <label class="form-check-label" for="nottosay">Rather not to say</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12 tags"><b>My Address</b></div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="streetname">Street Name</label><br>
-                                            <input type="text" class="input" name="streetname" placeholder="Street Name">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="housenum">House Number</label><br>
-                                            <input type="text" class="input" name="housenum" placeholder="House Number">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="postalcode">Postal Code</label><br>
-                                            <input type="email" class="input" name="postalcode" placeholder="Postal Code">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="city">City</label><br>
-                                            <input type="text" class="input" name="city" placeholder="City">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div><button class="details-save">Save</button></div>
                                 </div>
                                 <div class="password-body">
                                     <div class="password_error text-danger"></div>

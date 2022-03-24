@@ -28,7 +28,14 @@
   unset($_SESSION['login_alert']);
   if(isset($_SESSION['login_wrong']))
   {
-    echo '<script> alert("wrong Email And Password"); </script>';  
+    if(($_SESSION['login_wrong'])== 1) 
+    {  
+        echo '<script> alert("wrong Email And Password"); </script>'; 
+    }
+    if(($_SESSION['login_wrong'])== 2) 
+    {  
+     echo '<script> alert("You are not approved user yet , We will notify you while you will be approved "); </script>';
+    } 
   }
   unset($_SESSION['login_wrong']);
  ?>

@@ -24,8 +24,8 @@ class Helperland
     }
     
     function Signup($table,$array){
-        $sql_query = "INSERT INTO $table(FirstName,LastName,Email,Password,Mobile,UserTypeId)
-        VALUES (:FirstName,:LastName,:Email,:Password,:Mobile,:UserTypeId)";
+        $sql_query = "INSERT INTO $table(FirstName,LastName,Email,Password,Mobile,UserTypeId,IsApproved,IsActive,CreatedDate)
+        VALUES (:FirstName,:LastName,:Email,:Password,:Mobile,:UserTypeId,:IsApproved,:IsActive,:CreatedDate)";
         $statement= $this->conn->prepare($sql_query);
         $statement->execute($array);
     }
@@ -56,7 +56,7 @@ class Helperland
     }
     function userData($email,$Password)
     {
-        $sql = "SELECT * FROM user WHERE Email = '$email' AND Password = '$Password' ";
+        $sql = "SELECT * FROM user WHERE Email = '$email' AND Password = '$Password'";
         $stmt =  $this->conn->prepare($sql);
         $stmt->execute();
         $row  = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -305,13 +305,24 @@ class Helperland
         }
         
     }
-    function newservicesrequests($id)
+    function newservicesrequests($id,$zip,$pet)
     {
-        $sql = "SELECT * FROM servicerequest WHERE SPAcceptedDate IS NULL AND  Status=1  AND (ServiceProviderId IS NULL OR ServiceProviderId='$id') ";
-        $stmt =  $this->conn->prepare($sql);
-        $stmt->execute();
-        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $row;  
+        if($pet==1)
+        {
+            $sql = "SELECT * FROM servicerequest WHERE HasPets=1 AND SPAcceptedDate IS NULL AND ZipCode='$zip' AND Status=1  AND (ServiceProviderId IS NULL OR ServiceProviderId='$id') ";
+            $stmt =  $this->conn->prepare($sql);
+            $stmt->execute();
+            $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $row; 
+        }
+        else
+        {
+            $sql = "SELECT * FROM servicerequest WHERE SPAcceptedDate IS NULL AND ZipCode='$zip' AND Status=1  AND (ServiceProviderId IS NULL OR ServiceProviderId='$id') ";
+            $stmt =  $this->conn->prepare($sql);
+            $stmt->execute();
+            $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $row; 
+        } 
     }
     function upcoming($id)
     {
@@ -360,6 +371,154 @@ class Helperland
         $stmt->execute();
         $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $row; 
+    }
+    public function fill_selected_pending_request($selectedrequestid)
+    {
+        $sql_qry = "SELECT * FROM servicerequest WHERE ServiceRequestId = $selectedrequestid";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute();
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    public function get_requests_for_that_date( $serviceproviderid, $date, $nextdate)
+    {
+        $sql_qry = "SELECT * FROM servicerequest 
+                    WHERE ServiceProviderId = '$serviceproviderid' AND SPAcceptedDate IS NOT NULL  AND Status = 1 AND ServiceStartDate BETWEEN '$date' AND '$nextdate'";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute();
+        $row = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    public function blockcard($serviceproviderid)
+    {
+        $sql_qry = "SELECT DISTINCT UserId FROM servicerequest WHERE ServiceProviderId = $serviceproviderid AND Status = 2";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute();
+        $row = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    public function checkblocked($selectedcustomerid,$serviceproviderid)
+    {
+        $sql_qry = "SELECT * FROM favoriteandblocked WHERE UserId = $serviceproviderid AND TargetUserId = $selectedcustomerid";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute();
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    public function blockcustomer($selectedcustomerid, $serviceproviderid)
+    {
+        $sql_qry = "INSERT INTO favoriteandblocked(UserId, TargetUserId, IsBlocked)
+                    VALUES ($serviceproviderid, $selectedcustomerid, 1)";
+        $statement= $this->conn->prepare($sql_qry);
+        $statement->execute();
+    }
+
+    public function unblockcustomer($selectedcustomerid, $serviceproviderid)
+    {
+        $sql_qry = "DELETE FROM favoriteandblocked WHERE UserId = $serviceproviderid AND TargetUserId = $selectedcustomerid AND IsBlocked = 1";
+        $statement= $this->conn->prepare($sql_qry);
+        $statement->execute();
+    }
+    function UserAddress($userid)
+    {
+        $sql = "SELECT * FROM useraddress WHERE UserId ='$userid' AND IsDeleted=0 ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    public function update_sp_details($table, $userid, $array)
+    {
+        $sql_qry = "UPDATE $table
+                    SET FirstName = :spfname, LastName = :splname , Mobile = :spmobile, DateOfBirth = :spdob, LanguageId = :splanguage, NationalityId = :spnationality, Gender = :spgender, UserProfilePicture = :selectedavatar
+                    WHERE UserId = $userid";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute($array);
+    }
+
+    function insert_update_spaddress($table, $array2, $edit)
+    {
+        if($edit == 0)
+        {
+            $sql_query = "INSERT INTO $table (UserId, AddressLine1, AddressLine2, City, PostalCode, Mobile, Email)
+                        VALUES (:UserId, :AddressLine1, :AddressLine2, :City, :PostalCode, :Mobile, :Email)";
+            $statement= $this->conn->prepare($sql_query);
+            $statement->execute($array2);
+        }
+        else
+        {
+            $sql_query = "UPDATE $table
+                        SET AddressLine1 = :AddressLine1, AddressLine2 = :AddressLine2 , City = :City, PostalCode = :PostalCode
+                        WHERE AddressId = :AddressId";
+            $statement = $this->conn->prepare($sql_query);
+            $statement->execute($array2);
+        }
+    }
+    function getallservicerequest()
+    {
+        $sql = "SELECT * FROM servicerequest ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    function usermanagement()
+    {
+        $sql = " SELECT * FROM user WHERE NOT UserTypeId=3 ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    function activeuser($id)
+    {
+        $sql_query = "UPDATE user SET IsActive =1 WHERE  UserId = '$id'";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute();  
+    }
+    function deactiveuser($id)
+    {
+        $sql_query = "UPDATE user SET IsActive =0 WHERE  UserId = '$id'";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute();  
+    }
+    function approvesp($id)
+    {
+        $sql_query = "UPDATE user SET IsActive =1 , IsApproved=1 WHERE  UserId = '$id'";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute();  
+    }
+    function cancelfromadmin($reqid)
+    {
+        $sql_query = "UPDATE servicerequest SET Status =3 WHERE  ServiceRequestId = '$reqid'";
+        $statement= $this->conn->prepare($sql_query);
+        $statement->execute();  
+    }
+    public function export_service_history($userid)
+    {
+        $sql_qry = "SELECT servicerequest.ServiceRequestId, CONCAT(user.FirstName, ' ', user.LastName) AS ServiceProvider, servicerequest.ServiceStartDate, servicerequest.ServiceHourlyRate, servicerequest.ServiceHours, servicerequest.ExtraHours, servicerequest.HasPets, servicerequest.SubTotal, servicerequest.Discount, servicerequest.TotalCost, servicerequest.Status 
+                    FROM servicerequest INNER JOIN user ON user.UserId = servicerequest.ServiceProviderId WHERE servicerequest.Status IN (2,3) AND servicerequest.UserId = $userid";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute();
+        $row = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    function users()
+    {
+        $sql = " SELECT UserId, CONCAT(FirstName, ' ',LastName) AS User,Email,Mobile,UserTypeId,Gender,DateOfBirth,ZipCode,CreatedDate,IsApproved,IsActive,IsDeleted FROM user WHERE NOT UserTypeId=3 ";
+        $stmt =  $this->conn->prepare($sql);
+        $stmt->execute();
+        $row  = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    public function export_service_history_sp($userid)
+    {
+        $sql_qry = "SELECT servicerequest.ServiceRequestId, CONCAT(user.FirstName, ' ', user.LastName) AS Customer, servicerequest.ServiceStartDate,  CONCAT(useraddress.AddressLine1,' ',useraddress.AddressLine2,' ',useraddress.City,' ',useraddress.PostalCode) AS Addresses
+                    FROM servicerequest INNER JOIN user ON user.UserId = servicerequest.UserId INNER JOIN servicerequestaddress on servicerequestaddress.ServiceRequestId=servicerequest.ServiceRequestId INNER JOIN useraddress ON useraddress.AddressId=servicerequestaddress.AddressId  WHERE servicerequest.Status=2 AND servicerequest.ServiceProviderId = $userid";
+        $statement = $this->conn->prepare($sql_qry);
+        $statement->execute();
+        $row = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
     }
 }
 ?>

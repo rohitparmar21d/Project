@@ -703,6 +703,25 @@ body {
 .modal .modal-dialog .modal-content .modal-footer .btn-addresssave:hover {
 	background-color: #29626D;
 }
+.dataTables_wrapper {
+	position: relative;
+	clear: both;
+	width: 100%;
+	padding-bottom: 20px;
+  }
+  .dataTables_length label{
+	margin-top: 5px;
+  }
+  table.dataTable thead th, table.dataTable thead td {
+	padding: 10px 18px;
+	border-bottom: none !important;
+  }
+  table.dataTable.no-footer {
+	border-bottom: none !important;
+  }
+  .bottom{
+	margin-top: 20px;
+  }
 /* .modal .modal-dialog .modal-content .modal-header {
 	font-family: 'Roboto';
 	color: #646464;
