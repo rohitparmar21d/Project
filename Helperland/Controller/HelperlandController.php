@@ -209,19 +209,30 @@ class HelperlandController
                 {
                     if($row['IsApproved']==1)
                     {
-                        $usertypeid = $row['UserTypeId'];
-                        $_SESSION['UserId'] = $row['UserId'];
-                        $_SESSION['name'] = $row['FirstName'];
-                        $_SESSION['loggedin'] = $usertypeid;
-                        if($usertypeid == 1){
+                        if($row['IsActive']==1)
+                        {
+                            $usertypeid = $row['UserTypeId'];
+                            $_SESSION['UserId'] = $row['UserId'];
+                            $_SESSION['name'] = $row['FirstName'];
+                            $_SESSION['loggedin'] = $usertypeid;
+                            if($usertypeid == 1){
                              header('Location:' . $customer);
+                            }
+                            if($usertypeid == 2){
+                             header('Location:' . $sp);
+                            } 
+                            if($usertypeid == 3){
+                             header('Location:' . $admin);
+                            }
                         }
-                        if($usertypeid == 2){
-                            header('Location:' . $sp);
+                        else
+                        {
+                            $_SESSION['login_wrong']="3";
+                            $base_url ="http://localhost/Helperland";
+                            header('Location:' . $base_url);
+
                         }
-                        if($usertypeid == 3){
-                            header('Location:' . $admin);
-                        }
+                        
                     }
                     else
                     {
@@ -348,15 +359,27 @@ class HelperlandController
                     $this->model->add_extraservice($array2);
                 }
             }
-            
-            $SPList=$this->model->getSPById($_POST['postalcode']);
-            foreach($SPList as $SPs)
+            if($_POST['selsp']!= NULL)
             {
-                $to_email = $SPs['Email'];
+                $SP=$this->model->getUserbyId($_POST['selsp']);
+                    
+                $to_email = $SP['Email'];
                 $subject = "NEW SERVICE REQUEST";
                 $body = "we got new service request for you, accept if you are available";
                 $headers = "From: rohit1parmar11@gmail.com";
                 mail($to_email, $subject, $body, $headers);
+            }
+            else
+            {
+                $SPList=$this->model->getSPById($_POST['postalcode']);
+                foreach($SPList as $SPs)
+                {
+                    $to_email = $SPs['Email'];
+                    $subject = "NEW SERVICE REQUEST";
+                    $body = "we got new service request for you, accept if you are available";
+                    $headers = "From: rohit1parmar11@gmail.com";
+                    mail($to_email, $subject, $body, $headers);
+                }
             }
     }
     public function service_history()
@@ -374,10 +397,23 @@ class HelperlandController
             if($m<10){$m="0".$m;}
             return $h.":".$m;
         }
+        ?>
+            <table id="history" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ServiceId</th>
+                                            <th>Service Details </th>
+                                            <th id="sd">Service Provider</th>
+                                            <th id="cd">Payment</th>
+                                            <th >Status</th>
+                                            <th>Rate SP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+            <?php
         if($list != NULL)
         {
-            
-            foreach($list as $history)
+                foreach($list as $history)
            {
             $SP = $this->model->getUserbyId($history['ServiceProviderId']);
             $dt=substr($history['ServiceStartDate'],0,10);
@@ -446,6 +482,10 @@ class HelperlandController
           <div class="text-center"><h4>No history Found</h4></div>
         <?php
         }
+        ?>
+          </tbody>
+                                </table>
+        <?php
         
     }
     public function dboard()
@@ -464,7 +504,20 @@ class HelperlandController
             return $h.":".$m;
         }
         if($list != NULL)
-        {  
+        {  ?>
+         <table  class="table table-hover" id="dboard">
+                                    <thead>
+                                        <tr>
+                                            <th>Service Id </th>
+                                            <th >Service Date </th>
+                                            <th >Sevice Provider </th>
+                                            <th >Payment</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+
+        <?php
             
             foreach($list as $history)
             {
@@ -530,13 +583,17 @@ class HelperlandController
                     </tr>
                 <?php
             }
-           
+           ?>
+           </tbody>
+                                </table>
+           <?php
         }
         else
         { ?>
           <div class="text-center"><h4>No history Found</h4></div>
         <?php
         }
+
 
 
     }
@@ -1076,6 +1133,20 @@ class HelperlandController
             if($m<10){$m="0".$m;}
             return $h.":".$m;
         }
+        ?>
+        <table  class="table table-hover" id="newrequest">
+                                    <thead>
+                                        <tr>
+                                            <th>Service Id </th>
+                                            <th >Service Date </th>
+                                            <th >Customer's Details</th>
+                                            <th >Payment</th>
+                                            <th >Time Conflict</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="newrequest">
+        <?php
         foreach($list as $rq)
         {
             $customer= $this->model->getUserbyId($rq['UserId']);
@@ -1103,6 +1174,10 @@ class HelperlandController
             </tr>
         <?php   
         }
+        ?>
+        </tbody>
+                                </table>
+        <?php
     }
     public function acceptrequest()
     {
@@ -1173,6 +1248,21 @@ class HelperlandController
             if($m<10){$m="0".$m;}
             return $h.":".$m;
         }
+        ?>
+        <table id="upcoming" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ServiceId</th>
+                                            <th>Service Date </th>
+                                            <th id="sd">Customer Details</th>
+                                            <th id="cd">Payment</th>
+                                            <th >Distance</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+        <?php
+
         foreach($list as $rq)
         {
             $customer= $this->model->getUserbyId($rq['UserId']);
@@ -1210,6 +1300,10 @@ class HelperlandController
         </tr>
         <?php
         }
+        ?>
+        </tbody>
+                                </table>
+        <?php
     }
     public function cancelrequest()
     {
@@ -1261,6 +1355,17 @@ class HelperlandController
             if($m<10){$m="0".$m;}
             return $h.":".$m;
         }
+        ?>
+        <table  class="table table-hover" id="sphistory">
+                                    <thead>
+                                        <tr>
+                                            <th>Service Id </th>
+                                            <th >Service Date </th>
+                                            <th >Customer Details </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class=" ">
+        <?php
         foreach($list as $history)
         {
             $customer= $this->model->getUserbyId($history['UserId']);
@@ -1285,6 +1390,10 @@ class HelperlandController
             </tr>
         <?php
         }
+        ?>
+        </tbody>
+                                </table>
+        <?php
     }
     public function sprate()
     {
@@ -1302,6 +1411,11 @@ class HelperlandController
             if($m<10){$m="0".$m;}
             return $h.":".$m;
         }
+        ?>
+        <table id="tablerating" class="table display">
+                            <thead class="d-none"><th>details</th></thead>
+                            <tbody class="">
+        <?php
         foreach($rates as $rate)
         {
             $customer = $this->model->getUserbyId($rate['RatingFrom']);
@@ -1364,6 +1478,10 @@ class HelperlandController
                     </tr>
             <?php
         }
+        ?>
+        </tbody>
+                        </table>
+        <?php
     }
     public function blockcard()
     {
@@ -1396,10 +1514,20 @@ class HelperlandController
     public function blockcustomer()
     {
         $this->model->blockcustomer($_POST['userid'], $_SESSION['UserId']);
+        $this->model->unfavcustomer($_POST['userid'], $_SESSION['UserId']);
     }
     public function unblockcustomer()
     {
         $this->model->unblockcustomer($_POST['userid'], $_SESSION['UserId']);
+    }
+    public function favcustomer()
+    {
+        $this->model->favcustomer($_POST['userid'], $_SESSION['UserId']);
+        $this->model->unblockcustomer($_POST['userid'], $_SESSION['UserId']);
+    }
+    public function unfavcustomer()
+    {
+        $this->model->unfavcustomer($_POST['userid'], $_SESSION['UserId']);
     }
     public function spdetails()
     {
@@ -1623,6 +1751,22 @@ class HelperlandController
             if($m<10){$m="0".$m;}
             return $h.":".$m;
         }
+        ?>
+        <table class="table table-hover" id="tblSRreq">
+                                <thead id="headings">
+                                    <tr>
+                                        <th scope="col">Service Id</th>
+                                        <th scope="col">Service Date</th>
+                                        <th scope="col"> Customer Details</th>
+                                        <th scope="col">Service Provider</th>
+                                        <th scope="col">Net Amount</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Payment Status </th>
+                                        <th scope="col " >Actions </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="">
+        <?php
         foreach($SRs as $SR)
         {
             $dt=substr($SR['ServiceStartDate'],0,10);
@@ -1673,7 +1817,7 @@ class HelperlandController
                         </a>
                         <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
                             <?php if($SR['Status']==1) {  ?>
-                                <a class="dropdown-item editreschedule" id="<?php echo $SR['ServiceRequestId']; ?>" >Edit & Reschedule</a>
+                                <a class="dropdown-item editreschedule" id="<?php echo $SR['ServiceRequestId']; ?>"  data-toggle="modal" data-target="#editreschedule">Edit & Reschedule</a>
                                 <a class="dropdown-item cancelrq" id="<?php echo $SR['ServiceRequestId']; ?>" href="#" >Cancel SR By Customer</a>
                             <?php }  ?>
                             <a class="dropdown-item editreschedule" href="#" >Inquiry</a>
@@ -1685,6 +1829,10 @@ class HelperlandController
                 </tr>
             <?php
         }
+        ?>
+        </tbody>
+                            </table>
+        <?php
     }
     public function usermanagement()
     {
@@ -1702,6 +1850,22 @@ class HelperlandController
             if($m<10){$m="0".$m;}
             return $h.":".$m;
         }
+        ?>
+        <table class="table table-hover" id="tblusermanagement">
+                                <thead id="headings">
+                                    <tr>
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">Role </th>
+                                        <th scope="col"> Date of Registration</th>
+                                        <th scope="col">User Type</th>
+                                        <th scope="col">Phone </th>
+                                        <th scope="col">Postal Code</th>
+                                        <th scope="col" class="action">Status </th>
+                                        <th scope="col " class="action" >Actions </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="">
+        <?php
         foreach($users as $user)
         {
             ?>
@@ -1759,6 +1923,10 @@ class HelperlandController
                 </tr>
             <?php
         }
+        ?>
+        </tbody>
+                            </table>
+        <?php
     }
     public function activeuser()
     {
@@ -1808,6 +1976,509 @@ class HelperlandController
             $body = "The Service (Service RequestId =".$_POST['reqid']." DateTime: ".$SR['ServiceStartDate'].")  Assigned to you is cancelled by Customer";
             $headers = "From: rohit1parmar11@gmail.com";
             mail($to_email, $subject, $body, $headers);
+        }
+        
+    }
+    public function fill_reschedule_servicerequest_detail()
+    {
+        $SR=$this->model->SRByreqId($_POST['selectedrequestid']);
+        $date = substr($SR['ServiceStartDate'], 0, 10);
+        $time = substr($SR['ServiceStartDate'], 11, 5);
+        $SRAddId=$this->model->getSRAddbySRId($_POST['selectedrequestid']);
+        $SRAdd=$this->model->getUserAddbyAddId($SRAddId['AddressId']);
+        ?>
+                    <div class="modal-header">
+                        <h5 class="modal-title temp" id="exampleModalLongTitle">Edit Service Request</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="reschedule-inputs fill-selected-request mr-0 ml-0">
+                            <div>
+                                <label class="admin-error" for="admin-error"></label>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="srdate"><b>Date</b></label>
+                                    <div class="date-group position-relative">
+                                        <input class="input" type="date" id="srdate" name="srdate" value="<?php echo $date; ?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="srtime"><b>Time</b></label><br>
+                                    <div class="date-group position-relative">
+                                        <input class="input" type="time" id="srdate" name="srtime" value="<?php echo $time; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row address-heading">
+                                <span class="pr-0 pl-0"><b>Service Address</b></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="streetname">Street name</label><br>
+                                    <input class="input" type="text" name="streetname" placeholder="Street name" value="<?php echo $SRAdd['AddressLine1']; ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="housenumber">House number</label><br>
+                                    <input class="input" type="text" name="housenumber" placeholder="House number" value="<?php echo $SRAdd['AddressLine2']; ?>">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="postalcode">Postal code</label><br>
+                                    <input class="input" type="text" name="postalcode" placeholder="360005" value="<?php echo $SRAdd['PostalCode']; ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="city">City</label><br>
+                                    <input class="input" type="text" name="city" placeholder="Bonn" value="<?php if(isset($_POST['selectedrequestid'])) { echo $SRAdd['City']; } ?>">
+                                </div>
+                            </div>
+                            <div class="row address-heading">
+                                <span class="pr-0 pl-0"><b>Invoice Address</b></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="streetname">Street name</label><br>
+                                    <input class="input" type="text" placeholder="Street name" value="<?php echo $SRAdd['AddressLine1']; ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="housenumber">House number</label><br>
+                                    <input class="input" type="text" placeholder="House number" value="<?php echo $SRAdd['AddressLine2']; ?>">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="postalcode">Postal code</label><br>
+                                    <input class="input" type="text" placeholder="360005" value="<?php echo $SRAdd['PostalCode']; ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="city">City</label><br>
+                                    <input class="input" type="text" placeholder="Bonn" value="<?php if(isset($_POST['selectedrequestid'])) { echo $SRAdd['City']; } ?>">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="reschedulereason"><b>Why do you want to reschedule service request?</b></label><br>
+                                    <textarea class="reschedulereason" name="reschedulereason" placeholder="Why do you want to reschedule service request?"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="emp-notes"><b>Call Center EMP Notes</b></label><br>
+                                    <textarea class="reschedulereason" name="emp-notes" placeholder="Enter Notes"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="button" class="btn button-update admin-sr-update" id="<?php echo $_POST['selectedrequestid']; ?>">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        <?php
+    }
+    public function reschedule_selected_service_request()
+    {
+        
+        $selectedrequestid = $_POST['selectedrequestid'];
+        $row =$this->model->SRByreqId($selectedrequestid);
+        $Address=$this->model->getSRAddbySRId($_POST['selectedrequestid']);
+        $previousdate = date('Y-m-d H-i-s', strtotime($row['ServiceStartDate'] . '-1 day'));
+
+        $streetname = $_POST['streetname'];
+        $housenumber = $_POST['housenumber'];
+        $postalcode = $_POST['postalcode'];
+        $city = $_POST['city'];
+        $srdate = $_POST['srdate'];
+        $srtime = $_POST['srtime'];
+        $comment = $_POST['comment'];
+
+        if ($previousdate > date('Y-m-d H-i-s')) {
+
+            $array = [
+                "ServiceRequestId" => $selectedrequestid,
+                "ServiceStartDate" => $srdate.' '.$srtime,
+                "Comments" => $comment
+            ];
+    
+            $array2 = [
+                "AddressId" => $Address['AddressId'],
+                "AddressLine1" => $streetname,
+                "AddressLine2" => $housenumber,
+                "PostalCode" => $postalcode,
+                "City" => $city
+            ];
+            
+            $this->model->reschedule_selected_service_request($array, $array2);
+        } else {
+            echo 1;
+        }
+    }
+    public function fill_option()
+    {
+        $typeid1 = $_POST['typeid1'];
+        $typeid2 = $_POST['typeid2'];
+        $ans = $this->model->get_filter_option($typeid1, $typeid2);
+        foreach ($ans as $row) {
+        ?>
+            <option value="<?php echo $row['FirstName'] . ' ' . $row['LastName'] ?>"><?php echo $row['FirstName'] . ' ' . $row['LastName'] ?></option>
+        <?php
+        }
+
+    }
+    public function service_schedule_sp()
+    {
+        $events=$this->model->getSPScheduledetail($_SESSION['UserId']);
+        $data = array();
+        function HourMinuteToDecimal($hour_minute) 
+        {
+            $t = explode(':', $hour_minute);
+            return $t[0] * 60 + $t[1];
+        }
+        function DecimalToHoursMins($mins)
+        {
+            $h=(int)($mins/60);
+            $m=round($mins%60);
+            if($h<10){$h="0".$h;}
+            if($m<10){$m="0".$m;}
+            return $h.":".$m;
+        }
+        foreach ($events as $row) {
+
+            $starttime=substr($row['ServiceStartDate'],11,5);
+            $totalmins=HourMinuteToDecimal($starttime)+ (($row['ServiceHours']+$row['ExtraHours'])*60);
+            $totaltime=DecimalToHoursMins($totalmins);
+
+            if ($row['Status'] == '1') {
+                $color = "#1d7a8c";
+            }
+            if ($row['Status'] == '2') {
+                $color = "#5fec0e";
+            }
+            if ($row['Status'] == '3') {
+                $color = "#db4c53";
+            }
+            $data[] = array(
+                'id' => $row['ServiceId'],
+                'title' => "$starttime" . " - " . "$totaltime",
+                'start' => date("Y-m-d", strtotime($row['ServiceStartDate'])),
+                'end' => date("Y-m-d", strtotime($row['ServiceStartDate'])),
+                'color' => "$color"
+            );
+        }
+        echo json_encode($data);
+    }
+    public function userfilter()
+    {
+        if($_POST['username']!='')
+        {
+            $username=explode(' ',$_POST['username']);
+            $FirstName=$username[0];
+            $LastName=$username[1];
+        }
+        else
+        {
+            $FirstName="";
+            $LastName="";
+        }
+        $fromdate=$_POST['fromdate'];
+        $todate=$_POST['todate'];
+        $array=[
+            "FirstName" => $FirstName,
+            "LastName" => $LastName,
+            "UserTypeId" => $_POST['usertype'],
+            "Mobile" => $_POST['mobile'],
+            "ZipCode" => $_POST['postalcode'],
+            "fromdate" => $fromdate,
+            "todate" => $todate
+        ];
+        $rows=$this->model->userfilter($array);
+        function HourMinuteToDecimal($hour_minute) 
+        {
+            $t = explode(':', $hour_minute);
+            return $t[0] * 60 + $t[1];
+        }
+        function DecimalToHoursMins($mins)
+        {
+            $h=(int)($mins/60);
+            $m=round($mins%60);
+            if($h<10){$h="0".$h;}
+            if($m<10){$m="0".$m;}
+            return $h.":".$m;
+        }
+        ?>
+        <table class="table table-hover" id="tblusermanagement">
+            <thead id="headings">
+                <tr>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Role </th>
+                    <th scope="col"> Date of Registration</th>
+                    <th scope="col">User Type</th>
+                    <th scope="col">Phone </th>
+                    <th scope="col">Postal Code</th>
+                    <th scope="col" class="action">Status </th>
+                    <th scope="col " class="action" >Actions </th>
+                </tr>
+            </thead>
+        <tbody class="">
+        <?php
+        foreach($rows as $user)
+        {
+            ?>
+                <tr>
+                    <td><?php echo $user['FirstName']." ".$user['LastName']; ?></td>
+                    <td></td>
+                    <td><img class="calender" src="./assets/Image/calendar2.png"><?php echo substr($user['CreatedDate'],0,10) ?></td>
+                    <td><?php if($user['UserTypeId']==1){ echo "Customer";} elseif($user['UserTypeId']==2){ echo "Service Provider"; } ?></td>
+                    <td><?php echo $user['Mobile']; ?></td>
+                    <td><?php echo $user['ZipCode']; ?></td>
+                    <td class="action">
+                        <?php 
+                        if($user['IsActive']==0 && $user['IsApproved']==1)
+                        {?>
+                            <button class="btn inactive">Inactive</button>
+                        <?php
+                        }
+                        elseif($user['IsActive']==1 && $user['IsApproved']==1)
+                        {?>
+                            <button class="btn active">Active</button>
+                        <?php
+                        }
+                        elseif($user['IsApproved']==0){
+                        ?>
+                        <button class="btn approve">Not Approved</button>
+                        <?php
+                        }?>
+                    </td>
+                    <td class="action">
+                        <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+                            <?php 
+                                if($user['IsActive']==0 && $user['IsApproved']==1)
+                                {?>
+                                    <a class="dropdown-item letactive" id="<?php echo $user['UserId']; ?>" href="#">Activate</a>
+                                <?php
+                                }
+                                elseif($user['IsActive']==1 && $user['IsApproved']==1)
+                                {?>
+                                    <a class="dropdown-item letdeactive" id="<?php echo $user['UserId']; ?>" href="#">Deactivate</a>
+                                <?php
+                                }
+                            ?>
+                            <?php 
+                                if($user['UserTypeId']==2 && $user['IsApproved']==0)
+                                {?>
+                                <a class="dropdown-item letapprove" id="<?php echo $user['UserId']; ?>" href="#">Approve</a>
+                                <?php
+                                }
+                            ?>
+                        </div>
+                    </td>          
+                </tr>
+            <?php
+        }
+        ?>
+            </tbody>
+        </table>
+        <?php
+
+    }
+    public function requestfilter()
+    {
+        $customer=$_POST['customer'];
+        $sp=$_POST['sp'];
+        $fromdate=$_POST['fromdate'];
+        $todate=$_POST['todate'];
+        $array=[
+            "ServiceRequestId" => $_POST['serviceid'],
+            "ZipCode" => $_POST['postalcode'],
+            "Customer" => $customer,
+            "SP" => $sp,
+            "Status" => $_POST['status'],
+            "fromdate" => $fromdate,
+            "todate" => $todate
+        ];
+        $rows=$this->model->requestfilter($array);
+        function HourMinuteToDecimal($hour_minute) 
+        {
+            $t = explode(':', $hour_minute);
+            return $t[0] * 60 + $t[1];
+        }
+        function DecimalToHoursMins($mins)
+        {
+            $h=(int)($mins/60);
+            $m=round($mins%60);
+            if($h<10){$h="0".$h;}
+            if($m<10){$m="0".$m;}
+            return $h.":".$m;
+        }
+        ?>
+        <table class="table table-hover" id="tblSRreq">
+            <thead id="headings">
+                <tr>
+                    <th scope="col">Service Id</th>
+                    <th scope="col">Service Date</th>
+                    <th scope="col"> Customer Details</th>
+                    <th scope="col">Service Provider</th>
+                    <th scope="col">Net Amount</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Payment Status </th>
+                    <th scope="col " >Actions </th>
+                </tr>
+            </thead>
+            <tbody class="">
+        <?php
+        foreach($rows as $SR)
+        {
+            $dt=substr($SR['ServiceStartDate'],0,10);
+            $tm=substr($SR['ServiceStartDate'],11,5);
+            $totalmins=HourMinuteToDecimal($tm)+ (($SR['ServiceHours']+$SR['ExtraHours'])*60);
+            $totime=DecimalToHoursMins($totalmins);
+            $SRAdd=$this->model->getSRAddbySRId($SR['ServiceRequestId']);
+            $customer=$this->model->getUserbyId($SR['UserId']);
+            $SP=$this->model->getUserbyId($SR['ServiceProviderId']);
+            $customeraddress=$this->model->getAddressbyId($SRAdd['AddressId']);
+            ?>
+                <tr>
+                    <td><?php echo $SR['ServiceRequestId']; ?></td>
+                    <td>
+                        <div><img src="./assets/Image/calendar2.png"><?php echo $dt; ?></div>
+                        <div><img src="./assets/Image/layer-14.png"><?php echo $tm."-".$totime; ?></div>
+                    </td>
+                    <td>
+                        <div><?php echo $customer['FirstName']." ".$customer['LastName']; ?></div>
+                        <divp><img src="./assets/Image/layer-719.png"><?php echo $customeraddress['AddressLine1'].",".$customeraddress['AddressLine2'].","; ?></divp>
+                        <div><?php echo $customeraddress['City'].",".$customeraddress['PostalCode']."."; ?></div>
+                    </td>
+                    <td><?php if(isset($SR['ServiceProviderId'])){ echo $SP['FirstName']." ".$SP['LastName'];} ?></td>
+                    <td>&euro;<?php echo $SR['TotalCost']; ?></td>
+                    <td class="action">
+                        <?php  
+                         if($SR['Status']==1)
+                         {?>
+                            <button class="btn pending"><b>New</b></button>
+                         <?php
+                         }
+                         elseif($SR['Status']==2)
+                         {?>
+                             <button class="btn complete"><b>Completed</b></button>
+                         <?php
+                         }
+                         elseif($SR['Status']==3)
+                         {?>
+                              <button class="btn cancel"><b>Cancelled</b></button>
+                         <?php
+                         }
+                        ?>
+                    </td>
+                    <td class="action"></td>
+                    <td class="action">
+                        <a class="dropdown-toggle Actions " href="#" id="navbarDropdowns" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu tooltiptext" aria-labelledby="navbarDropdowns">
+                            <?php if($SR['Status']==1) {  ?>
+                                <a class="dropdown-item editreschedule" id="<?php echo $SR['ServiceRequestId']; ?>"  data-toggle="modal" data-target="#editreschedule">Edit & Reschedule</a>
+                                <a class="dropdown-item cancelrq" id="<?php echo $SR['ServiceRequestId']; ?>" href="#" >Cancel SR By Customer</a>
+                            <?php }  ?>
+                            <a class="dropdown-item editreschedule" href="#" >Inquiry</a>
+                            <a class="dropdown-item editreschedule" href="#" >History Log</a>
+                            <a class="dropdown-item editreschedule" href="#" >Download Invoice</a>
+                            <a class="dropdown-item editreschedule" href="#" >Other Transactions</a>
+                        </div>
+                    </td>
+                </tr>
+            <?php
+        }
+        ?>
+            </tbody>
+        </table>
+        <?php
+    }
+    public function favpro()
+    {
+        $row=$this->model->custhistory($_SESSION['UserId']);
+        foreach($row as $rq)
+        {
+            $sp= $this->model->getUserbyId($rq['ServiceProviderId']);
+            $num_of_cleanings=$this->model->cleanings($_SESSION['UserId'],$rq['ServiceProviderId']);
+            $rates=$this->model->rate($rq['ServiceProviderId']);
+                $j=0;
+                $totalrate=0;
+                if($rates==NULL)
+                {
+                    $avrrate=0;
+                }
+                else
+                {
+                    foreach($rates as $rate)
+                    {
+                        $totalrate+=$rate['Ratings'];
+                        $j++;
+                    }
+                    if($j == 0)
+                    {
+                        $avrrate=$totalrate;
+                    }
+                    else
+                    {
+                        $avrrate=$totalrate/$j;
+                    }
+                }
+            ?>
+            <div class="card">
+                <div class="customer-image"><img src="<?php echo $sp['UserProfilePicture']; ?>" alt=""></div>
+                <div class="customer-name"><b><?php echo $sp['FirstName']." ".$sp['LastName']; ?></b></div>
+                <div class="row rates justify-content-center">
+                    <div class="rateyo fav" id= "rating"  data-rateyo-rating="<?php echo $avrrate; ?>"></div>
+                    <div><?php echo round($avrrate,1); ?></div>
+                </div>
+                <div class="cleanings text-center mb-2"><span><?php echo $num_of_cleanings; ?> Cleanings</span></div>
+                <div class="block-unblock-button">
+                    <?php
+                    $checkfav = $this->model->checkfav($_SESSION['UserId'],$rq['ServiceProviderId']);
+                    if ($checkfav== null) {
+                    ?>
+                        <button class="add-button addfav" id="<?php echo $rq['ServiceProviderId']; ?>">Add</button>
+                    <?php
+                    } else {
+                    ?>
+                        <button class="remove-button removefav" id="<?php echo $rq['ServiceProviderId']; ?>">Remove</button>
+                    <?php
+                    }
+                    $checkblock = $this->model->checkblocked($rq['ServiceProviderId'],$_SESSION['UserId']);
+                    if ($checkblock == null) {
+                    ?>
+                        <button class="block-button" id="<?php echo $rq['ServiceProviderId']; ?>">Block</button>
+                    <?php
+                    } else {
+                    ?>
+                        <button class="unblock-button" id="<?php echo $rq['ServiceProviderId']; ?>">Unblock</button>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        <?php
+        }
+    }
+    public function favpro_booking()
+    {
+        $row=$this->model->favpro_list($_SESSION['UserId']);
+        foreach($row as $data)
+        {
+            $SP=$this->model->getUserbyId($data['TargetUserId']);
+        ?>
+        <div class="card">
+            <div class="customer-image"><img src="<?php echo $SP['UserProfilePicture']; ?>" alt=""></div>
+            <div class="customer-name"><b><?php echo $SP['FirstName']." ".$SP['LastName']; ?></b></div>
+            <div class="block-unblock-button">
+                <button class="add-button" id="<?php echo $data['TargetUserId']; ?>">Select</button>
+            </div>
+        </div>
+        <?php
         }
         
     }

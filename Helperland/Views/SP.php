@@ -6,7 +6,6 @@ $base_url = "http://localhost/Helperland/";
 
 <link rel="stylesheet" href="./assets/css/SP.css">
 
-
 <title>Service Provider</title>
 </head>
 
@@ -93,11 +92,12 @@ $base_url = "http://localhost/Helperland/";
     <section class="section-2-2">
         <div class="row dashboard justify-content-center" id="dashboard">
             <!-- left nav -->
+            
             <div class="col-3">
                 <div class="nav flex-column nav-pills leftsidebar" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-newservicerequest-tab" data-toggle="pill" href="#v-pills-newservicerequest" role="tab" aria-controls="v-pills-newservicerequest" aria-selected="true">New Service Requests</a>
                     <a class="nav-link" id="v-pills-upcomingservices-tab" data-toggle="pill" href="#v-pills-upcomingservices" role="tab" aria-controls="v-pills-upcomingservices" aria-selected="false">Upcoming Services</a>
-                    <a class="nav-link" id="v-pills-serviceschedule-tab" data-toggle="pill" href="#v-pills-serviceschedule" role="tab" aria-controls="v-pills-serviceschedule" aria-selected="false">Service Schedule</a>
+                    <a class="nav-link" id="v-pills-serviceschedule-tab" data-toggle="pill" href="" role="tab"  aria-selected="false" >Service Schedule</a>
                     <a class="nav-link" id="v-pills-servicehistory-tab" data-toggle="pill" href="#v-pills-servicehistory" role="tab" aria-controls="v-pills-servicehistory" aria-selected="false">Service History</a>
                     <a class="nav-link" id="v-pills-myratings-tab" data-toggle="pill" href="#v-pills-myratings" role="tab" aria-controls="v-pills-myratings" aria-selected="false">My Ratings</a>
                     <a class="nav-link" id="v-pills-bolckcustomer-tab" data-toggle="pill" href="#v-pills-bolckcustomer" role="tab" aria-controls="v-pills-bolckcustomer" aria-selected="false">Block Customer</a>
@@ -125,8 +125,8 @@ $base_url = "http://localhost/Helperland/";
                             </div>
                         </div>
                         <div class="container-fluid row db" > 
-                            <div class="col">
-                                <table  class="table table-hover" id="newrequest">
+                            <div class="col newrequest">
+                                <!-- <table  class="table table-hover" id="newrequest">
                                     <thead>
                                         <tr>
                                             <th>Service Id </th>
@@ -137,7 +137,7 @@ $base_url = "http://localhost/Helperland/";
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="newrequest">
+                                    <tbody class="newrequest"> -->
                                         <!-- 1st row start-->
                                         <!-- <tr class="t-row" data-toggle="modal" data-target="#servicedetailmodal">
                                             <td><p>2323</p></td>
@@ -155,15 +155,15 @@ $base_url = "http://localhost/Helperland/";
                                             <td><p></p></td>
                                             <td ><button  class="btn accept-btn">Accept</button></td>
                                         </tr> -->
-                                    </tbody>
-                                </table>
+                                    <!-- </tbody>
+                                </table> -->
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-upcomingservices" role="tabpanel" aria-labelledby="v-pills-upcomingservices-tab">
                         <div class="container-fluid row" id="rightsidebar"> 
-                            <div class="col" >
-                                <table id="upcoming" class="table table-hover">
+                            <div class="col upcoming" >
+                                <!-- <table id="upcoming" class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>ServiceId</th>
@@ -174,7 +174,7 @@ $base_url = "http://localhost/Helperland/";
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="upcoming">
+                                    <tbody class=""> -->
                                         <!--1st row start-->
                                         <!-- <tr class="t-row" data-toggle="modal" data-target="#servicedetailmodal" >
                                             <td><p>2323</p></td>
@@ -192,12 +192,14 @@ $base_url = "http://localhost/Helperland/";
                                             <td><p>15 Km</p></td>
                                             <td ><button  class="cancel-btn">Cancel</button></td>
                                         </tr> -->
-                                    </tbody>
-                                </table>
+                                    <!-- </tbody>
+                                </table> -->
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-serviceschedule" role="tabpanel" aria-labelledby="v-pills-serviceschedule-tab"> nbfgkjs</div>
+                    <div class="tab-pane fade" id="v-pills-serviceschedule" role="tabpanel" aria-labelledby="v-pills-serviceschedule-tab">
+                        <div id="serviceschedule"></div>
+                    </div>
                     <div class="tab-pane fade" id="v-pills-servicehistory" role="tabpanel" aria-labelledby="v-pills-servicehistory-tab">
                         <div class="container-fluid row">
                             <div class="mr-auto"><span class="serarea">Payment Status</span></div>
@@ -211,8 +213,8 @@ $base_url = "http://localhost/Helperland/";
                             </form>
                         </div>
                         <div class="container-fluid row" > 
-                            <div class="col">
-                                <table  class="table table-hover" id="sphistory">
+                            <div class="col sphistory">
+                                <!-- <table  class="table table-hover" id="sphistory">
                                     <thead>
                                         <tr>
                                             <th>Service Id </th>
@@ -220,7 +222,7 @@ $base_url = "http://localhost/Helperland/";
                                             <th >Customer Details </th>
                                         </tr>
                                     </thead>
-                                    <tbody class=" sphistory">
+                                    <tbody class=" "> -->
                                         <!--1st row start-->
                                         <!-- <tr class="t-row">
                                             <td>2323</td>
@@ -234,8 +236,8 @@ $base_url = "http://localhost/Helperland/";
                                             </td>
                                         </tr> -->
                                         
-                                    </tbody>
-                                </table>
+                                    <!-- </tbody>
+                                </table> -->
                             </div>
                         </div>
                     </div>
@@ -250,9 +252,10 @@ $base_url = "http://localhost/Helperland/";
                                 <option value="25" selected>All</option>
                             </select>
                         </div>
-                        <table id="tablerating" class="table display">
+                        <div class="sprate">
+                        <!-- <table id="tablerating" class="table display">
                             <thead class="d-none"><th>details</th></thead>
-                            <tbody class="sprate">
+                            <tbody class=""> -->
                                 <!-- <tr class="mt-20 pt-20">
                                     <td>
                                         <div class="rate-detail">
@@ -281,8 +284,9 @@ $base_url = "http://localhost/Helperland/";
                                         </div>
                                     </td>
                                 </tr> -->
-                            </tbody>
-                        </table>
+                            <!-- </tbody>
+                        </table> -->
+                        </div>
                     </div>
                     <div class="tab-pane fade block-card sp-block-customer-body" id="v-pills-bolckcustomer" role="tabpanel" aria-labelledby="v-pills-bolckcustomer-tab">
                         <div class="card-customer">
@@ -473,9 +477,12 @@ $base_url = "http://localhost/Helperland/";
         </div>
     </section>
     
+    
     <?php include('./footer.php'); ?>
     <script src="./assets/js/SP.js"></script>
+    
         <script src="./assets/js/session.js"></script>
+        
     
     
 </body>

@@ -497,7 +497,6 @@ table.dataTable.no-footer {
 /*modal*/
 .modal .modal-dialog .modal-content .modal-body .content {
 	padding: 30px 0;
-	font-family: 'Roboto';
 	font-size: 20px;
 	font-weight: 350;
 	color: #4F4F4F;
@@ -505,13 +504,16 @@ table.dataTable.no-footer {
 }
 
 .reschedule-inputs {
-	font-family: 'Roboto';
 	font-size: 16px;
 	color: #646464;
 }
-
 .reschedule-inputs .admin-error {
-	font-family: 'Roboto';
+	font-size: 16px;
+	font-weight: 400;
+	color: red;
+	display: none;
+}
+.reschedule-inputs .admin-error {
 	font-size: 16px;
 	font-weight: 400;
 	color: red;
@@ -521,11 +523,17 @@ table.dataTable.no-footer {
 .reschedule-inputs .date-group #srdate {
 	height: 46px;
 	width: 100%;
-	padding-left: 35px;
+	padding-left: 15px;
 	border: 1px solid #E1E1E1;
 	border-radius: 3px;
 }
-
+.reschedule-inputs .row .input{
+  border: 1px solid #E1E1E1;
+    border-radius: 3px;
+    padding-left: 15px;
+    height: 46px;
+    width: 100%;
+}
 .reschedule-inputs .address-heading {
 	margin: 5px 0 10px 0;
 }

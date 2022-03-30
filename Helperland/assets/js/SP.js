@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    
+    $("#calender").fullCalendar();
+    
 
     var base_url = "http://localhost/Helperland/";
     var includepet=0;
@@ -23,6 +26,31 @@ $(document).ready(function () {
            $(".tab-content .tab-pane").removeClass("show active");
            $("#v-pills-notification").addClass("show active");
     });
+    $("#v-pills-serviceschedule-tab").click(function (e) { 
+        e.preventDefault();
+        $(".leftsidebar .nav-link").removeClass("active");
+        $(".tab-content .tab-pane").removeClass("show active");
+        $("#v-pills-serviceschedule").addClass("show active");
+         /*service schedule*/
+    $.ajax({
+        type: "POST",
+        url: base_url + "?controller=Helperland&function=service_schedule_sp",
+        success: function (response) { 
+            
+            $("#serviceschedule").fullCalendar({
+                defaultView: 'month',
+                events: JSON.parse(response)
+            });
+            
+            
+        }
+    });
+        
+    });
+
+
+    
+   
 
     $("#pet").click(function () { 
         if(this.checked == true){
@@ -503,5 +531,7 @@ $(document).ready(function () {
             });
         }
     });
+
+   
 
 });

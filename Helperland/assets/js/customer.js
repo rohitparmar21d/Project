@@ -8,8 +8,9 @@ $(document).ready(function () {
     
     
     
-    history();
+    history();//1
     dashboard();
+    favpro();
     function history()
     {
         /*listing service history */
@@ -199,6 +200,7 @@ $(document).ready(function () {
             
             success: function (response) {
                 dashboard();
+                history();
                 $("#reschedule_modal").modal("hide");
                 Swal.fire({
                     icon: 'success',
@@ -233,8 +235,8 @@ $(document).ready(function () {
                         "comment":comment
                     },
                     success: function (response) {
-                        history();
                         dashboard();
+                        history();
                         $("#cancel_bookingrequest_modal").modal("hide");
                         Swal.fire({
                             icon: 'success',
@@ -545,6 +547,99 @@ $(document).ready(function () {
                  });
             }
         });
+   });
+   function favpro()
+   {
+       /*fav pro*/
+   $.ajax({
+    type: "POST",
+    url: base_url +"?controller=Helperland&function=favpro",
+    success: function (response) {
+        $(".favpro").html(response);
+        $(".fav").rateYo({
+         starWidth: "20px",
+         readOnly: true
+        });
+    }
+});
+   }
+   
+
+   /* block SP*/
+   $(document).on ('click', '.block-button', function (e) { 
+       $.ajax({
+           type: "POST",
+           url: base_url +"?controller=Helperland&function=blockcustomer",
+           data: {
+               "userid" : this.id
+           },
+           success: function (response) {
+               favpro();
+            Swal.fire({
+                icon: 'success',
+                title: "Blocked",
+                showConfirmButton: false,
+                timer: 1000
+                })
+           }
+       });
+   });
+   /*Unblock SP*/
+   $(document).on ('click', '.unblock-button', function (e) { 
+    $.ajax({
+        type: "POST",
+        url: base_url +"?controller=Helperland&function=unblockcustomer",
+        data: {
+            "userid" : this.id
+        },
+        success: function (response) {
+            favpro();
+         Swal.fire({
+             icon: 'success',
+             title: "UnBlocked",
+             showConfirmButton: false,
+             timer: 1000
+             })
+        }
+    });
+   });
+   /*Ad to fav SP */
+   $(document).on ('click', '.addfav', function (e) { 
+    $.ajax({
+        type: "POST",
+        url: base_url +"?controller=Helperland&function=favcustomer",
+        data: {
+            "userid" : this.id
+        },
+        success: function (response) {
+            favpro();
+         Swal.fire({
+             icon: 'success',
+             title: "Added to Favorite",
+             showConfirmButton: false,
+             timer: 1000
+             })
+        }
+    });
+   });
+   /*Remove from fav*/ 
+   $(document).on ('click', '.removefav', function (e) { 
+    $.ajax({
+        type: "POST",
+        url: base_url +"?controller=Helperland&function=unfavcustomer",
+        data: {
+            "userid" : this.id
+        },
+        success: function (response) {
+            favpro();
+         Swal.fire({
+             icon: 'success',
+             title: "Removed From Favorite",
+             showConfirmButton: false,
+             timer: 1000
+             })
+        }
+    });
    });
 });
 

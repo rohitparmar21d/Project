@@ -36,6 +36,10 @@
     {  
      echo '<script> alert("You are not approved user yet , We will notify you while you will be approved "); </script>';
     } 
+    if(($_SESSION['login_wrong'])== 3) 
+    {  
+     echo '<script> alert("Your account is Deactived  , We will notify you while your account will be Activated "); </script>';
+    } 
   }
   unset($_SESSION['login_wrong']);
  ?>
